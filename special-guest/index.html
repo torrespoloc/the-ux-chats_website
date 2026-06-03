@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Become a Guest — UX Chats</title>
+  <meta name="description" content="Want to be a guest on UX Chats? We're looking for UX designers, researchers, and product people with stories to share. No gatekeeping, no jargon — just real conversations.">
+  <meta property="og:title" content="Become a Guest — UX Chats">
+  <meta property="og:description" content="Want to be a guest on UX Chats? We're looking for UX designers, researchers, and product people with stories to share.">
+  <meta property="og:image" content="https://theuxchats.co/og-image.png">
+  <meta property="og:url" content="https://theuxchats.co/special-guest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UX Chats">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Become a Guest — UX Chats">
+  <meta name="twitter:image" content="https://theuxchats.co/og-image.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream:       #FBF3DD;
+      --cream-2:     #F6E9C4;
+      --ink:         #1C1430;
+      --purple:      #6D28D9;
+      --purple-deep: #4C1D95;
+      --yellow:      #FFCB33;
+      --pink:        #FF6FA5;
+      --sky:         #8ECBFF;
+      --line:        3px solid var(--ink);
+      --shadow:      6px 6px 0 var(--ink);
+      --shadow-lg:   10px 10px 0 var(--ink);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .display, h1, h2, h3 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 28px;
+      background: var(--cream);
+      border-bottom: var(--line);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--ink);
+    }
+    .nav-logo .tile {
+      width: 40px; height: 40px;
+      background: var(--yellow);
+      border: var(--line); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800; font-size: 20px;
+      transform: rotate(-3deg);
+    }
+    .nav-logo .wordmark {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800; font-size: 20px; letter-spacing: -0.02em;
+    }
+    nav .links { display: flex; align-items: center; gap: 16px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 60px 28px 80px;
+      max-width: 1100px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    .hero .kicker {
+      font-size: 13px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .14em;
+      color: var(--purple);
+    }
+    .hero h1 {
+      font-size: clamp(50px, 8.4vw, 96px);
+      max-width: 900px;
+    }
+    .hero h1 .highlight { color: var(--purple); }
+    .hero p.lede {
+      font-size: 19px; line-height: 1.5; max-width: 650px;
+      font-weight: 500;
+    }
+
+    /* ─── SIGNS SECTION ─── */
+    .signs { background: var(--cream-2); }
+    .signs-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 70px 28px;
+    }
+    .signs-inner h2 {
+      font-size: clamp(36px, 5.5vw, 64px);
+      margin-bottom: 40px;
+    }
+    .signs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .sign-card {
+      background: #fff;
+      border: var(--line); border-radius: 22px;
+      padding: 32px 24px;
+      box-shadow: var(--shadow-lg);
+      transition: transform .2s ease;
+    }
+    .sign-card:hover { transform: translateY(-4px); }
+    .sign-card .emoji-icon {
+      font-size: 40px; display: block; margin-bottom: 12px;
+    }
+    .sign-card h3 {
+      font-size: 24px; margin-bottom: 8px;
+    }
+    .sign-card p {
+      font-size: 15px; line-height: 1.45;
+    }
+
+    /* ─── FORM ─── */
+    .form-section {
+      max-width: 750px; margin: 0 auto;
+      padding: 70px 28px;
+    }
+    .form-section h2 {
+      font-size: clamp(36px, 5.5vw, 56px);
+      margin-bottom: 12px;
+    }
+    .form-section .sub {
+      font-size: 17px; margin-bottom: 36px; line-height: 1.5;
+    }
+    .form-card {
+      background: #fff;
+      border: var(--line); border-radius: 22px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-lg);
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-weight: 700; font-size: 14px;
+      text-transform: uppercase; letter-spacing: .06em;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-size: 16px; font-weight: 500;
+      padding: 12px 14px;
+      border: var(--line); border-radius: 12px;
+      background: var(--cream);
+      color: var(--ink);
+      outline: none;
+      transition: box-shadow .15s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      box-shadow: 0 0 0 3px var(--purple);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 800; font-size: 15px;
+      border: var(--line); border-radius: 999px;
+      padding: 12px 22px;
+      background: var(--purple); color: #fff;
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .12s ease;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn:hover  { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--ink); }
+    .btn:active { transform: translate(2px,2px);  box-shadow: 2px 2px 0 var(--ink); }
+    .btn.yellow { background: var(--yellow); color: var(--ink); }
+    .btn.line   { background: #fff; color: var(--ink); font-size: 15px; }
+    .btn.big    { font-size: 18px; padding: 16px 30px; box-shadow: var(--shadow-lg); }
+
+    .btn-row {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;
+    }
+
+    /* ─── STICKERS ─── */
+    .sticker {
+      display: inline-block;
+      padding: 6px 16px;
+      border: var(--line); border-radius: 12px;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800; font-size: 14px;
+      text-transform: uppercase;
+      box-shadow: var(--shadow);
+      white-space: nowrap;
+    }
+    .sticker.pink  { background: var(--pink); color: var(--ink); }
+    .sticker.sky   { background: var(--sky); color: var(--ink); }
+    .sticker.yellow { background: var(--yellow); color: var(--ink); }
+
+    /* ─── FAQ ─── */
+    .faq { background: var(--cream-2); }
+    .faq-inner {
+      max-width: 800px; margin: 0 auto;
+      padding: 70px 28px;
+    }
+    .faq-inner h2 {
+      font-size: clamp(36px, 5.5vw, 56px);
+      margin-bottom: 36px;
+    }
+    .faq-item {
+      background: #fff;
+      border: var(--line); border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .faq-item .q {
+      font-weight: 700; font-size: 16px; margin-bottom: 6px;
+    }
+    .faq-item .a {
+      font-size: 15px; line-height: 1.5; color: #333;
+    }
+
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      background: var(--ink); color: #fff;
+      text-align: center;
+      padding: 70px 28px;
+    }
+    .cta-band h2 {
+      font-size: clamp(36px, 5.5vw, 64px);
+      color: #fff; margin-bottom: 16px;
+    }
+    .cta-band p {
+      font-size: 18px; max-width: 550px; margin: 0 auto 28px;
+      opacity: .85;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.6);
+      padding: 36px 28px;
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    footer .f-logo {
+      display: flex; align-items: center; gap: 8px;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800; font-size: 18px; color: #fff;
+    }
+    footer a { color: var(--yellow); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+      .sticker { animation: none !important; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      nav .links .btn span { display: none; }
+      .hero { padding: 40px 20px 60px; }
+      .signs-inner { padding: 50px 20px; }
+      .form-section { padding: 50px 20px; }
+      .faq-inner { padding: 50px 20px; }
+      .cta-band { padding: 50px 20px; }
+      .form-card { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <span class="tile">UX</span>
+      <span class="wordmark">UX Chats</span>
+    </a>
+    <div class="links">
+      <a href="/" class="btn line" style="font-size:14px;padding:8px 16px;">← Back</a>
+      <a href="https://discord.gg/bBbDbZbQ9" class="btn yellow" style="font-size:14px;padding:8px 16px;" target="_blank">Join Discord</a>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <span class="kicker">✦ Special Guest</span>
+    <h1>
+      Be a guest.<br>
+      Share your <span class="highlight">UX story.</span>
+    </h1>
+    <p class="lede">
+      UX Chats is looking for designers, researchers, and product people who've got
+      something real to say. No corporate talking points. No rehearsed answers.
+      Just raw, honest conversations about the work.
+    </p>
+    <div class="btn-row">
+      <a href="#form" class="btn yellow big">Nominate yourself →</a>
+      <a href="#faq" class="btn line big">What to expect</a>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;">
+      <span class="sticker pink" style="transform:rotate(-2deg);">🎤 30 min chat</span>
+      <span class="sticker sky" style="transform:rotate(3deg);">📹 recorded live</span>
+      <span class="sticker yellow" style="transform:rotate(-1deg);">🌍 remote-friendly</span>
+    </div>
+  </section>
+
+  <!-- ─── SIGNS ─── -->
+  <section class="signs" id="about">
+    <div class="signs-inner">
+      <h2 class="reveal">You're a fit if…</h2>
+      <div class="signs-grid">
+        <div class="sign-card reveal">
+          <span class="emoji-icon">🔥</span>
+          <h3>You've got opinions</h3>
+          <p>You don't just follow design trends — you question them. You've got hot takes, hard-won lessons, and stories from the trenches.</p>
+        </div>
+        <div class="sign-card reveal">
+          <span class="emoji-icon">🤔</span>
+          <h3>You've failed (and learned)</h3>
+          <p>The projects that went sideways taught you more than the smooth ones. We want to hear about those.</p>
+        </div>
+<div class="sign-card reveal">
+          <span class="emoji-icon">⚡</span>
+          <h3>You keep it real</h3>
+          <p>No jargon, no gatekeeping, no "leverage our synergies." Just honest talk about what works and what doesn't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FORM ─── -->
+  <section class="form-section" id="form">
+    <h2 class="reveal">Tell us about you</h2>
+    <p class="sub reveal">Fill this out and we'll be in touch. Takes about 5 minutes.</p>
+    <div class="form-card reveal">
+      <form action="https://formspree.io/f/mdavogvj" method="POST">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label for="first_name">Name</label>
+            <input type="text" id="first_name" name="first_name" required placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last name</label>
+            <input type="text" id="last_name" name="last_name" required placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="linkedin">LinkedIn</label>
+          <input type="text" id="linkedin" name="linkedin" placeholder="Your LinkedIn URL">
+        </div>
+        <div class="form-group">
+          <label for="portfolio">Portfolio/website link (if you have one)</label>
+          <input type="text" id="portfolio" name="portfolio" placeholder="https://yoursite.com">
+        </div>
+        <div class="form-group">
+          <label for="topics">What topics would you like to discuss?</label>
+          <textarea id="topics" name="topics" placeholder="What UX topics are you passionate about?"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="reason">Why do you want to be a special guest?</label>
+          <textarea id="reason" name="reason" placeholder="Tell us what makes you excited to be on the show"></textarea>
+        </div>
+        <p style="margin:20px 0;padding:12px 16px;background:var(--cream);border:var(--line);border-radius:12px;font-size:14px;line-height:1.5;">
+          📅 <strong>Note:</strong> Check the events scheduled on Luma: <a href="https://luma.com/TheUXChats?k=c" target="_blank" style="color:var(--purple);font-weight:700;">luma.com/TheUXChats</a>
+        </p>
+        <button type="submit" class="btn yellow big" style="width:100%;justify-content:center;">Send it →</button>
+        <p style="margin-top:12px;font-size:13px;color:#666;text-align:center;">
+          We'll get back to you within a week. No spam, ever.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <h2 class="reveal">What to expect</h2>
+      <div class="faq-item reveal">
+        <div class="q">How long is the chat?</div>
+        <div class="a">About 30 minutes. We'll hop on a video call, record it, and keep it loose — like two designers chatting over coffee.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="q">Do I need to prepare?</div>
+        <div class="a">Nope. Just show up with something you're excited to talk about. We'll steer the conversation, you just bring the energy.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="q">What happens after recording?</div>
+        <div class="a">We edit it down, post it on YouTube, and share it with the community. You'll get a link to preview before it goes live.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="q">I'm early in my career — can I still apply?</div>
+        <div class="a">Absolutely. We love fresh perspectives. If you've got thoughts about design and a willingness to share them, you're qualified.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA BAND ─── -->
+  <section class="cta-band">
+    <h2 class="reveal">Ready to talk?</h2>
+    <p class="reveal">Come hang in the Discord and get to know the community first. No pressure, no auditions.</p>
+    <a href="https://discord.gg/bBbDbZbQ9" class="btn yellow big" target="_blank">Join the community →</a>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="f-logo">UX Chats</div>
+    <div>Made with 💜 by the community · <a href="https://discord.gg/bBbDbZbQ9">Discord</a></div>
+  </footer>
+
+  <script>
+    // ─── Reveal on scroll ───
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
