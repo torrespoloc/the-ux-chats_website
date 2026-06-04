@@ -110,6 +110,11 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space
 footer .foot-brand { display: inline-flex; align-items: center; gap: 12px; }
 footer .foot-brand img { width: 34px; height: 34px; border-radius: 9px; border: 2px solid var(--cream); display: block; }
 
+/* ── CURSOR STATUS BAR ── */
+.cursor-bar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center; background: var(--purple-deep); border-top: 2px solid var(--purple); padding: 8px 20px; font-family: "Hanken Grotesk"; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.65); }
+.cursor-bar .cb-item { display: inline-flex; align-items: center; gap: 5px; }
+.cursor-bar .cb-item:not(:last-child)::after { content: "│"; opacity: .35; margin-left: 14px; }
+
 /* ── FLOATING JOIN ── */
 .float-join { position: fixed; right: 20px; bottom: 20px; z-index: 60; opacity: 0; transform: translateY(18px); pointer-events: none; transition: opacity .3s ease, transform .3s ease; }
 .float-join.show { opacity: 1; transform: none; pointer-events: auto; }

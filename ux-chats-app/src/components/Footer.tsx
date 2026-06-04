@@ -20,6 +20,11 @@ export function Footer() {
           <span>@uxchats</span>
         </div>
       </footer>
+      <div className="cursor-bar">
+        <span className="cb-item">⟨/⟩ the-ux-chats_website</span>
+        <span className="cb-item">main</span>
+        <span className="cb-item" title="UX Chats community landing page">UX Chats · React + Vite + Tailwind</span>
+      </div>
     </>
   );
 }
