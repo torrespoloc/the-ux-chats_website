@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Tag, Footer } from "./components/ui";
+import { Button, Tag, Footer } from "./components";
 import "./App.css";
 
 const MARQUEE_ITEMS = [

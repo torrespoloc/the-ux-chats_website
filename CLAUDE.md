@@ -1,14 +1,14 @@
 # CLAUDE.md — UX Chats Website
 
-This repo is the **UX Chats** community landing page: a single self-contained `index.html`
-(all CSS, fonts, and images inlined). It is a **playful "sticker zine" design** — NOT a
+This repo is the **UX Chats** community landing page — a React app built with **Vite + Tailwind CSS v4** at `ux-chats-app/`. It is a **playful "sticker zine" design** — NOT a
 corporate or SaaS look. When editing or adding sections, match the system below exactly so
 the page stays on-brand.
 
-> **Important:** `index.html` is a *bundled* output (fonts + images are base64-inlined, so it
-> is huge and hard to read). Treat the design tokens and component recipes in THIS file as the
-> source of truth. Keep edits consistent with these rules rather than reverse-engineering the
-> minified bundle.
+> **Architecture:** No vanilla HTML/CSS — everything runs through the React app.
+> - Pages: `ux-chats-app/src/App.tsx` (route `/`) and `BecomeAGuest.tsx` (route `/become-a-guest`)
+> - Components: `ux-chats-app/src/components/` (Button, Tag, Footer)
+> - Styles: `App.css` (global CSS custom properties + Tailwind utilities)
+> - Deployment: GitHub Actions builds `ux-chats-app/` and deploys `dist/` to GitHub Pages
 
 ---
 
@@ -151,8 +151,3 @@ attendance counts that make the community look small.
 
 ---
 
-## How this file was built
-The canonical, editable source (un-bundled, with separate `img/` assets) lives in the design
-project this was exported from. `index.html` in this repo is the compiled single-file output
-for GitHub Pages. If you make structural changes here, keep them consistent with the recipes
-above so a future re-export from the design source doesn't clash.

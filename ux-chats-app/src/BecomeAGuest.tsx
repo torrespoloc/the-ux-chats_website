@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Tag, Footer } from "./components/ui";
+import { Button, Tag, Footer } from "./components";
 import "./App.css";
 
 export default function BecomeAGuest() {
@@ -121,6 +121,30 @@ export default function BecomeAGuest() {
           </div>
         </section>
 
+        {/* ── YOU'RE A FIT IF… SIGNS ── */}
+        <section className="guest-signs" style={{ background: "var(--cream-2)" }}>
+          <div className="wrap">
+            <h2 className="display sec" style={{ textAlign: "center" }}>You're a fit if…</h2>
+            <div className="signs-grid">
+              <div className="sign-card reveal">
+                <span className="emoji-icon">🔥</span>
+                <h3>You've got opinions</h3>
+                <p>You don't just follow design trends — you question them. You've got hot takes, hard-won lessons, and stories from the trenches.</p>
+              </div>
+              <div className="sign-card reveal">
+                <span className="emoji-icon">🤔</span>
+                <h3>You've failed (and learned)</h3>
+                <p>The projects that went sideways taught you more than the smooth ones. We want to hear about those.</p>
+              </div>
+              <div className="sign-card reveal">
+                <span className="emoji-icon">⚡</span>
+                <h3>You keep it real</h3>
+                <p>No jargon, no gatekeeping, no "leverage our synergies." Just honest talk about what works and what doesn't.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── FORM ── */}
         <section className="guest-form-section">
           <div className="wrap">
@@ -165,6 +189,31 @@ export default function BecomeAGuest() {
                 </Button>
                 <p className="form-disclaimer">We'll get back to you within a week. No spam, ever.</p>
               </form>
+            </div>
+          </div>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section className="guest-faq" style={{ background: "var(--cream-2)" }}>
+          <div className="wrap">
+            <h2 className="display sec" style={{ textAlign: "center" }}>What to expect</h2>
+            <div className="faq-list">
+              <div className="faq-item reveal">
+                <div className="q">How long is the chat?</div>
+                <div className="a">About 30 minutes. We'll hop on a video call, record it, and keep it loose — like two designers chatting over coffee.</div>
+              </div>
+              <div className="faq-item reveal">
+                <div className="q">Do I need to prepare?</div>
+                <div className="a">Nope. Just show up with something you're excited to talk about. We'll steer the conversation, you just bring the energy.</div>
+              </div>
+              <div className="faq-item reveal">
+                <div className="q">What happens after recording?</div>
+                <div className="a">We edit it down, post it on YouTube, and share it with the community. You'll get a link to preview before it goes live.</div>
+              </div>
+              <div className="faq-item reveal">
+                <div className="q">I'm early in my career — can I still apply?</div>
+                <div className="a">Absolutely. We love fresh perspectives. If you've got thoughts about design and a willingness to share them, you're qualified.</div>
+              </div>
             </div>
           </div>
         </section>
