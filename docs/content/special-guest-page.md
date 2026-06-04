@@ -12,7 +12,7 @@ Destination: `ux-chats-app/src/BecomeAGuest.tsx`
 
 - **Heading:** "Be a guest. Share your UX story."
 - **Description:** "UX Chats is looking for designers, researchers, and product people who've got something real to say. No corporate talking points. No rehearsed answers. Just raw, honest conversations about the work."
-- **CTAs:** "Nominate yourself →" (links to form), "What to expect" (links to FAQ)
+- **CTAs:** "Nominate yourself →" (links to form), "FAQ" (links to FAQ)
 - **Stickers:** 🎤 30 min chat, 📹 recorded live, 🌍 remote-friendly
 
 The React version has different copy — more concise hero with "Want to be a special guest?" heading

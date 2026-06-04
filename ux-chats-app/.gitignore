@@ -25,3 +25,4 @@ verify*.png
 *.njsproj
 *.sln
 *.sw?
+.vercel

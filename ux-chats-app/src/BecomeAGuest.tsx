@@ -80,7 +80,7 @@ export default function BecomeAGuest() {
         {/* ── WHAT IT'S LIKE ── */}
         <section className="guest-details" style={{ background: "var(--cream-2)" }}>
           <div className="wrap">
-            <h2 className="display sec" style={{ textAlign: "center" }}>What to expect.</h2>
+            <h2 className="display sec" style={{ textAlign: "center" }}>FAQ.</h2>
             <div className="guest-cards">
               <div className="card guest-card">
                 <Tag shape="square" variant="sky">🎙️ ~40 min talk + Q&amp;A</Tag>
@@ -196,7 +196,7 @@ export default function BecomeAGuest() {
         {/* ── FAQ ── */}
         <section className="guest-faq" style={{ background: "var(--cream-2)" }}>
           <div className="wrap">
-            <h2 className="display sec" style={{ textAlign: "center" }}>What to expect</h2>
+            <h2 className="display sec" style={{ textAlign: "center" }}>FAQ</h2>
             <div className="faq-list">
               <div className="faq-item reveal">
                 <div className="q">How long is the chat?</div>
