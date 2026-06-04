@@ -55,9 +55,11 @@
 .next-up-date .month { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
 .next-up-date .day { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 80px; line-height: .9; letter-spacing: -0.03em; }
 .next-up-date .time { font-family: "Hanken Grotesk"; font-weight: 700; font-size: 13px; opacity: .8; margin-top: 6px; letter-spacing: .04em; }
-.next-up-body { padding: 32px 36px; border-left: var(--line); }
+.next-up-body { position: relative; padding: 32px 36px; border-left: var(--line); }
 @media (max-width: 640px) { .next-up-body { border-left: none; border-top: var(--line); padding: 24px; } }
 .next-up-tag { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 16px; box-shadow: none; }
+.entry-tag { position: absolute; top: 28px; right: 28px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; border: var(--line); border-radius: 999px; padding: 5px 14px; background: var(--ink); color: #fff; z-index: 2; }
+@media (max-width: 640px) { .entry-tag { top: 20px; right: 20px; font-size: 10px; padding: 4px 12px; } }
 .next-up-body h3 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(22px, 2.8vw, 34px); letter-spacing: -0.02em; line-height: 1.05; margin: 14px 0 12px; }
 .next-up-body .desc { font-size: 16px; font-weight: 500; line-height: 1.55; opacity: .88; max-width: 600px; }
 .next-up-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 14px; font-weight: 700; opacity: .75; }
@@ -76,7 +78,7 @@
 /* event format cards */
 .cards { display: grid; grid-template-columns: 1fr; gap: 26px; margin-top: 46px; }
 @media (min-width: 760px){ .cards { grid-template-columns: 1fr 1fr; } }
-.card { border: var(--line); border-radius: 22px; background: #fff; padding: 32px; box-shadow: var(--shadow-lg); transition: transform .15s ease; }
+.card { position: relative; border: var(--line); border-radius: 22px; background: #fff; padding: 32px; box-shadow: var(--shadow-lg); transition: transform .15s ease; }
 .card:hover { transform: translateY(-4px); }
 .card.p { background: var(--purple); color: var(--cream); }
 .card .icon { width: 56px; height: 56px; border: var(--line); border-radius: 14px; display: grid; place-items: center; font-size: 26px; background: var(--yellow); box-shadow: 4px 4px 0 var(--ink); }

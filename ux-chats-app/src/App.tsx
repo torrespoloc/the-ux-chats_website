@@ -169,6 +169,7 @@ function App() {
           <div className="cards reveal">
             <div className="card p">
               <div className="icon">✦</div>
+              <span className="entry-tag">paid event</span>
               <h3>Special Guest Nights</h3>
               <p>UX mentors, psychologists, and creative minds share what you won't find on ChatGPT. Real insight, real talk, zero fluff.</p>
               <div className="tags">
@@ -179,6 +180,7 @@ function App() {
             </div>
             <div className="card">
               <div className="icon">🎮</div>
+              <span className="entry-tag">free entry</span>
               <h3>Community Nights</h3>
               <p>Game Night, Convo Night, Craft Night and more. Interactive UX games and challenges that spark creativity — and a lot of laughter.</p>
               <div className="tags">
@@ -213,7 +215,8 @@ function App() {
               time: "5:00 PM PST",
               tag: "Community Night · Online",
               tagVariant: "sky",
-              title: "UX Chats Community Night",
+              entryTag: "paid event",
+              title: "The UX Chats: Special Guest Night",
               description: "Games, conversations, and great company — our regular community night is open to all. Come hang out, play some UX games, and meet fellow designers.",
               meta: [
                 { icon: "🕐", text: "5:00 PM PST" },
@@ -239,6 +242,7 @@ function App() {
               day: "03",
               time: "5:00 PM PST",
               tag: "Special Guest Night · Online",
+              entryTag: "free entry",
               title: "How to Use Claude Code to Design Multiple Products",
               description: <>With co-founder <strong>Romit</strong> — a hands-on look at how designers use Claude Code, Granola &amp; Vercel to think, design, build, and ship multiple products without feeling overwhelmed. ~40-min talk, then open Q&amp;A and casual discussion.</>,
               meta: [

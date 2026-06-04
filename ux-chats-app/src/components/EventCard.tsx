@@ -20,6 +20,7 @@ interface EventCardData {
   time: string;
   tag: string;
   tagVariant?: "yellow" | "sky" | "pink" | "default";
+  entryTag?: string;
   title: string;
   description: ReactNode;
   meta?: MetaItem[];
@@ -59,6 +60,9 @@ export function EventCard({
       <div className={`next-up-card${isPast ? " past" : ""}`}>
         {dateBlock}
         <div className="next-up-body">
+          {data.entryTag && (
+            <span className="entry-tag">{data.entryTag}</span>
+          )}
           <Tag
             variant={data.tagVariant ?? "yellow"}
             size="sm"
