@@ -1,0 +1,66 @@
+import { type ButtonHTMLAttributes, type AnchorHTMLAttributes, type ReactNode } from "react";
+
+type ButtonVariant = "primary" | "yellow" | "line" | "ghost";
+type ButtonSize = "sm" | "md" | "lg";
+
+interface ButtonBaseProps {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  children: ReactNode;
+  className?: string;
+}
+
+type ButtonAsButton = ButtonBaseProps &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "className"> & { as?: "button" };
+
+type ButtonAsLink = ButtonBaseProps &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "children" | "className"> & { as: "a"; href: string };
+
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
+
+const variantStyles: Record<ButtonVariant, string> = {
+  primary: "bg-[var(--purple)] text-white",
+  yellow: "bg-[var(--yellow)] text-[var(--ink)]",
+  line: "bg-white text-[var(--ink)]",
+  ghost: "bg-transparent text-[var(--ink)] border-transparent shadow-none hover:shadow-none hover:translate-x-0 hover:translate-y-0",
+};
+
+const sizeStyles: Record<ButtonSize, string> = {
+  sm: "px-[16px] py-[8px] gap-[8px]",
+  md: "px-[24px] py-[16px] gap-[8px]",
+  lg: "px-[32px] py-[16px] gap-[12px]",
+};
+
+export function Button(props: ButtonProps) {
+  const variant = props.variant ?? "primary";
+  const size = props.size ?? "md";
+  const { children, className = "" } = props;
+
+  const baseClasses =
+    "inline-flex items-center no-underline cursor-pointer select-none " +
+    "font-['Hanken_Grotesk'] font-extrabold text-[18px] " +
+    "border-[3px] border-solid border-[var(--ink)] rounded-full " +
+    "shadow-[var(--shadow)] " +
+    "transition-[transform,box-shadow] duration-[.12s] ease-in " +
+    "hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[8px_8px_0_var(--ink)] " +
+    "active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_var(--ink)] " +
+    variantStyles[variant] + " " +
+    sizeStyles[size] + " " +
+    className;
+
+  if (props.as === "a") {
+    const { as: _, variant: _v, size: _s, ...linkRest } = props as ButtonAsLink;
+    return (
+      <a className={baseClasses.trim()} {...linkRest}>
+        {children}
+      </a>
+    );
+  }
+
+  const { as: _, variant: _v, size: _s, ...btnRest } = props as ButtonAsButton;
+  return (
+    <button className={baseClasses.trim()} {...btnRest}>
+      {children}
+    </button>
+  );
+}

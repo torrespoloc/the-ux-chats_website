@@ -72,8 +72,69 @@
   .btn:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
   .btn.yellow { background: var(--yellow); color: var(--ink); }
   .btn.line { background: #fff; color: var(--ink); }
+
+  /* hamburger toggle — hidden on desktop */
+  .nav-toggle {
+    display: none; position: relative; z-index: 55;
+    width: 42px; height: 42px; border: var(--line); border-radius: 12px;
+    background: var(--pink); cursor: pointer;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: transform .12s ease, box-shadow .12s ease;
+    transform: rotate(-3deg);
+  }
+  .nav-toggle:hover { transform: rotate(-3deg) translate(-1px,-1px); box-shadow: 5px 5px 0 var(--ink); }
+  .nav-toggle:active { transform: rotate(-3deg) translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+  .nav-toggle .bar,
+  .nav-toggle .bar::before,
+  .nav-toggle .bar::after {
+    position: absolute; left: 50%; margin-left: -10px;
+    width: 20px; height: 3px; background: var(--ink); border-radius: 2px;
+    transition: transform .25s ease, top .25s ease;
+  }
+  .nav-toggle .bar { top: 50%; margin-top: -1.5px; }
+  .nav-toggle .bar::before,
+  .nav-toggle .bar::after { content: ""; }
+  .nav-toggle .bar::before { top: -7px; }
+  .nav-toggle .bar::after { top: 7px; }
+  .nav-toggle.open .bar { background: transparent; }
+  .nav-toggle.open .bar::before { top: 0; transform: rotate(45deg); }
+  .nav-toggle.open .bar::after { top: 0; transform: rotate(-45deg); }
+
+  /* mobile menu panel */
+  .nav-menu {
+    position: fixed; top: 74px; left: 0; right: 0; z-index: 49;
+    background: var(--cream); border-bottom: var(--line);
+    box-shadow: var(--shadow-lg);
+    padding: 20px 24px 24px;
+    display: flex; flex-direction: column; gap: 6px;
+    transform: translateY(-110%); opacity: 0; visibility: hidden;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .25s ease, visibility .25s ease;
+    pointer-events: none;
+  }
+  .nav-menu.open { transform: none; opacity: 1; visibility: visible; pointer-events: auto; }
+  .nav-menu a {
+    display: block;
+    font-family: "Bricolage Grotesque"; font-weight: 800;
+    font-size: 20px; padding: 14px 16px;
+    border: var(--line); border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .1s ease;
+    background: #fff; color: var(--ink);
+  }
+  .nav-menu a:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+  .nav-menu .nav-join { background: var(--yellow); text-align: center; font-size: 18px; }
+
+  /* mobile <-> desktop toggles */
   .nav-links .lk { display: none; }
-  @media (min-width: 860px){ .nav-links .lk { display: inline; } }
+  @media (min-width: 860px){
+    .nav-links .lk { display: inline; }
+    .nav-toggle { display: none !important; }
+    .nav-menu { display: none !important; }
+  }
+  @media (max-width: 859px){
+    .nav-toggle { display: flex; }
+    .nav-links { margin-left: auto; margin-right: 16px; }
+  }
 
   /* HERO */
   .hero { position: relative; z-index: 1; padding: 70px 0 60px; }
@@ -258,8 +319,14 @@
       <a class="lk" href="#events">Events</a>
       <a class="btn" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener">Join Discord</a>
     </nav>
+    <button class="nav-toggle" aria-label="Toggle menu"><span class="bar"></span></button>
   </div>
 </header>
+<div class="nav-menu" id="navMenu">
+  <a href="#about">What we do</a>
+  <a href="#events">Events</a>
+  <a class="nav-join" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener">Join Discord →</a>
+</div>
 
 <main id="top">
   <section class="hero">
@@ -484,6 +551,22 @@
   const onScroll = () => floatJoin.classList.toggle('show', window.scrollY > 520);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* nav hamburger toggle */
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.getElementById('navMenu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navMenu.classList.remove('open');
+      });
+    });
+  }
 </script>
 
 
