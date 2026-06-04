@@ -193,15 +193,15 @@
   @keyframes scroll { to { transform: translateX(-50%); } }
 
   section { position: relative; z-index: 1; padding: 84px 0; }
-  .kicker { font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 13px; color: var(--purple); }
-  h2.sec { font-size: clamp(36px, 5.5vw, 64px); margin: 14px 0 0; }
+  .kicker { font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 25px; color: var(--purple); }
+  h2.sec { font-size: clamp(48px, 5.5vw, 76px); margin: 14px 0 0; }
   .lead { font-size: 19px; font-weight: 500; max-width: 620px; margin-top: 18px; line-height: 1.5; }
 
   /* about: two-col with photo collage */
   .about-grid { display: grid; grid-template-columns: 1fr; gap: 50px; align-items: center; }
   @media (min-width: 900px){ .about-grid { grid-template-columns: 1.05fr .95fr; } }
   .chips { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-  .chip { border: 3px solid var(--purple); background: #fff; border-radius: 999px; padding: 11px 20px; font-weight: 700; box-shadow: 4px 4px 0 var(--purple); }
+  .chip { border: 3px solid var(--purple); background: #fff; border-radius: 12px; padding: 11px 20px; font-weight: 700; box-shadow: 4px 4px 0 var(--purple); }
   .chip:nth-child(2n){ border-color: var(--yellow); box-shadow: 4px 4px 0 var(--yellow); }
   .chip:nth-child(3n){ border-color: var(--sky); box-shadow: 4px 4px 0 var(--sky); }
 
@@ -234,7 +234,7 @@
   .host-quote .big { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(22px, 2.6vw, 30px); line-height: 1; }
   .host-quote .sm { font-weight: 700; font-size: 15px; margin-top: 6px; }
   .fact-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-  .fact-chips ux-fact-chip { border: 3px solid var(--purple); background: #fff; border-radius: 999px; padding: 9px 16px; font-weight: 700; font-size: 14.5px; box-shadow: 3px 3px 0 var(--purple); }
+  .fact-chips ux-fact-chip { border: 3px solid var(--purple); background: #fff; border-radius: 12px; padding: 9px 16px; font-weight: 700; font-size: 14.5px; box-shadow: 3px 3px 0 var(--purple); }
   .fact-chips ux-fact-chip:nth-child(3n+1){ border-color: var(--sky); box-shadow: 3px 3px 0 var(--sky); }
   .fact-chips ux-fact-chip:nth-child(3n+2){ border-color: var(--pink); box-shadow: 3px 3px 0 var(--pink); }
   .philosophy { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(19px, 2.2vw, 24px); margin-top: 28px; line-height: 1.3; }
@@ -252,7 +252,7 @@
   .next-up-date .time { font-family: "Hanken Grotesk"; font-weight: 700; font-size: 13px; opacity: .8; margin-top: 6px; letter-spacing: .04em; }
   .next-up-body { padding: 32px 36px; border-left: var(--line); }
   @media (max-width: 640px) { .next-up-body { border-left: none; border-top: var(--line); padding: 24px; } }
-  .next-up-tag { display: inline-block; background: var(--yellow); color: var(--ink); border: var(--line); border-radius: 999px; font-family: "Hanken Grotesk"; font-weight: 800; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 16px; }
+  .next-up-tag { display: inline-block; background: var(--yellow); color: var(--ink); border: var(--line); border-radius: 12px; font-family: "Hanken Grotesk"; font-weight: 800; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 16px; }
   .next-up-body h3 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(22px, 2.8vw, 34px); letter-spacing: -0.02em; line-height: 1.05; margin: 14px 0 12px; }
   .next-up-body .desc { font-size: 16px; font-weight: 500; line-height: 1.55; opacity: .88; max-width: 600px; }
   .next-up-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 14px; font-weight: 700; opacity: .75; }
@@ -270,7 +270,7 @@
   .card h3 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 28px; margin: 22px 0 10px; letter-spacing: -0.01em; }
   .card p { font-size: 16px; line-height: 1.55; font-weight: 500; opacity: .92; }
   .card .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
-  .card .tag { font-size: 13px; font-weight: 800; border: 2px solid var(--purple); border-radius: 999px; padding: 5px 12px; background: #fff; }
+  .card .tag { font-size: 13px; font-weight: 800; border: 2px solid var(--purple); border-radius: 10px; padding: 5px 12px; background: #fff; }
 
   /* games row — wiggle on hover */
   .games { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; margin-top: 40px; }
@@ -413,7 +413,7 @@
             <ux-fact-chip>#Cal alum 🐻</ux-fact-chip>
             <ux-fact-chip>#Product Designer in SF</ux-fact-chip>
             <ux-fact-chip>#From Venezuela 🇻🇪</ux-fact-chip>
-            <ux-fact-chip>#TED speaker ×2</ux-fact-chip>
+            <ux-fact-chip>#TEDAI Volunteer  ×2</ux-fact-chip>
             <ux-fact-chip>#Pickleball (competitively)</ux-fact-chip>
             <ux-fact-chip>#Painter</ux-fact-chip>
           </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Tag } from "./components/ui";
+import { Button, Tag, Footer } from "./components/ui";
 import "./App.css";
 
 export default function BecomeAGuest() {
@@ -83,18 +83,15 @@ export default function BecomeAGuest() {
             <h2 className="display sec" style={{ textAlign: "center" }}>What to expect.</h2>
             <div className="guest-cards">
               <div className="card guest-card">
-                <div className="icon">🎙️</div>
-                <h3>~40 min talk + Q&amp;A</h3>
+                <Tag shape="square" variant="sky">🎙️ ~40 min talk + Q&amp;A</Tag>
                 <p>Share your expertise — design stories, tools you love, lessons learned. Then open it up for questions from the community.</p>
               </div>
               <div className="card guest-card">
-                <div className="icon">💬</div>
-                <h3>Casual conversation</h3>
+                <Tag shape="square" variant="pink">💬 Casual conversation</Tag>
                 <p>After the talk, stick around for casual discussion. No networking pressure — just genuine conversation.</p>
               </div>
               <div className="card guest-card">
-                <div className="icon">🌍</div>
-                <h3>Remote &amp; recorded</h3>
+                <Tag shape="square" variant="yellow">🌍 Remote &amp; recorded</Tag>
                 <p>Present from anywhere. Talks are recorded (with your permission) so the community can watch later.</p>
               </div>
             </div>
@@ -172,27 +169,9 @@ export default function BecomeAGuest() {
           </div>
         </section>
 
-        {/* ── CTA ── */}
-        <section className="cta-band" style={{ background: "var(--cream-2)" }}>
-          <div className="wrap" style={{ textAlign: "center" }}>
-            <h2>Ready to share<br />your <span className="y">story?</span></h2>
-            <p>We'd love to have you. Reach out and we'll figure out the rest together.</p>
-            <div className="cta-actions">
-              <Button as="a" href="https://luma.com/TheUXChats" variant="yellow" size="lg" target="_blank" rel="noopener">
-                Propose a talk →
-              </Button>
-            </div>
-          </div>
-        </section>
       </main>
 
-      {/* ── FOOTER ── */}
-      <footer>
-        <div className="wrap">
-          <span className="foot-brand"><img src="/img/logo.png" alt="UX Chats" /> UX Chats © 2025 — take off your tie and be yourself.</span>
-          <span>@uxchats</span>
-        </div>
-      </footer>
+      <Footer />
 
       {/* ── FLOATING JOIN ── */}
       <div className={`float-join${showFloat ? " show" : ""}`}>

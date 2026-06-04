@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Tag } from "./components/ui";
+import { Button, Tag, Footer } from "./components/ui";
 import "./App.css";
 
 const MARQUEE_ITEMS = [
@@ -178,7 +178,7 @@ function App() {
                   <Tag variant="pink">Cal alum 🐻</Tag>
                   <Tag variant="yellow">Product Designer in SF</Tag>
                   <Tag variant="sky">From Venezuela 🇻🇪</Tag>
-                  <Tag variant="pink">TED speaker ×2</Tag>
+                  <Tag variant="pink">TEDAI Volunteer  ×2</Tag>
                   <Tag variant="yellow">Pickleball (competitively)</Tag>
                   <Tag variant="sky">Painter</Tag>
                 </div>
@@ -230,7 +230,7 @@ function App() {
                 <span className="time">5:00 PM PST</span>
               </div>
               <div className="next-up-body">
-                <span className="next-up-tag">Special Guest Night · Online</span>
+                <Tag variant="yellow" size="sm" className="next-up-tag">Special Guest Night · Online</Tag>
                 <h3>How to Use Claude Code to Design Multiple Products</h3>
                 <p className="desc">With co-founder <strong>Romit</strong> — a hands-on look at how designers use Claude Code, Granola &amp; Vercel to think, design, build, and ship multiple products without feeling overwhelmed. ~40-min talk, then open Q&amp;A and casual discussion.</p>
                 <div className="next-up-meta">
@@ -301,26 +301,8 @@ function App() {
         </div>
       </section>
 
-      {/* ── CTA BAND ── */}
-      <section className="cta-band" id="join">
-        <div className="wrap reveal">
-          <h2>Come hang out<br />in the <span className="y">Discord.</span></h2>
-          <p>Curious, creative, and wonderfully casual UX people are already in there. Pull up a chair.</p>
-          <div className="cta-actions">
-            <Button as="a" href="https://discord.gg/bBbDbZbQ9" variant="yellow" size="lg" target="_blank" rel="noopener">
-              Join the Discord →
-            </Button>
-          </div>
-        </div>
-      </section>
 
-      {/* ── FOOTER ── */}
-      <footer>
-        <div className="wrap">
-          <span className="foot-brand"><img src="/img/logo.png" alt="UX Chats" /> UX Chats © 2025 — take off your tie and be yourself.</span>
-          <span>@uxchats</span>
-        </div>
-      </footer>
+      <Footer />
 
       {/* ── FLOATING JOIN ── */}
       <div className={`float-join${showFloat ? " show" : ""}`}>

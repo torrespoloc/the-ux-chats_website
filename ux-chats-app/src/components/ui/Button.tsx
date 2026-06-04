@@ -49,7 +49,7 @@ export function Button(props: ButtonProps) {
     className;
 
   if (props.as === "a") {
-    const { as: _, variant: _v, size: _s, ...linkRest } = props as ButtonAsLink;
+    const { as: _, variant: _v, size: _s, className: _cn, ...linkRest } = props as ButtonAsLink;
     return (
       <a className={baseClasses.trim()} {...linkRest}>
         {children}
@@ -57,7 +57,7 @@ export function Button(props: ButtonProps) {
     );
   }
 
-  const { as: _, variant: _v, size: _s, ...btnRest } = props as ButtonAsButton;
+  const { as: _, variant: _v, size: _s, className: _cn, ...btnRest } = props as ButtonAsButton;
   return (
     <button className={baseClasses.trim()} {...btnRest}>
       {children}

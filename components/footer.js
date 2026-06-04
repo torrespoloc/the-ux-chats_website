@@ -39,7 +39,7 @@ class UXFooter extends HTMLElement {
       </style>
       <footer>
         <div class="wrap">
-          <span class="foot-brand"><img src="${logo}" alt="UX Chats"> UX Chats &copy; 2025 &mdash; take off your tie and be yourself.</span>
+          <span class="foot-brand"><img src="${logo}" alt="UX Chats"> UX Chats &copy; 2026 &mdash; take off your tie and be yourself.</span>
           <span>@uxchats</span>
         </div>
       </footer>

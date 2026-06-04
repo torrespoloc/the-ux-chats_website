@@ -2,10 +2,12 @@ import type { ReactNode, HTMLAttributes } from "react";
 
 type TagVariant = "default" | "yellow" | "sky" | "pink";
 type TagSize = "sm" | "md";
+type TagShape = "pill" | "square";
 
 export interface TagProps extends Omit<HTMLAttributes<HTMLSpanElement>, "children" | "className"> {
   variant?: TagVariant;
   size?: TagSize;
+  shape?: TagShape;
   children: ReactNode;
   className?: string;
 }
@@ -22,23 +24,27 @@ const sizeStyles: Record<TagSize, string> = {
   md: "px-[24px] py-[16px]",
 };
 
+const shapeStyles: Record<TagShape, string> = {
+  pill: "rounded-full",
+  square: "rounded-[12px]",
+};
+
 export function Tag({
   variant = "default",
   size = "md",
+  shape = "square",
   children,
   className = "",
   ...rest
 }: TagProps) {
   const baseClasses =
     "inline-flex items-center font-['Hanken_Grotesk'] font-extrabold leading-none text-[16px] text-[var(--ink)] " +
-    "border-[3px] border-solid rounded-full " +
+    "border-[3px] border-solid " +
     "shadow-[6px_6px_0_var(--tag-shadow)] " +
-    "transition-[transform,box-shadow] duration-[.12s] ease-in " +
-    "hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[8px_8px_0_var(--tag-shadow)] " +
-    "active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_var(--tag-shadow)] " +
     "select-none " +
     variantStyles[variant] + " " +
     sizeStyles[size] + " " +
+    shapeStyles[shape] + " " +
     className;
 
   return (
