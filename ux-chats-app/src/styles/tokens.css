@@ -7,10 +7,13 @@
   --yellow:      #FFCB33;
   --pink:        #FF6FA5;
   --sky:         #8ECBFF;
-  --line:        3px solid var(--ink);
-  --line-thin:   2px solid var(--ink);
-  --shadow:      6px 6px 0 var(--ink);
-  --shadow-lg:   10px 10px 0 var(--ink);
+
+  /* Surface-aware stroke — default ink, lightens on dark surfaces */
+  --stroke:      var(--ink);
+  --line:        3px solid var(--stroke);
+  --line-thin:   2px solid var(--stroke);
+  --shadow:      6px 6px 0 var(--stroke);
+  --shadow-lg:   10px 10px 0 var(--stroke);
   --btn-font:   18px;
   --tag-font:   16px;
 
@@ -19,4 +22,22 @@
   color: var(--ink);
   background: var(--cream);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Dark surface override — lightens stroke so it's visible on ink fills */
+[data-surface="dark"] {
+  --stroke: var(--cream);
+  --shadow:      6px 6px 0 var(--cream);
+  --shadow-lg:   10px 10px 0 var(--cream);
+}
+
+/* Surface-aware button shadow — uses --stroke so it adapts on dark surfaces */
+.btn-shadow {
+  box-shadow: var(--shadow);
+}
+.btn-shadow:hover {
+  box-shadow: 8px 8px 0 var(--stroke);
+}
+.btn-shadow:active {
+  box-shadow: 2px 2px 0 var(--stroke);
 }

@@ -36,14 +36,16 @@ export function Button(props: ButtonProps) {
   const size = props.size ?? "md";
   const { children, className = "" } = props;
 
+  const shadowClass = variant === "ghost" ? "" : "btn-shadow";
+
   const baseClasses =
     "inline-flex items-center no-underline cursor-pointer select-none " +
     "font-['Hanken_Grotesk'] font-extrabold text-[18px] " +
-    "border-[3px] border-solid border-[var(--ink)] rounded-full " +
-    "shadow-[var(--shadow)] " +
+    "border-[3px] border-solid border-[var(--stroke)] rounded-full " +
     "transition-[transform,box-shadow] duration-[.12s] ease-in " +
-    "hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[8px_8px_0_var(--ink)] " +
-    "active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_var(--ink)] " +
+    "hover:-translate-x-[2px] hover:-translate-y-[2px] " +
+    "active:translate-x-[2px] active:translate-y-[2px] " +
+    shadowClass + " " +
     variantStyles[variant] + " " +
     sizeStyles[size] + " " +
     className;
