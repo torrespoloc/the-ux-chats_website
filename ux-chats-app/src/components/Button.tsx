@@ -51,7 +51,13 @@ export function Button(props: ButtonProps) {
     className;
 
   if (props.as === "a") {
-    const { as: _, variant: _v, size: _s, className: _cn, ...linkRest } = props as ButtonAsLink;
+    const linkProps = props as ButtonAsLink;
+    const linkRest: Record<string, unknown> = {};
+    for (const k in linkProps) {
+      if (k !== "as" && k !== "variant" && k !== "size" && k !== "className") {
+        linkRest[k] = (linkProps as unknown as Record<string, unknown>)[k];
+      }
+    }
     return (
       <a className={baseClasses.trim()} {...linkRest}>
         {children}
@@ -59,7 +65,13 @@ export function Button(props: ButtonProps) {
     );
   }
 
-  const { as: _, variant: _v, size: _s, className: _cn, ...btnRest } = props as ButtonAsButton;
+  const btnProps = props as ButtonAsButton;
+  const btnRest: Record<string, unknown> = {};
+  for (const k in btnProps) {
+    if (k !== "as" && k !== "variant" && k !== "size" && k !== "className") {
+      btnRest[k] = (btnProps as unknown as Record<string, unknown>)[k];
+    }
+  }
   return (
     <button className={baseClasses.trim()} {...btnRest}>
       {children}

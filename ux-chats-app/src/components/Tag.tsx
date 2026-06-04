@@ -1,4 +1,4 @@
-import { useRef, type ReactNode, type HTMLAttributes } from "react";
+import { useState, type ReactNode, type HTMLAttributes } from "react";
 
 type TagVariant = "default" | "yellow" | "sky" | "pink";
 type TagSize = "sm" | "md";
@@ -37,7 +37,7 @@ export function Tag({
   className = "",
   ...rest
 }: TagProps) {
-  const tilt = useRef(Math.random() * 2 - 1);
+  const tilt = useState(() => Math.random() * 2 - 1)[0];
   const baseClasses =
     "inline-flex items-center font-['Hanken_Grotesk'] font-extrabold leading-none text-[16px] text-[var(--ink)] " +
     "border-[3px] border-solid " +
@@ -49,7 +49,7 @@ export function Tag({
     className;
 
   return (
-    <span className={baseClasses.trim()} style={{ transform: `rotate(${tilt.current}deg)` }} {...rest}>
+    <span className={baseClasses.trim()} style={{ transform: `rotate(${tilt}deg)` }} {...rest}>
       {'#'}{children}
     </span>
   );

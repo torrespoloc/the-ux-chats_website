@@ -10,8 +10,6 @@ const MARQUEE_ITEMS = [
   "vent & celebrate", "mentors",
 ];
 
-const TESTIMONIALS = TESTIMONIALS_DATA as TestimonialCardData[];
-
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showFloat, setShowFloat] = useState(false);
@@ -346,7 +344,7 @@ function App() {
             <h2 className="display sec">From the crew.</h2>
           </div>
           <div className="testimonials-grid">
-            {TESTIMONIALS_DATA.map((t, i) => (
+            {(TESTIMONIALS_DATA as TestimonialCardData[]).map((t, i) => (
               <TestimonialCard key={i} data={t} index={i} />
             ))}
           </div>

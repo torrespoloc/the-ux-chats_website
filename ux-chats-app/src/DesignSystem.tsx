@@ -114,14 +114,14 @@ export default function DesignSystem() {
               {BORDERS.map((b) => (
                 <div className="ds-demo" key={b.name}>
                   <h4>{b.name}</h4>
-                  <div className="preview" style={{ border: b.css as any, background: "var(--cream)" }} />
+                  <div className="preview" style={{ border: b.css as string, background: "var(--cream)" }} />
                   <div className="caption">{b.desc}</div>
                 </div>
               ))}
               {SHADOWS.map((s) => (
                 <div className="ds-demo" key={s.name}>
                   <h4>{s.name}</h4>
-                  <div className="preview" style={{ background: "var(--cream)", borderRadius: 12 }}><div style={{ width: "80%", height: "100%", margin: "0 auto", background: "#fff", borderRadius: 10, boxShadow: s.css as any }} /></div>
+                  <div className="preview" style={{ background: "var(--cream)", borderRadius: 12 }}><div style={{ width: "80%", height: "100%", margin: "0 auto", background: "#fff", borderRadius: 10, boxShadow: s.css as string }} /></div>
                   <div className="caption">{s.desc}</div>
                 </div>
               ))}
@@ -146,7 +146,7 @@ export default function DesignSystem() {
                   { size: "clamp(19px, 2.2vw, 24px)", text: "Philosophy line", tag: "p" },
                 ].map((s) => (
                   <div className="type-specimen" key={s.size}>
-                    <span className="samp" style={{ fontFamily: '"Bricolage Grotesque"', fontWeight: 800, fontSize: s.size as any, lineHeight: 0.92, letterSpacing: "-0.02em" }}>
+                    <span className="samp" style={{ fontFamily: '"Bricolage Grotesque"', fontWeight: 800, fontSize: s.size as string, lineHeight: 0.92, letterSpacing: "-0.02em" }}>
                       {s.text}
                     </span>
                     <span className="meta">{s.size}</span>
