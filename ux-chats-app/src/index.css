@@ -1,28 +1,5 @@
 @import "tailwindcss";
-
-:root {
-  --cream:       #FBF3DD;
-  --cream-2:     #F6E9C4;
-  --ink:         #1C1430;
-  --purple:      #6D28D9;
-  --purple-deep: #4C1D95;
-  --yellow:      #FFCB33;
-  --pink:        #FF6FA5;
-  --sky:         #8ECBFF;
-  --line:        3px solid var(--ink);
-  --line-thin:   2px solid var(--ink);
-  --shadow:      6px 6px 0 var(--ink);
-  --shadow-lg:   10px 10px 0 var(--ink);
-  --btn-font:   18px;
-  --tag-font:   16px;
-
-  font-family: "Hanken Grotesk", system-ui, sans-serif;
-  font-weight: 500;
-  color: var(--ink);
-  background: var(--cream);
-  -webkit-font-smoothing: antialiased;
-}
-
+@import "./styles/tokens.css";
 
 html { scroll-behavior: smooth; }
 body { min-height: 100vh; overflow-x: hidden; }

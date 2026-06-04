@@ -5,14 +5,17 @@ corporate or SaaS look. When editing or adding sections, match the system below 
 the page stays on-brand.
 
 > **Architecture:** No vanilla HTML/CSS — everything runs through the React app.
+>
 > - Pages: `ux-chats-app/src/App.tsx` (route `/`) and `BecomeAGuest.tsx` (route `/become-a-guest`)
 > - Components: `ux-chats-app/src/components/` (Button, Tag, Footer)
-> - Styles: `App.css` (global CSS custom properties + Tailwind utilities)
+> - Styles: `ux-chats-app/src/styles/` (modular CSS files — edit the file that matches the section you're working on)
+> - Design tokens: `ux-chats-app/src/styles/tokens.css`
 > - Deployment: GitHub Actions builds `ux-chats-app/` and deploys `dist/` to GitHub Pages
 
 ---
 
 ## Brand in one line
+
 A casual UX community where designers can be **raw and real** — no formal attire, no stiff
 intros. The design should feel like a hand-made zine / sticker board: thick black outlines,
 hard offset shadows, rotated "stickers", chunky display type, warm cream paper. Energetic,
@@ -20,7 +23,7 @@ human, a little irreverent. **Never** glossy gradients, glassmorphism, or generi
 
 ---
 
-## Design tokens (CSS custom properties — already in `:root`)
+## Design tokens (CSS custom properties in `src/styles/tokens.css`)
 
 ```css
 :root {
@@ -39,12 +42,13 @@ human, a little irreverent. **Never** glossy gradients, glassmorphism, or generi
 ```
 
 **Rules**
+
 - Borders are ALWAYS `3px solid var(--ink)` (the `--line` token). Never hairline/1px.
 - Shadows are ALWAYS hard offset (`Xpx Ypx 0 var(--ink)`) — **zero blur radius**. Never soft.
 - Brand color usage: yellow = primary CTA fill, purple = secondary/structural, pink & sky =
-  playful accents only. Cream is the paper; ink is everything structural.
+playful accents only. Cream is the paper; ink is everything structural.
 - Backgrounds alternate `--cream` ↔ `--cream-2` section to section for rhythm. The final CTA
-  band is solid `--ink`; the footer is `--ink`.
+band is solid `--ink`; the footer is `--ink`.
 
 ---
 
@@ -57,8 +61,8 @@ Two Google Fonts (loaded via `<link>` in `<head>`):
 ```
 
 - **Display / headings:** `"Bricolage Grotesque"`, weight **800**, `line-height: 0.92`,
-  `letter-spacing: -0.02em`. Used for h1/h2/h3, logo wordmark, stickers, card titles, the
-  date block, fact-callouts. Helper class: `.display`.
+`letter-spacing: -0.02em`. Used for h1/h2/h3, logo wordmark, stickers, card titles, the
+date block, fact-callouts. Helper class: `.display`.
 - **Body / UI:** `"Hanken Grotesk"`, weights 400–800. Body copy is weight 500.
 - **Scale (clamp-based, responsive):**
   - Hero h1: `clamp(50px, 8.4vw, 108px)`
@@ -66,13 +70,14 @@ Two Google Fonts (loaded via `<link>` in `<head>`):
   - Card/founder h3: ~28–46px
   - Body: 16–19px / line-height 1.45–1.55
   - Kicker (eyebrow label): 13px, weight 800, `text-transform: uppercase`,
-    `letter-spacing: .14em`, color `--purple`.
+  `letter-spacing: .14em`, color `--purple`.
 
 ---
 
 ## Signature components & recipes
 
 **Button (`.btn`)** — pill, thick outline, hard shadow, press-translates:
+
 ```css
 .btn { font-family:"Hanken Grotesk"; font-weight:800; font-size:15px;
   border:var(--line); border-radius:999px; padding:12px 22px;
@@ -109,16 +114,36 @@ toggled on scroll), so it doesn't duplicate the hero CTA.
 
 ---
 
+## Style file reference
+
+Edit the file that matches the section you're working on:
+
+
+| File                      | Contains                                                                        |
+| ------------------------- | ------------------------------------------------------------------------------- |
+| `src/styles/tokens.css`   | `:root` design tokens (colors, shadows, base font)                              |
+| `src/styles/base.css`     | Layout utilities (`.display`, `.wrap`, `.kicker`, `.lead`), `.reveal` animation |
+| `src/styles/nav.css`      | Sticky nav, hamburger, mobile menu                                              |
+| `src/styles/hero.css`     | Hero (headline, CTA, call window), stickers, float keyframes                    |
+| `src/styles/sections.css` | Marquee, about, hosts, events, crew, CTA band, footer, floating join            |
+| `src/styles/guest.css`    | Guest page (hero, details, form, signs, FAQ)                                    |
+
+
+Imports chain: `index.css` → `tokens.css` | `App.css` → `base.css` + `nav.css` + `hero.css` + `sections.css` + `guest.css`
+
+---
+
 ## Page structure (order matters)
+
 1. **Sticky nav** — logo (image in a tilted outlined tile + "UX Chats" wordmark) + links + Join Discord button.
 2. **Hero** — two columns: headline ("Be raw. Be real. Belong.") + CTA on the left; a tilted
-   "UX Chat · Live" call window (face tiles + "your seat →") with stickers on its corners on the right.
+  "UX Chat · Live" call window (face tiles + "your seat →") with stickers on its corners on the right.
 3. **Marquee** — scrolling phrases.
 4. **What we do** (`#about`) — copy + chips (who it's for) on the left, tilted polaroid collage on the right.
 5. **Meet your hosts** (`#host`) — two alternating founder rows (photo + bio + yellow quote
-   callout + fact chips), shared philosophy line centered below.
+  callout + fact chips), shared philosophy line centered below.
 6. **Events** (`#events`) — featured "Next up" event card (purple date block + details + two
-   Luma buttons), then the "Two kinds of night" format cards + games row.
+  Luma buttons), then the "Two kinds of night" format cards + games row.
 7. **Real people. Real fun.** (`.crew`) — the real community call screenshot framed as a taped polaroid.
 8. **Join CTA band** (`#join`) — solid ink background, big headline, yellow CTA.
 9. **Footer** — ink background, logo + tagline + handle.
@@ -126,22 +151,25 @@ toggled on scroll), so it doesn't duplicate the hero CTA.
 ---
 
 ## Voice & copy
+
 - Casual, warm, a little cheeky. Second person. Short punchy lines.
 - Core phrases to reuse: "raw and real", "take off your tie", "no stiff intros",
-  "Come as you are. Leave your LinkedIn voice at the door."
+"Come as you are. Leave your LinkedIn voice at the door."
 - Emoji are **allowed and on-brand here** (👋 ✦ 🎮 🤔 🎨 ⚡) — this is a casual community, unlike
-  most enterprise systems. Use them sparingly as accents, not decoration spam.
+most enterprise systems. Use them sparingly as accents, not decoration spam.
 
 ---
 
 ## The one CTA that matters
-Joining the **Discord** is the primary action everywhere:
-`https://discord.gg/bBbDbZbQ9` — keep it in the nav, hero, floating button, and closing band.
+
+Joining the **Discord** is the primary action everywhere: `https://discord.gg/`b7A53P7ASQ — keep it in the nav, hero, floating button, and closing band. 
+
 Events link to Luma: event `https://luma.com/zjbt9cxo`, calendar `https://luma.com/TheUXChats`.
 
 ---
 
 ## Do / Don't
+
 **Do:** thick ink outlines, hard offset shadows, rotated stickers, cream paper, chunky
 Bricolage headlines, alternating section tints, `.reveal` on new content, pill buttons that
 translate on press.

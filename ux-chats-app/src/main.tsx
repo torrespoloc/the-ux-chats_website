@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App.tsx";
 import BecomeAGuest from "./BecomeAGuest.tsx";
+import DesignSystem from "./DesignSystem.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -11,6 +12,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/become-a-guest" element={<BecomeAGuest />} />
+        <Route path="/design-system" element={<DesignSystem />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
