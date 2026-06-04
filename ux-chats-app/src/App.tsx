@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Tag, Footer, EventCard, TestimonialCard } from "./components";
+import { Button, Tag, Footer, EventCard, TestimonialCard, TestimonialForm } from "./components";
 import type { TestimonialCardData } from "./components";
 import TESTIMONIALS_DATA from "../metadata/testimonials.json";
 import "./App.css";
@@ -348,6 +348,7 @@ function App() {
               <TestimonialCard key={i} data={t} index={i} />
             ))}
           </div>
+          <TestimonialForm />
         </div>
       </section>
 

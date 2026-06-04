@@ -261,6 +261,122 @@
   .testimonial-card.large { grid-column: span 2; grid-row: span 2; }
 }
 
+/* ── TESTIMONIAL FORM ── */
+.testimonial-form {
+  background: var(--cream-2);
+  border: var(--line);
+  border-radius: 22px;
+  padding: 36px 38px 42px;
+  box-shadow: var(--shadow-lg);
+  margin-top: 50px;
+  position: relative;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tf-sticker {
+  position: absolute;
+  top: -16px;
+  left: 24px;
+  background: var(--pink);
+  color: #fff;
+  font-family: "Bricolage Grotesque";
+  font-weight: 800;
+  font-size: 14px;
+  border: var(--line);
+  border-radius: 999px;
+  padding: 8px 20px;
+  box-shadow: var(--shadow);
+  transform: rotate(-2deg);
+  z-index: 2;
+}
+.tf-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tf-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tf-label {
+  font-family: "Hanken Grotesk";
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--purple);
+}
+.tf-label .opt {
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: .6;
+}
+.tf-fields input,
+.tf-fields textarea {
+  font-family: "Hanken Grotesk";
+  font-weight: 500;
+  font-size: 16px;
+  border: var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
+  background: #fff;
+  outline: none;
+  transition: box-shadow .12s ease, transform .12s ease;
+}
+.tf-fields input:focus,
+.tf-fields textarea:focus {
+  box-shadow: var(--shadow);
+  transform: translate(-1px, -1px);
+}
+.tf-fields textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.tf-fields .btn {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* form success state */
+.testimonial-submitted {
+  background: #fff;
+  border: var(--line);
+  border-radius: 22px;
+  padding: 50px 38px;
+  box-shadow: var(--shadow-lg);
+  margin-top: 50px;
+  text-align: center;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.testimonial-submitted .stamp {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--yellow);
+  border: var(--line);
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  margin: 0 auto 18px;
+  transform: rotate(-8deg);
+}
+.testimonial-submitted h3 {
+  font-size: clamp(26px, 3.5vw, 36px);
+}
+.testimonial-submitted p {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 10px 0 24px;
+  opacity: .85;
+}
+
 /* ── CTA BAND ── */
 .cta-band { background: var(--ink); color: var(--cream); border-top: var(--line); }
 .cta-band .wrap { text-align: center; padding: 90px 0; }

@@ -7,3 +7,4 @@ export { EventCard } from './EventCard';
 export type { EventCardProps } from './EventCard';
 export { TestimonialCard } from './TestimonialCard';
 export type { TestimonialCardProps, TestimonialCardData, PlatformVariant } from './TestimonialCard';
+export { TestimonialForm } from './TestimonialForm';
