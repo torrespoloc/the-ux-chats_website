@@ -27,8 +27,8 @@ const variantStyles: Record<ButtonVariant, string> = {
 
 const sizeStyles: Record<ButtonSize, string> = {
   sm: "px-[16px] py-[8px] gap-[8px]",
-  md: "px-[24px] py-[16px] gap-[8px]",
-  lg: "px-[32px] py-[16px] gap-[12px]",
+  md: "px-[20px] py-[10px] gap-[8px]",
+  lg: "px-[24px] py-[12px] gap-[12px]",
 };
 
 export function Button(props: ButtonProps) {

@@ -19,6 +19,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="components/footer.js" defer></script>
+<script src="components/fact-chip.js" defer></script>
 
 <style>
   :root {
@@ -199,9 +201,9 @@
   .about-grid { display: grid; grid-template-columns: 1fr; gap: 50px; align-items: center; }
   @media (min-width: 900px){ .about-grid { grid-template-columns: 1.05fr .95fr; } }
   .chips { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-  .chip { border: var(--line); background: #fff; border-radius: 999px; padding: 11px 20px; font-weight: 700; box-shadow: 4px 4px 0 var(--ink); }
-  .chip:nth-child(2n){ background: var(--yellow); }
-  .chip:nth-child(3n){ background: var(--sky); }
+  .chip { border: 3px solid var(--purple); background: #fff; border-radius: 999px; padding: 11px 20px; font-weight: 700; box-shadow: 4px 4px 0 var(--purple); }
+  .chip:nth-child(2n){ border-color: var(--yellow); box-shadow: 4px 4px 0 var(--yellow); }
+  .chip:nth-child(3n){ border-color: var(--sky); box-shadow: 4px 4px 0 var(--sky); }
 
   .collage { position: relative; height: 420px; }
   .polaroid { position: absolute; background: #fff; border: var(--line); box-shadow: var(--shadow-lg); padding: 10px 10px 0; display: flex; flex-direction: column; }
@@ -232,9 +234,9 @@
   .host-quote .big { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(22px, 2.6vw, 30px); line-height: 1; }
   .host-quote .sm { font-weight: 700; font-size: 15px; margin-top: 6px; }
   .fact-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-  .fact-chips .fc { border: var(--line); background: #fff; border-radius: 999px; padding: 9px 16px; font-weight: 700; font-size: 14.5px; box-shadow: 3px 3px 0 var(--ink); }
-  .fact-chips .fc:nth-child(3n+1){ background: var(--sky); }
-  .fact-chips .fc:nth-child(3n+2){ background: var(--pink); color: #fff; }
+  .fact-chips ux-fact-chip { border: 3px solid var(--purple); background: #fff; border-radius: 999px; padding: 9px 16px; font-weight: 700; font-size: 14.5px; box-shadow: 3px 3px 0 var(--purple); }
+  .fact-chips ux-fact-chip:nth-child(3n+1){ border-color: var(--sky); box-shadow: 3px 3px 0 var(--sky); }
+  .fact-chips ux-fact-chip:nth-child(3n+2){ border-color: var(--pink); box-shadow: 3px 3px 0 var(--pink); }
   .philosophy { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(19px, 2.2vw, 24px); margin-top: 28px; line-height: 1.3; }
   .philosophy .hl { background: var(--purple); color: var(--cream); padding: 0 .14em; border-radius: 5px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 
@@ -268,7 +270,7 @@
   .card h3 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 28px; margin: 22px 0 10px; letter-spacing: -0.01em; }
   .card p { font-size: 16px; line-height: 1.55; font-weight: 500; opacity: .92; }
   .card .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
-  .card .tag { font-size: 13px; font-weight: 800; border: 2px solid currentColor; border-radius: 999px; padding: 5px 12px; }
+  .card .tag { font-size: 13px; font-weight: 800; border: 2px solid var(--purple); border-radius: 999px; padding: 5px 12px; background: #fff; }
 
   /* games row — wiggle on hover */
   .games { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; margin-top: 40px; }
@@ -300,11 +302,6 @@
   .cta-band h2 .y { color: var(--yellow); }
   .cta-band p { font-size: 19px; font-weight: 500; margin: 22px auto 0; max-width: 520px; opacity: .85; }
 
-  footer { background: var(--ink); color: var(--cream); border-top: 3px solid var(--purple); }
-  footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; padding: 30px 0; font-weight: 600; font-size: 14px; opacity: .8; }
-  footer .foot-brand { display: inline-flex; align-items: center; gap: 12px; }
-  footer .foot-brand img { width: 34px; height: 34px; border-radius: 9px; border: 2px solid var(--cream); display: block; }
-
   .float-join { position: fixed; right: 20px; bottom: 20px; z-index: 60; opacity: 0; transform: translateY(18px); pointer-events: none; transition: opacity .3s ease, transform .3s ease; }
   .float-join.show { opacity: 1; transform: none; pointer-events: auto; }
   .float-join .btn { box-shadow: var(--shadow-lg); }
@@ -317,6 +314,7 @@
     <nav class="nav-links">
       <a class="lk" href="#about">What we do</a>
       <a class="lk" href="#events">Events</a>
+      <a class="lk" href="/special-guest/">Be a guest</a>
       <a class="btn" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener">Join Discord</a>
     </nav>
     <button class="nav-toggle" aria-label="Toggle menu"><span class="bar"></span></button>
@@ -325,6 +323,7 @@
 <div class="nav-menu" id="navMenu">
   <a href="#about">What we do</a>
   <a href="#events">Events</a>
+  <a href="/special-guest/">Be a guest</a>
   <a class="nav-join" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener">Join Discord →</a>
 </div>
 
@@ -376,11 +375,11 @@
       <h2 class="display sec">A place to take<br>the tie off.</h2>
       <p class="lead">We're a global crew of UX folks who meet to talk shop the way you actually talk — venting, celebrating wins, swapping losses, and learning the stuff that never makes the LinkedIn carousel.</p>
       <div class="chips">
-        <span class="chip">Students breaking in</span>
-        <span class="chip">Mid-level designers</span>
-        <span class="chip">Seniors &amp; mentors</span>
-        <span class="chip">Career switchers</span>
-        <span class="chip">Anyone curious</span>
+        <span class="chip">#Students breaking in</span>
+        <span class="chip">#Mid-level designers</span>
+        <span class="chip">#Seniors &amp; mentors</span>
+        <span class="chip">#Career switchers</span>
+        <span class="chip">#Anyone curious</span>
       </div>
     </div>
     <div class="collage reveal">
@@ -410,13 +409,13 @@
           <p>So I posted on LinkedIn: <em>let's get together, share where we are, vent, laugh, and connect.</em> I figured maybe 4 or 5 friends would show up.</p>
           <div class="host-quote"><div class="big">30 strangers showed up.</div><div class="sm">And it was magic. That was the first UX Chat.</div></div>
           <div class="fact-chips">
-            <span class="fc">Architecture → UX</span>
-            <span class="fc">Cal alum 🐻</span>
-            <span class="fc">Product Designer in SF</span>
-            <span class="fc">From Venezuela 🇻🇪</span>
-            <span class="fc">TED speaker ×2</span>
-            <span class="fc">Pickleball (competitively)</span>
-            <span class="fc">Painter</span>
+            <ux-fact-chip>#Architecture → UX</ux-fact-chip>
+            <ux-fact-chip>#Cal alum 🐻</ux-fact-chip>
+            <ux-fact-chip>#Product Designer in SF</ux-fact-chip>
+            <ux-fact-chip>#From Venezuela 🇻🇪</ux-fact-chip>
+            <ux-fact-chip>#TED speaker ×2</ux-fact-chip>
+            <ux-fact-chip>#Pickleball (competitively)</ux-fact-chip>
+            <ux-fact-chip>#Painter</ux-fact-chip>
           </div>
         </div>
       </div>
@@ -433,11 +432,11 @@
           <div class="host-quote"><div class="big">UX Chats is what I wish had existed when I started.</div></div>
           <p>No panels. No personal-brand pitching. Just designers at every stage of their journey getting together every two weeks to share where they are, laugh a little, and actually connect.</p>
           <div class="fact-chips">
-            <span class="fc">CS background</span>
-            <span class="fc">Healthcare SaaS</span>
-            <span class="fc">Published at ACM &amp; IEEE</span>
-            <span class="fc">Founding designer energy</span>
-            <span class="fc">Based in NJ</span>
+            <ux-fact-chip>#CS background</ux-fact-chip>
+            <ux-fact-chip>#Healthcare SaaS</ux-fact-chip>
+            <ux-fact-chip>#Published at ACM &amp; IEEE</ux-fact-chip>
+            <ux-fact-chip>#Founding designer energy</ux-fact-chip>
+            <ux-fact-chip>#Based in NJ</ux-fact-chip>
           </div>
         </div>
       </div>
@@ -489,13 +488,13 @@
         <div class="icon">✦</div>
         <h3>Special Guest Nights</h3>
         <p>UX mentors, psychologists, and creative minds share what you won't find on ChatGPT. Real insight, real talk, zero fluff.</p>
-        <div class="tags"><span class="tag">Mentors</span><span class="tag">Q&amp;A</span><span class="tag">Real stories</span></div>
+        <div class="tags"><span class="tag">#Mentors</span><span class="tag">#Q&amp;A</span><span class="tag">#Real stories</span></div>
       </div>
       <div class="card">
         <div class="icon">🎮</div>
         <h3>Community Nights</h3>
         <p>Game Night, Convo Night, Craft Night and more. Interactive UX games and challenges that spark creativity — and a lot of laughter.</p>
-        <div class="tags"><span class="tag">Games</span><span class="tag">Convos</span><span class="tag">Craft</span></div>
+        <div class="tags"><span class="tag">#Games</span><span class="tag">#Convos</span><span class="tag">#Craft</span></div>
       </div>
     </div>
 
@@ -532,12 +531,7 @@
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <span class="foot-brand"><img src="img/logo.png" alt="UX Chats"> UX Chats © 2025 — take off your tie and be yourself.</span>
-    <span>@uxchats</span>
-  </div>
-</footer>
+<ux-footer logo-src="img/logo.png"></ux-footer>
 
 <div class="float-join"><a class="btn yellow" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener">Join Discord</a></div>
 

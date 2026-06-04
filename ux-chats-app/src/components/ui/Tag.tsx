@@ -11,7 +11,7 @@ export interface TagProps extends Omit<HTMLAttributes<HTMLSpanElement>, "childre
 }
 
 const variantStyles: Record<TagVariant, string> = {
-  default: "border-[var(--ink)] bg-white [--tag-shadow:var(--ink)]",
+  default: "border-[var(--purple)] bg-white [--tag-shadow:var(--purple)]",
   yellow:  "border-[var(--yellow)] bg-white [--tag-shadow:var(--yellow)]",
   sky:     "border-[var(--sky)] bg-white [--tag-shadow:var(--sky)]",
   pink:    "border-[var(--pink)] bg-white [--tag-shadow:var(--pink)]",
