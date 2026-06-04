@@ -1,6 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./Button";
+
+function scrollToHash(hash: string) {
+  const id = hash.replace("#", "");
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+  }
+}
 
 export interface NavBarProps {
   /** Optional override for the Discord invite link */
@@ -9,7 +17,19 @@ export interface NavBarProps {
 
 export function NavBar({ discordHref = "https://discord.gg/bBbDbZbQ9" }: NavBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const closeMenu = () => setMenuOpen(false);
+
+  const handleHashNav = (hash: string) => {
+    closeMenu();
+    // If already on home page, scroll directly.
+    // Otherwise navigate first (the App useEffect picks up the hash on mount).
+    if (window.location.pathname === "/") {
+      scrollToHash(hash);
+    } else {
+      navigate("/" + hash);
+    }
+  };
 
   return (
     <>
@@ -20,8 +40,8 @@ export function NavBar({ discordHref = "https://discord.gg/bBbDbZbQ9" }: NavBarP
             The UX Chats
           </Link>
           <nav className="nav-links">
-            <Link className="lk" to="/#host">Your Hosts</Link>
-            <Link className="lk" to="/#event-formats">Events</Link>
+            <button className="lk" style={{ background: "none", border: "none", cursor: "pointer", font: "inherit", color: "inherit" }} onClick={() => handleHashNav("#host")}>Your Hosts</button>
+            <button className="lk" style={{ background: "none", border: "none", cursor: "pointer", font: "inherit", color: "inherit" }} onClick={() => handleHashNav("#event-formats")}>Events</button>
             <Link className="lk" to="/become-a-guest">Become a Guest</Link>
             <Button as="a" href={discordHref} variant="primary" target="_blank" rel="noopener">
               Join Discord
@@ -38,8 +58,8 @@ export function NavBar({ discordHref = "https://discord.gg/bBbDbZbQ9" }: NavBarP
       </header>
 
       <div className={`nav-menu${menuOpen ? " open" : ""}`}>
-        <Link to="/#host" onClick={closeMenu}>Your Hosts</Link>
-        <Link to="/#event-formats" onClick={closeMenu}>Events</Link>
+        <a href="#host" onClick={(e) => { e.preventDefault(); handleHashNav("#host"); }}>Your Hosts</a>
+        <a href="#event-formats" onClick={(e) => { e.preventDefault(); handleHashNav("#event-formats"); }}>Events</a>
         <Link to="/become-a-guest" onClick={closeMenu}>Become a Guest</Link>
         <a className="nav-join" href={discordHref} target="_blank" rel="noopener" onClick={closeMenu}>
           Join Discord →

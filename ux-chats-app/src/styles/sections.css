@@ -157,6 +157,7 @@
   opacity: .2;
   user-select: none;
   margin-bottom: -8px;
+  transform: translateY(16px);
 }
 .testimonial-card .qt {
   font-size: 17px;
