@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Tag, Footer } from "./components";
+import { Button, Tag, Footer, EventCard, TestimonialCard } from "./components";
+import type { TestimonialCardData } from "./components";
+import TESTIMONIALS_DATA from "../metadata/testimonials.json";
 import "./App.css";
 
 const MARQUEE_ITEMS = [
   "real talk", "game night", "no gatekeeping", "craft night",
   "vent & celebrate", "mentors",
 ];
+
+const TESTIMONIALS = TESTIMONIALS_DATA as TestimonialCardData[];
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -154,6 +158,104 @@ function App() {
         </div>
       </section>
 
+      {/* ── TWO KINDS OF NIGHTS ── */}
+      <section className="events-format">
+        <div className="wrap">
+          <div className="reveal">
+            <span className="kicker">The Events</span>
+            <h2 className="display sec">Two kinds of night.</h2>
+          </div>
+
+          <div className="cards reveal">
+            <div className="card p">
+              <div className="icon">✦</div>
+              <h3>Special Guest Nights</h3>
+              <p>UX mentors, psychologists, and creative minds share what you won't find on ChatGPT. Real insight, real talk, zero fluff.</p>
+              <div className="tags">
+                <Tag size="sm">Mentors</Tag>
+                <Tag size="sm" variant="yellow">Q&amp;A</Tag>
+                <Tag size="sm" variant="pink">Real stories</Tag>
+              </div>
+            </div>
+            <div className="card">
+              <div className="icon">🎮</div>
+              <h3>Community Nights</h3>
+              <p>Game Night, Convo Night, Craft Night and more. Interactive UX games and challenges that spark creativity — and a lot of laughter.</p>
+              <div className="tags">
+                <Tag size="sm" variant="sky">Games</Tag>
+                <Tag size="sm" variant="yellow">Convos</Tag>
+                <Tag size="sm" variant="pink">Craft</Tag>
+              </div>
+            </div>
+          </div>
+
+          <div className="games reveal">
+            <div className="game"><div className="em">🤔</div><h4>UX "Guess Who?"</h4><p>Guess the UX person, tool, or feature through clues. (Yes, we did liquid glass already.)</p></div>
+            <div className="game"><div className="em">🎨</div><h4>UX Pictionary</h4><p>2 teams. 1 canvas. Draw and pray your teammates can guess.</p></div>
+            <div className="game"><div className="em">⚡</div><h4>UX Stories</h4><p>Build a connect-the-story while solving a UX problem. This gets HILARIOUS.</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── EVENTS ── */}
+      <section className="events-section" id="events">
+        <div className="wrap">
+          <div className="reveal">
+            <span className="kicker">Upcoming</span>
+            <h2 className="display sec">Next up.</h2>
+          </div>
+
+          <EventCard
+            variant="upcoming"
+            data={{
+              month: "Jun",
+              day: "17",
+              time: "5:00 PM PST",
+              tag: "Community Night · Online",
+              tagVariant: "sky",
+              title: "UX Chats Community Night",
+              description: "Games, conversations, and great company — our regular community night is open to all. Come hang out, play some UX games, and meet fellow designers.",
+              meta: [
+                { icon: "🕐", text: "5:00 PM PST" },
+                { icon: "💬", text: "In our Discord" },
+                { icon: "⏱", text: "1.5 hours" },
+              ],
+              buttons: [
+                { label: "Register on Luma →", href: "https://luma.com/TheUXChats", variant: "yellow" as const },
+                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
+              ],
+            }}
+          />
+
+          <div className="reveal" style={{ marginTop: 46 }}>
+            <span className="kicker" style={{ color: "var(--purple-deep)", opacity: .6 }}>Previously</span>
+            <h2 className="display sec" style={{ fontSize: "clamp(24px,3.5vw,42px)" }}>Last event.</h2>
+          </div>
+
+          <EventCard
+            variant="past"
+            data={{
+              month: "Jun",
+              day: "03",
+              time: "5:00 PM PST",
+              tag: "Special Guest Night · Online",
+              title: "How to Use Claude Code to Design Multiple Products",
+              description: <>With co-founder <strong>Romit</strong> — a hands-on look at how designers use Claude Code, Granola &amp; Vercel to think, design, build, and ship multiple products without feeling overwhelmed. ~40-min talk, then open Q&amp;A and casual discussion.</>,
+              meta: [
+                { icon: "🕐", text: "5:00 PM PST" },
+                { icon: "💬", text: "In our Discord" },
+                { icon: "⏱", text: "1.5 hours" },
+                { icon: "👥", text: "29 attended" },
+              ],
+              buttons: [
+                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
+              ],
+            }}
+          />
+
+        </div>
+      </section>
+
       {/* ── HOSTS ── */}
       <section className="host" id="host">
         <div className="wrap">
@@ -213,76 +315,6 @@ function App() {
         </div>
       </section>
 
-      {/* ── EVENTS ── */}
-      <section className="events-section" id="events">
-        <div className="wrap">
-          <div className="reveal">
-            <span className="kicker">Upcoming</span>
-            <h2 className="display sec">Next up.</h2>
-          </div>
-
-          <div className="next-up-wrap reveal">
-            <span className="next-up-sticker">Next up →</span>
-            <div className="next-up-card">
-              <div className="next-up-date">
-                <span className="month">Jun</span>
-                <span className="day">03</span>
-                <span className="time">5:00 PM PST</span>
-              </div>
-              <div className="next-up-body">
-                <Tag variant="yellow" size="sm" className="next-up-tag">Special Guest Night · Online</Tag>
-                <h3>How to Use Claude Code to Design Multiple Products</h3>
-                <p className="desc">With co-founder <strong>Romit</strong> — a hands-on look at how designers use Claude Code, Granola &amp; Vercel to think, design, build, and ship multiple products without feeling overwhelmed. ~40-min talk, then open Q&amp;A and casual discussion.</p>
-                <div className="next-up-meta">
-                  <span>🕐 5:00 PM PST</span>
-                  <span>💬 In our Discord</span>
-                  <span>⏱ 1.5 hours</span>
-                  <span>👥 29 going</span>
-                </div>
-                <div className="next-up-actions">
-                  <Button as="a" href="https://luma.com/zjbt9cxo" variant="yellow" target="_blank" rel="noopener">Register on Luma →</Button>
-                  <Button as="a" href="https://luma.com/TheUXChats" variant="line" target="_blank" rel="noopener">See all events</Button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="reveal" style={{ marginTop: 20 }}>
-            <span className="kicker">The Events</span>
-            <h2 className="display sec">Two kinds of night.</h2>
-          </div>
-
-          <div className="cards reveal">
-            <div className="card p">
-              <div className="icon">✦</div>
-              <h3>Special Guest Nights</h3>
-              <p>UX mentors, psychologists, and creative minds share what you won't find on ChatGPT. Real insight, real talk, zero fluff.</p>
-              <div className="tags">
-                <Tag size="sm">Mentors</Tag>
-                <Tag size="sm" variant="yellow">Q&amp;A</Tag>
-                <Tag size="sm" variant="pink">Real stories</Tag>
-              </div>
-            </div>
-            <div className="card">
-              <div className="icon">🎮</div>
-              <h3>Community Nights</h3>
-              <p>Game Night, Convo Night, Craft Night and more. Interactive UX games and challenges that spark creativity — and a lot of laughter.</p>
-              <div className="tags">
-                <Tag size="sm" variant="sky">Games</Tag>
-                <Tag size="sm" variant="yellow">Convos</Tag>
-                <Tag size="sm" variant="pink">Craft</Tag>
-              </div>
-            </div>
-          </div>
-
-          <div className="games reveal">
-            <div className="game"><div className="em">🤔</div><h4>UX "Guess Who?"</h4><p>Guess the UX person, tool, or feature through clues. (Yes, we did liquid glass already.)</p></div>
-            <div className="game"><div className="em">🎨</div><h4>UX Pictionary</h4><p>2 teams. 1 canvas. Draw and pray your teammates can guess.</p></div>
-            <div className="game"><div className="em">⚡</div><h4>UX Stories</h4><p>Build a connect-the-story while solving a UX problem. This gets HILARIOUS.</p></div>
-          </div>
-        </div>
-      </section>
-
       {/* ── CREW ── */}
       <section className="crew">
         <div className="wrap">
@@ -301,6 +333,21 @@ function App() {
         </div>
       </section>
 
+
+      {/* ── TESTIMONIALS ── */}
+      <section className="testimonials" id="testimonials">
+        <div className="wrap">
+          <div className="head reveal">
+            <span className="kicker">What our members say</span>
+            <h2 className="display sec">From the crew.</h2>
+          </div>
+          <div className="testimonials-grid">
+            {TESTIMONIALS_DATA.map((t, i) => (
+              <TestimonialCard key={i} data={t} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <Footer />
 

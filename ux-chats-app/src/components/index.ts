@@ -3,3 +3,7 @@ export type { ButtonProps } from './Button';
 export { Tag } from './Tag';
 export type { TagProps } from './Tag';
 export { Footer } from './Footer';
+export { EventCard } from './EventCard';
+export type { EventCardProps } from './EventCard';
+export { TestimonialCard } from './TestimonialCard';
+export type { TestimonialCardProps, TestimonialCardData, PlatformVariant } from './TestimonialCard';
