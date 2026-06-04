@@ -24,7 +24,7 @@ export default function BecomeAGuest() {
             UX Chats
           </Link>
           <nav className="nav-links">
-            <Link className="lk" to="/#about">What we do</Link>
+            <Link className="lk" to="/#about">Your Hosts</Link>
             <Link className="lk" to="/#events">Events</Link>
             <Link className="lk" to="/become-a-guest">Become a Guest</Link>
             <Button as="a" href="https://discord.gg/bBbDbZbQ9" variant="primary" target="_blank" rel="noopener">
@@ -42,7 +42,7 @@ export default function BecomeAGuest() {
       </header>
 
       <div className={`nav-menu${menuOpen ? " open" : ""}`}>
-        <Link to="/#about" onClick={closeMenu}>What we do</Link>
+        <Link to="/#about" onClick={closeMenu}>Your Hosts</Link>
         <Link to="/#events" onClick={closeMenu}>Events</Link>
         <Link to="/become-a-guest" onClick={closeMenu}>Become a Guest</Link>
         <a className="nav-join" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener" onClick={closeMenu}>

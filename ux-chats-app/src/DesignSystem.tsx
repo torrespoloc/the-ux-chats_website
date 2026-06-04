@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button, Tag, Footer } from "./components";
+import {
+  Button, Tag, Footer, NavBar, Marquee,
+  Badge, Sticker, Card, Kicker, Polaroid, Heading, Text,
+  EventCard, TestimonialCard, TestimonialForm,
+} from "./components";
 import "./App.css";
 
 const COLORS = [
@@ -24,11 +27,12 @@ const SHADOWS = [
   { name: "--shadow-lg", css: "var(--shadow-lg)", desc: "10px 10px 0 var(--ink)" },
 ];
 
-const SPACING = [4, 6, 8, 12, 14, 16, 20, 22, 24, 26, 28, 32, 36, 38, 40, 46, 48, 56, 60, 80, 90];
+const SPACING_SCALE = {
+  desktop: [8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 96],
+  mobile:  [4, 12, 20, 28, 36, 44, 52, 60],
+};
 
 export default function DesignSystem() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const closeMenu = () => setMenuOpen(false);
   const [showFloat, setShowFloat] = useState(false);
   useEffect(() => {
     const onScroll = () => setShowFloat(window.scrollY > 520);
@@ -39,37 +43,7 @@ export default function DesignSystem() {
 
   return (
     <>
-      {/* ── NAV ── */}
-      <header className="nav">
-        <div className="wrap nav-inner">
-          <Link className="logo" to="/">
-            <span className="mark"><img src="/img/logo.png" alt="UX Chats logo" /></span>
-            UX Chats
-          </Link>
-          <nav className="nav-links">
-            <Link className="lk" to="/">Home</Link>
-            <Link className="lk" to="/become-a-guest">Become a Guest</Link>
-            <Button as="a" href="https://discord.gg/bBbDbZbQ9" variant="primary" target="_blank" rel="noopener">
-              Join Discord
-            </Button>
-          </nav>
-          <button
-            className={`nav-toggle${menuOpen ? " open" : ""}`}
-            aria-label="Toggle menu"
-            onClick={() => setMenuOpen((p) => !p)}
-          >
-            <span className="bar"></span>
-          </button>
-        </div>
-      </header>
-
-      <div className={`nav-menu${menuOpen ? " open" : ""}`}>
-        <Link to="/" onClick={closeMenu}>Home</Link>
-        <Link to="/become-a-guest" onClick={closeMenu}>Become a Guest</Link>
-        <a className="nav-join" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener" onClick={closeMenu}>
-          Join Discord →
-        </a>
-      </div>
+      <NavBar />
 
       <main>
         {/* ── HERO ── */}
@@ -179,62 +153,234 @@ export default function DesignSystem() {
           </div>
         </section>
 
-        {/* ── COMPONENT RECIPES ── */}
+        {/* ── ATOMIC DESIGN: ATOMS ── */}
         <section className="ds-section">
           <div className="wrap">
-            <h2 className="display sec">Component recipes</h2>
+            <h2 className="display sec">Atomic design</h2>
+            <p className="lead" style={{ maxWidth: 600, marginBottom: 32 }}>
+              Our component hierarchy, from smallest building blocks to composed layout molecules.
+            </p>
+
+            <h3 className="display" style={{ fontSize: "clamp(26px,3vw,36px)", marginBottom: 24 }}>Atoms</h3>
             <div className="ds-recipes">
-              {/* Button */}
+              {/* Badge */}
               <div className="ds-recipe">
-                <h3 className="display">.btn</h3>
+                <h3 className="display">&lt;Badge /&gt;</h3>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                  <Badge>Design System</Badge>
+                  <Badge>Free to join</Badge>
+                  <Badge>A casual community</Badge>
+                </div>
+                <p className="ds-meta">Green dot + label · inline badge atom</p>
+              </div>
+
+              {/* Kicker */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Kicker /&gt;</h3>
+                <Kicker>Section eyebrow label</Kicker>
+                <Kicker as="p" style={{ marginTop: 8 }}>Uppercase · letter-spaced · purple</Kicker>
+                <p className="ds-meta">Configurable <code>as</code> element</p>
+              </div>
+
+              {/* Sticker */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Sticker /&gt;</h3>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+                  <Sticker variant="pink">pink</Sticker>
+                  <Sticker variant="sky">sky</Sticker>
+                  <Sticker variant="yellow">yellow</Sticker>
+                  <Sticker variant="pink" pill>pill shape</Sticker>
+                  <Sticker variant="yellow" rotate={5}>5° tilt</Sticker>
+                </div>
+                <p className="ds-meta">3 color variants · optional pill shape · custom rotation</p>
+              </div>
+
+              {/* Card */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Card /&gt;</h3>
+                <div style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center" }}>
+                  <Card><h4 className="display" style={{ fontSize: 16 }}>Default</h4><p>White bg, hard shadow</p></Card>
+                  <Card variant="purple"><h4 className="display" style={{ fontSize: 16 }}>Purple</h4><p>Purple fill, cream text</p></Card>
+                </div>
+                <p className="ds-meta">2 variants · configurable <code>as</code> element</p>
+              </div>
+
+              {/* Polaroid */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Polaroid /&gt;</h3>
+                <div style={{ display: "flex", gap: 24, justifyContent: "center" }}>
+                  <Polaroid src="/img/host-jacki.png" alt="Demo" caption="Jacki" rotate={-2} />
+                  <Polaroid src="/img/host-romit.jpg" alt="Demo" caption="Romit" rotate={3} />
+                </div>
+                <p className="ds-meta">White frame · thick outline · random or explicit tilt</p>
+              </div>
+
+              {/* Heading */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Heading /&gt;</h3>
+                <Heading level="h4" style={{ fontSize: 18 }}>Heading level 1</Heading>
+                <Heading level="h2" style={{ fontSize: 22 }}>Heading level 2 (.display)</Heading>
+                <Heading level="h3" style={{ fontSize: 18, marginTop: 8 }} display={false}>Heading level 3 (plain)</Heading>
+                <p className="ds-meta">Configurable level · display font toggle · inline style passthrough</p>
+              </div>
+
+              {/* Text */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Text /&gt;</h3>
+                <Text>Default paragraph text.</Text>
+                <Text as="span" className="lead">Rendered as a span · </Text>
+                <Text as="small" style={{ opacity: 0.65 }}>Small secondary.</Text>
+                <p className="ds-meta">Configurable <code>as</code> element · style and className passthrough</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── ATOMIC DESIGN: MOLECULES ── */}
+        <section className="ds-section" style={{ background: "var(--cream-2)" }}>
+          <div className="wrap">
+            <h3 className="display" style={{ fontSize: "clamp(26px,3vw,36px)", marginBottom: 24 }}>Molecules</h3>
+            <div className="ds-recipes">
+              {/* Marquee */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Marquee /&gt;</h3>
+                <Marquee items={["real talk", "game night", "craft night"]} />
+                <p className="ds-meta">Purple scrolling band · infinite loop · items as <code>string[]</code></p>
+              </div>
+
+              {/* NavBar */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;NavBar /&gt;</h3>
+                <p>Sticky header with logo wordmark, nav links, Join Discord button, and mobile hamburger menu.</p>
+                <p className="ds-meta">Self-contained mobile state · props: discordHref (optional)</p>
+              </div>
+
+              {/* Hero */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Hero /&gt;</h3>
+                <p>Full hero section: badge, "Be raw. Be real. Belong." headline, CTA + schedule, call window with face tiles, and positioned stickers.</p>
+                <p className="ds-meta">Props: discordHref (optional) · see <a href="/" style={{ textDecoration: "underline", fontWeight: 800 }}>homepage</a></p>
+              </div>
+
+              {/* CTABand */}
+              <div className="ds-recipe">
+                <h3 className="display">&lt;CTABand /&gt;</h3>
+                <p>Dark CTA band with "Come hang out in the Discord." heading and yellow join button. Rendered as part of Footer.</p>
+                <p className="ds-meta">Props: discordHref (optional)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── ORGANISMS ── */}
+        <section className="ds-section" style={{ background: "var(--cream-2)" }}>
+          <div className="wrap">
+            <h3 className="display" style={{ fontSize: "clamp(26px,3vw,36px)", marginBottom: 24 }}>Organisms</h3>
+
+            <div className="ds-organism">
+              <h3 className="display">&lt;EventCard variant="upcoming" /&gt;</h3>
+              <EventCard
+                variant="upcoming"
+                data={{
+                  month: "Jun",
+                  day: "17",
+                  time: "5:00 PM PST",
+                  tag: "Community Night · Online",
+                  tagVariant: "sky",
+                  entryTag: "paid event",
+                  title: "The UX Chats",
+                  description: "Games, conversations, and great company — our regular community night open to all.",
+                  meta: [
+                    { icon: "🕐", text: "5:00 PM PST" },
+                    { icon: "💬", text: "In our Discord" },
+                    { icon: "⏱", text: "1.5 hours" },
+                  ],
+                  buttons: [
+                    { label: "Register on Luma →", href: "https://luma.com/TheUXChats", variant: "yellow" as const },
+                  ],
+                }}
+              />
+              <p className="ds-meta">Compound card: date block · tag · title · meta · action buttons</p>
+            </div>
+
+            <div className="ds-organism">
+              <h3 className="display">&lt;EventCard variant="past" /&gt;</h3>
+              <EventCard
+                variant="past"
+                data={{
+                  month: "Jun",
+                  day: "03",
+                  time: "5:00 PM PST",
+                  tag: "Special Guest Night · Online",
+                  entryTag: "free entry",
+                  title: "How to Use Claude Code to Design Multiple Products",
+                  description: "Hands-on look at designing with AI tools — ~40-min talk + open Q&A.",
+                  meta: [
+                    { icon: "🕐", text: "5:00 PM PST" },
+                    { icon: "👥", text: "29 attended" },
+                  ],
+                  buttons: [
+                    { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
+                  ],
+                }}
+              />
+              <p className="ds-meta">Past variant · dimmed style · single action button</p>
+            </div>
+
+            <div className="ds-organism">
+              <h3 className="display">&lt;TestimonialCard /&gt;</h3>
+              <div style={{ maxWidth: 360 }}>
+                <TestimonialCard
+                  data={{
+                    quote: "UX Chats is genuinely the warmest design community I've found. Real conversations, zero pretense.",
+                    name: "Jordan",
+                    role: "Product Designer",
+                    platform: "discord",
+                    avatar: "J",
+                    avatarColor: "purple",
+                    sticker: { label: "✦ fave", color: "yellow" },
+                  }}
+                  index={0}
+                />
+              </div>
+              <p className="ds-meta">Card with avatar · quote · platform icon · optional sticker</p>
+            </div>
+
+            <div className="ds-organism">
+              <h3 className="display">&lt;TestimonialForm /&gt;</h3>
+              <div style={{ maxWidth: 480 }}>
+                <TestimonialForm />
+              </div>
+              <p className="ds-meta">Inline form · name, role, quote fields · validation · success state</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── BUTTON & TAG DEMOS ── */}
+        <section className="ds-section">
+          <div className="wrap">
+            <h3 className="display" style={{ fontSize: "clamp(26px,3vw,36px)", marginBottom: 24 }}>Button &amp; Tag</h3>
+            <div className="ds-recipes">
+              <div className="ds-recipe">
+                <h3 className="display">&lt;Button /&gt;</h3>
                 <div className="ds-btn-row">
                   <Button variant="yellow" size="md">Primary</Button>
                   <Button variant="primary" size="md">Secondary</Button>
                   <Button variant="line" size="md">Outline</Button>
                   <Button variant="yellow" size="lg">Large CTA</Button>
                 </div>
-                <p style={{ fontSize: 13, marginTop: 16, opacity: 0.65 }}>
-                  Pill shape · 3px ink outline · hard offset shadow · press-translates
-                </p>
+                <p className="ds-meta">Pill shape · 3px ink outline · hard offset shadow · press-translates</p>
               </div>
 
-              {/* Tag */}
               <div className="ds-recipe">
-                <h3 className="display">Tag</h3>
+                <h3 className="display">&lt;Tag /&gt;</h3>
                 <div className="ds-tag-row">
                   <Tag variant="yellow">Design</Tag>
                   <Tag variant="sky">Research</Tag>
                   <Tag variant="pink">Frontend</Tag>
                   <Tag variant="default">Strategy</Tag>
                 </div>
-                <p style={{ fontSize: 13, marginTop: 16, opacity: 0.65 }}>
-                  Outlined chip with hard shadow &amp; slight random rotation
-                </p>
-              </div>
-
-              {/* Sticker */}
-              <div className="ds-recipe">
-                <h3 className="display">Sticker</h3>
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-                  <span className="ds-sticker-demo">free to join</span>
-                  <span className="ds-sticker-demo" style={{ background: "var(--sky)", color: "var(--ink)", transform: "rotate(2deg)" }}>no ties allowed</span>
-                  <span className="ds-sticker-demo" style={{ background: "var(--yellow)", color: "var(--ink)", transform: "rotate(-4deg)" }}>say hi 👋</span>
-                </div>
-                <p style={{ fontSize: 13, marginTop: 16, opacity: 0.65 }}>
-                  Rotated outlined badge · pink/sky/yellow fill · floating keyframe
-                </p>
-              </div>
-
-              {/* Card */}
-              <div className="ds-recipe">
-                <h3 className="display">Card</h3>
-                <div className="ds-card-demo">
-                  <h4 className="display" style={{ fontSize: 20 }}>Card title</h4>
-                  <p>White background, thick outline, large hard shadow, rounded corners. Lifts on hover.</p>
-                </div>
-                <p style={{ fontSize: 13, marginTop: 16, opacity: 0.65 }}>
-                  border-radius: 22px · var(--shadow-lg) · lifts on hover
-                </p>
+                <p className="ds-meta">Outlined chip · hard shadow · slight random rotation</p>
               </div>
             </div>
           </div>
@@ -244,14 +390,26 @@ export default function DesignSystem() {
         <section className="ds-section" style={{ background: "var(--cream-2)" }}>
           <div className="wrap">
             <h2 className="display sec">Spacing scale</h2>
-            <p style={{ marginBottom: 32, fontWeight: 500, opacity: 0.8, maxWidth: 560 }}>
-              Common px values used across the codebase for padding, margins, and gaps.
-              All values in <strong>px</strong> (no rem unit in use).
+            <p style={{ marginBottom: 16, fontWeight: 500, opacity: 0.8, maxWidth: 560 }}>
+              8&nbsp;pt grid for desktop / tablet · 4&nbsp;pt supplement for mobile.
+              All values in <strong>px</strong>.
             </p>
+
+            <h3 className="display" style={{ fontSize: "clamp(18px, 2.2vw, 22px)", marginBottom: 16 }}>Desktop &amp; tablet <span style={{ opacity: .45, fontWeight: 500, fontFamily: '"Hanken Grotesk"', fontSize: 14 }}>8&nbsp;pt grid</span></h3>
             <div className="ds-spacing">
-              {SPACING.map((n) => (
-                <div className="ds-space" key={n}>
-                  <div className="bar" style={{ width: n > 60 ? 60 : n }} />
+              {SPACING_SCALE.desktop.map((n) => (
+                <div className="ds-space" key={`d-${n}`}>
+                  <div className="bar" style={{ width: n > 80 ? 64 : n }} />
+                  <span className="label">{n}px</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="display" style={{ fontSize: "clamp(18px, 2.2vw, 22px)", marginTop: 36, marginBottom: 16 }}>Mobile supplement <span style={{ opacity: .45, fontWeight: 500, fontFamily: '"Hanken Grotesk"', fontSize: 14 }}>4&nbsp;pt grid</span></h3>
+            <div className="ds-spacing">
+              {SPACING_SCALE.mobile.map((n) => (
+                <div className="ds-space" key={`m-${n}`}>
+                  <div className="bar" style={{ width: n > 60 ? 60 : n < 8 ? 8 : n }} />
                   <span className="label">{n}px</span>
                 </div>
               ))}

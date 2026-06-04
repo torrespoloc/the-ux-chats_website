@@ -1,0 +1,5 @@
+/* ── Sticker variant colours ── */
+.st-pink   { background: var(--pink); color: #fff; }
+.st-sky    { background: var(--sky); }
+.st-yellow { background: var(--yellow); }
+.st-pill   { border-radius: 999px; }

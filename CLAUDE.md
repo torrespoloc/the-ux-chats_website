@@ -139,7 +139,7 @@ Imports chain: `index.css` → `tokens.css` | `App.css` → `base.css` + `nav.cs
 2. **Hero** — two columns: headline ("Be raw. Be real. Belong.") + CTA on the left; a tilted
   "UX Chat · Live" call window (face tiles + "your seat →") with stickers on its corners on the right.
 3. **Marquee** — scrolling phrases.
-4. **What we do** (`#about`) — copy + chips (who it's for) on the left, tilted polaroid collage on the right.
+4. **Your Hosts** (`#about`) — copy + chips (who it's for) on the left, tilted polaroid collage on the right.
 5. **Meet your hosts** (`#host`) — two alternating founder rows (photo + bio + yellow quote
   callout + fact chips), shared philosophy line centered below.
 6. **Events** (`#events`) — featured "Next up" event card (purple date block + details + two

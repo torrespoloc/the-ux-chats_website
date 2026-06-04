@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button, Tag, Footer, EventCard, TestimonialCard, TestimonialForm } from "./components";
+import {
+  Button, Tag, Footer, EventCard, TestimonialCard, TestimonialForm,
+  NavBar, Marquee, Hero,
+} from "./components";
 import type { TestimonialCardData } from "./components";
 import TESTIMONIALS_DATA from "../metadata/testimonials.json";
 import "./App.css";
@@ -11,7 +13,6 @@ const MARQUEE_ITEMS = [
 ];
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [showFloat, setShowFloat] = useState(false);
 
   // Floating join button visibility
@@ -20,6 +21,15 @@ function App() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll to hash section after mount (cross-page navigation)
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
   }, []);
 
   // IntersectionObserver for reveal animations
@@ -39,95 +49,18 @@ function App() {
     return () => io.disconnect();
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <>
       {/* ── NAV ── */}
-      <header className="nav">
-        <div className="wrap nav-inner">
-          <a className="logo" href="#top">
-            <span className="mark"><img src="/img/logo.png" alt="UX Chats logo" /></span>
-            UX Chats
-          </a>
-          <nav className="nav-links">
-            <a className="lk" href="#about">What we do</a>
-            <a className="lk" href="#events">Events</a>
-            <Link className="lk" to="/become-a-guest">Become a Guest</Link>
-            <Button as="a" href="https://discord.gg/bBbDbZbQ9" variant="primary" target="_blank" rel="noopener">
-              Join Discord
-            </Button>
-          </nav>
-          <button
-            className={`nav-toggle${menuOpen ? " open" : ""}`}
-            aria-label="Toggle menu"
-            onClick={() => setMenuOpen((p) => !p)}
-          >
-            <span className="bar"></span>
-          </button>
-        </div>
-      </header>
-
-      <div className={`nav-menu${menuOpen ? " open" : ""}`}>
-        <a href="#about" onClick={closeMenu}>What we do</a>
-        <a href="#events" onClick={closeMenu}>Events</a>
-        <Link to="/become-a-guest" onClick={closeMenu}>Become a Guest</Link>
-        <a className="nav-join" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener" onClick={closeMenu}>
-          Join Discord →
-        </a>
-      </div>
+      <NavBar />
 
       <main id="top">
         {/* ── HERO ── */}
-        <section className="hero">
-          <div className="wrap hero-grid">
-            <div className="hero-copy">
-              <span className="badge"><span className="dot"></span> A casual UX community</span>
-              <h1 className="display hero-title">
-                Be <span className="pop">raw.</span><br />
-                Be real.<br />
-                <span className="hl">Belong.</span>
-              </h1>
-              <p className="hero-sub">
-                No formal attire. No stiff intros. Just designers having honest
-                conversations, playing dumb-fun games, and growing together.
-              </p>
-              <div className="hero-cta">
-                <Button as="a" href="https://discord.gg/bBbDbZbQ9" variant="yellow" size="lg" target="_blank" rel="noopener">
-                  Join the Discord →
-                </Button>
-                <span className="sched"><span className="blip"></span> Every other Wednesday · 5:00 PM PST</span>
-              </div>
-            </div>
-            <div className="hero-visual">
-              <div className="call">
-                <div className="call-bar">
-                  <span className="dots"><i></i><i></i><i></i></span>
-                  <span className="t">UX Chat · Wednesdays 5PM PST</span>
-                  <span className="live"><span className="b"></span> Live</span>
-                </div>
-                <div className="call-grid">
-                  <div className="tile"><img src="/img/call-jacki.png" alt="" /><span className="name">Jacki</span></div>
-                  <div className="tile"><img src="/img/call-maya.png" alt="" /><span className="name">Maya</span></div>
-                  <div className="tile"><img src="/img/call-devon.png" alt="" /><span className="name">Devon</span></div>
-                  <div className="tile join"><span><span className="plus">+</span><span className="jt">your seat →</span></span></div>
-                </div>
-              </div>
-              <div className="sticker st-1">no ties<br />allowed</div>
-              <div className="sticker st-2">say hi<br />👋</div>
-              <div className="sticker st-3">free to join</div>
-            </div>
-          </div>
-        </section>
+        <Hero />
       </main>
 
       {/* ── MARQUEE ── */}
-      <div className="marquee">
-        <div className="track">
-          {MARQUEE_ITEMS.map((item) => <span key={item}>{item}</span>)}
-          {MARQUEE_ITEMS.map((item) => <span key={item + "-dup"}>{item}</span>)}
-        </div>
-      </div>
+      <Marquee items={MARQUEE_ITEMS} />
 
       {/* ── ABOUT ── */}
       <section id="about">
@@ -157,7 +90,7 @@ function App() {
       </section>
 
       {/* ── TWO KINDS OF NIGHTS ── */}
-      <section className="events-format">
+      <section className="events-format" id="event-formats">
         <div className="wrap">
           <div className="reveal">
             <span className="kicker">The Events</span>
@@ -285,6 +218,12 @@ function App() {
                   <Tag variant="pink">TEDAI Volunteer  ×2</Tag>
                   <Tag variant="yellow">Pickleball (competitively)</Tag>
                   <Tag variant="sky">Painter</Tag>
+                </div>
+                <div className="host-links">
+                  <Button as="a" href="https://adplist.org/mentors/jackeline-torres" variant="line" target="_blank" rel="noopener">
+                    <img src="/img/mentor-logo.png" alt="ADPList" className="mentor-logo" />
+                    Schedule ADPList session
+                  </Button>
                 </div>
               </div>
             </div>

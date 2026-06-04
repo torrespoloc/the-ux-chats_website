@@ -1,6 +1,7 @@
 @import "./styles/base.css";
 @import "./styles/nav.css";
 @import "./styles/hero.css";
+@import "./styles/atoms.css";
 @import "./styles/sections.css";
 @import "./styles/guest.css";
 @import "./styles/design-system.css";
