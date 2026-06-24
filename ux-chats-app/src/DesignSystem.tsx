@@ -445,7 +445,7 @@ export default function DesignSystem() {
 
       {/* ── FLOATING JOIN ── */}
       <div className={`float-join${showFloat ? " show" : ""}`}>
-        <Button as="a" href="https://discord.gg/bBbDbZbQ9" variant="yellow" target="_blank" rel="noopener">
+        <Button as="a" href="https://discord.gg/RamJrPZpYd" variant="yellow" target="_blank" rel="noopener">
           Join Discord
         </Button>
       </div>

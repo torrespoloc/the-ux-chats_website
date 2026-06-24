@@ -15,7 +15,7 @@ export interface NavBarProps {
   discordHref?: string;
 }
 
-export function NavBar({ discordHref = "https://discord.gg/bBbDbZbQ9" }: NavBarProps) {
+export function NavBar({ discordHref = "https://discord.gg/RamJrPZpYd" }: NavBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const closeMenu = () => setMenuOpen(false);

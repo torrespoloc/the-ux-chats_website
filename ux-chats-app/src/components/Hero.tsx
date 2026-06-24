@@ -4,7 +4,7 @@ export interface HeroProps {
   discordHref?: string;
 }
 
-export function Hero({ discordHref = "https://discord.gg/bBbDbZbQ9" }: HeroProps) {
+export function Hero({ discordHref = "https://discord.gg/RamJrPZpYd" }: HeroProps) {
   return (
     <section className="hero">
       <div className="wrap hero-grid">

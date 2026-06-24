@@ -4,7 +4,7 @@ export interface CTABandProps {
   discordHref?: string;
 }
 
-export function CTABand({ discordHref = "https://discord.gg/bBbDbZbQ9" }: CTABandProps) {
+export function CTABand({ discordHref = "https://discord.gg/RamJrPZpYd" }: CTABandProps) {
   return (
     <section className="cta-band" id="join" data-surface="dark">
       <div className="wrap" style={{ textAlign: "center" }}>

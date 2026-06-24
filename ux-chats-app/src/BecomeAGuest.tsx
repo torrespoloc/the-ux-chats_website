@@ -27,7 +27,7 @@ export default function BecomeAGuest() {
             <Link className="lk" to="/#about">Your Hosts</Link>
             <Link className="lk" to="/#events">Events</Link>
             <Link className="lk" to="/become-a-guest">Become a Guest</Link>
-            <Button as="a" href="https://discord.gg/bBbDbZbQ9" variant="primary" target="_blank" rel="noopener">
+            <Button as="a" href="https://discord.gg/RamJrPZpYd" variant="primary" target="_blank" rel="noopener">
               Join Discord
             </Button>
           </nav>
@@ -45,7 +45,7 @@ export default function BecomeAGuest() {
         <Link to="/#about" onClick={closeMenu}>Your Hosts</Link>
         <Link to="/#events" onClick={closeMenu}>Events</Link>
         <Link to="/become-a-guest" onClick={closeMenu}>Become a Guest</Link>
-        <a className="nav-join" href="https://discord.gg/bBbDbZbQ9" target="_blank" rel="noopener" onClick={closeMenu}>
+        <a className="nav-join" href="https://discord.gg/RamJrPZpYd" target="_blank" rel="noopener" onClick={closeMenu}>
           Join Discord →
         </a>
       </div>
@@ -224,7 +224,7 @@ export default function BecomeAGuest() {
 
       {/* ── FLOATING JOIN ── */}
       <div className={`float-join${showFloat ? " show" : ""}`}>
-        <Button as="a" href="https://discord.gg/bBbDbZbQ9" variant="yellow" target="_blank" rel="noopener">
+        <Button as="a" href="https://discord.gg/RamJrPZpYd" variant="yellow" target="_blank" rel="noopener">
           Join Discord
         </Button>
       </div>
