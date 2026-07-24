@@ -74,7 +74,7 @@ export function NavBar({ discordHref = "https://discord.com/invite/RamJrPZpYd" }
           </Link>
           <nav className="nav-links">
             <button className="lk" style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", color: "inherit" }} onClick={() => handleHashNav("#host")}>Your Hosts</button>
-            <Link className="lk" to="/become-a-guest" onClick={handleTopNav("/become-a-guest")}>Become a Guest</Link>
+            <Link className="lk" to="/become-a-guest" onClick={handleTopNav("/become-a-guest")}>Be a Guest Speaker</Link>
             <a className="lk" href={discordHref} target="_blank" rel="noopener">Discord</a>
             <Button as="a" href="https://luma.com/TheUXChats" variant="primary" target="_blank" rel="noopener">
               Events →
@@ -94,7 +94,7 @@ export function NavBar({ discordHref = "https://discord.com/invite/RamJrPZpYd" }
 
       <div id="nav-menu" className={`nav-menu${menuOpen ? " open" : ""}`}>
         <a href="#host" onClick={(e) => { e.preventDefault(); handleHashNav("#host"); }}>Your Hosts</a>
-        <Link to="/become-a-guest" onClick={handleTopNav("/become-a-guest")}>Become a Guest</Link>
+        <Link to="/become-a-guest" onClick={handleTopNav("/become-a-guest")}>Be a Guest Speaker</Link>
         <a href={discordHref} target="_blank" rel="noopener" onClick={closeMenu}>Discord</a>
         <a className="nav-join" href="https://luma.com/TheUXChats" target="_blank" rel="noopener" onClick={closeMenu}>
           Events →

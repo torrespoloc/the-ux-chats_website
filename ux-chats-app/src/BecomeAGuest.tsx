@@ -16,7 +16,7 @@ export default function BecomeAGuest() {
             </div>
             <h1 className="display guest-title">
               Want to be a<br />
-              <span className="hl">special guest?</span>
+              <span className="hl">special guest speaker?</span>
             </h1>
             <p className="guest-sub">
               No panels. No sales pitches. Just you, a topic you're passionate about, and a room
@@ -47,17 +47,17 @@ export default function BecomeAGuest() {
                   <textarea id="topics" name="topics" placeholder="What UX topics are you passionate about?" rows={4} />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="reason">Why do you want to be a special guest?</label>
-                  <textarea id="reason" name="reason" placeholder="Tell us what makes you excited to be on the show" rows={4} />
+                  <label htmlFor="reason">Tell us about why you want to be a guest speaker.</label>
+                  <textarea id="reason" name="reason" placeholder="What makes you excited about being a speaker?" rows={4} />
                 </div>
                 <p className="form-note">
-                  📅 <strong>Note:</strong> Check the events scheduled on Luma:{" "}
-                  <a href="https://luma.com/TheUXChats?k=c" target="_blank" rel="noopener">luma.com/TheUXChats</a>
+                  📅 Check out the scheduled events on{" "}
+                  <a href="https://luma.com/TheUXChats?k=c" target="_blank" rel="noopener">Luma</a>. We do 1 special guest speaker event a month on Thursday at 6 PM PST.
                 </p>
                 <Button as="button" type="submit" variant="yellow" size="lg" className="form-submit">
                   Send it →
                 </Button>
-                <p className="form-disclaimer">We'll get back to you within a week. No spam, ever.</p>
+                <p className="form-disclaimer">We'll get back to you within a week. No spam, pinky promise.</p>
               </form>
             </div>
           </div>
