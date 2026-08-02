@@ -63,22 +63,21 @@ function App() {
           <EventCard
             variant="upcoming"
             data={{
-              month: "Jul",
-              day: "30",
+              month: "Aug",
+              day: "13",
               time: "6:00 PM PST",
-              tag: "Special Guest Night · Online",
-              tagVariant: "yellow",
-              entryTag: "paid event",
-              title: "Hot Seat: Recruiter Edition with Carl Wheatley",
-              description: <>With product design recruiter <strong>Carl Wheatley</strong> — the hiring process from the recruiter's side: what they actually look for, what hiring managers care about, how to talk salary, the application mistakes to skip, and portfolio strategy. Volunteer for the hot seat and get live feedback on your interview answers, then open Q&amp;A.</>,
+              tag: "Community Night · Online",
+              tagVariant: "sky",
+              entryTag: "free event",
+              title: "UX Chats Community Night",
+              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
               meta: [
                 { icon: "🕐", text: "6:00 PM PST" },
                 { icon: "🎥", text: "On Zoom" },
-                { icon: "⏱", text: "1.5 hours" },
-                { icon: "🎟", text: "$25 ticket" },
+                { icon: "⏱", text: "1 hour" },
               ],
               buttons: [
-                { label: "Register — $25 →", href: "https://luma.com/2iij0eab", variant: "yellow" as const },
+                { label: "RSVP — Free →", href: "https://luma.com/w7eq6g30", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
