@@ -117,7 +117,7 @@ function App() {
               tagVariant: "sky",
               entryTag: "free event",
               title: "UX Chats Community Night",
-              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              description: <>Pull up in your comfiest hoodie and overshare with strangers who actually get it. Games, banter, and zero small talk about the weather.</>,
               meta: [
                 { icon: "🕐", text: "6:00 PM PST" },
                 { icon: "🎥", text: "On Zoom" },
@@ -140,7 +140,7 @@ function App() {
               tagVariant: "sky",
               entryTag: "free event",
               title: "UX Chats Community Night",
-              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              description: <>No decks, no dress code, no agenda. Just the UX Chats crew, a few ridiculous games, and an hour of actually being yourselves.</>,
               meta: [
                 { icon: "🕐", text: "6:00 PM PST" },
                 { icon: "🎥", text: "On Zoom" },
@@ -163,7 +163,7 @@ function App() {
               tagVariant: "sky",
               entryTag: "free event",
               title: "UX Chats Community Night",
-              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              description: <>Bring snacks, bring chaos energy, leave the LinkedIn voice at the door. An hour of games and genuinely good conversation with your favorite internet designers.</>,
               meta: [
                 { icon: "🕐", text: "6:00 PM PST" },
                 { icon: "🎥", text: "On Zoom" },
@@ -186,7 +186,7 @@ function App() {
               tagVariant: "sky",
               entryTag: "free event",
               title: "UX Chats Community Night",
-              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              description: <>Cozy season, cozier vibes. Games, real talk, and a room full of designers who'd rather laugh than network — no agenda required.</>,
               meta: [
                 { icon: "🕐", text: "6:00 PM PST" },
                 { icon: "🎥", text: "On Zoom" },
