@@ -107,6 +107,98 @@ function App() {
             }}
           />
 
+          <EventCard
+            variant="upcoming"
+            data={{
+              month: "Sep",
+              day: "10",
+              time: "6:00 PM PST",
+              tag: "Community Night · Online",
+              tagVariant: "sky",
+              entryTag: "free event",
+              title: "UX Chats Community Night",
+              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              meta: [
+                { icon: "🕐", text: "6:00 PM PST" },
+                { icon: "🎥", text: "On Zoom" },
+                { icon: "⏱", text: "1 hour" },
+              ],
+              buttons: [
+                { label: "RSVP — Free →", href: "https://luma.com/crtz2cku", variant: "yellow" as const },
+                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
+              ],
+            }}
+          />
+
+          <EventCard
+            variant="upcoming"
+            data={{
+              month: "Oct",
+              day: "8",
+              time: "6:00 PM PST",
+              tag: "Community Night · Online",
+              tagVariant: "sky",
+              entryTag: "free event",
+              title: "UX Chats Community Night",
+              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              meta: [
+                { icon: "🕐", text: "6:00 PM PST" },
+                { icon: "🎥", text: "On Zoom" },
+                { icon: "⏱", text: "1 hour" },
+              ],
+              buttons: [
+                { label: "RSVP — Free →", href: "https://luma.com/p1dwy5lx", variant: "yellow" as const },
+                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
+              ],
+            }}
+          />
+
+          <EventCard
+            variant="upcoming"
+            data={{
+              month: "Nov",
+              day: "5",
+              time: "6:00 PM PST",
+              tag: "Community Night · Online",
+              tagVariant: "sky",
+              entryTag: "free event",
+              title: "UX Chats Community Night",
+              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              meta: [
+                { icon: "🕐", text: "6:00 PM PST" },
+                { icon: "🎥", text: "On Zoom" },
+                { icon: "⏱", text: "1 hour" },
+              ],
+              buttons: [
+                { label: "RSVP — Free →", href: "https://luma.com/q33m6njl", variant: "yellow" as const },
+                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
+              ],
+            }}
+          />
+
+          <EventCard
+            variant="upcoming"
+            data={{
+              month: "Dec",
+              day: "3",
+              time: "6:00 PM PST",
+              tag: "Community Night · Online",
+              tagVariant: "sky",
+              entryTag: "free event",
+              title: "UX Chats Community Night",
+              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              meta: [
+                { icon: "🕐", text: "6:00 PM PST" },
+                { icon: "🎥", text: "On Zoom" },
+                { icon: "⏱", text: "1 hour" },
+              ],
+              buttons: [
+                { label: "RSVP — Free →", href: "https://luma.com/wti76sty", variant: "yellow" as const },
+                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
+              ],
+            }}
+          />
+
         </div>
       </section>
 
