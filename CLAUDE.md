@@ -1,9 +1,62 @@
 # CLAUDE.md — UX Chats Website
 
+## AI Provider Setup (for contributors)
+
+This project uses Google Vertex AI as the default Claude Code backend, billed to the UX Chats GCP project. A provider switcher is included so you can also use DeepSeek or your own Anthropic account.
+
+### First-time setup
+
+```bash
+# 1. Install gcloud (if not already installed)
+brew install --cask google-cloud-sdk
+
+# 2. Authenticate with the UX Chats account
+gcloud auth login hello@theuxchats.co
+gcloud auth application-default login
+gcloud config set project the-ux-chats
+gcloud services enable aiplatform.googleapis.com
+
+# 3. Add to ~/.zshrc so Vertex is always active
+echo 'export CLAUDE_CODE_USE_VERTEX=1' >> ~/.zshrc
+echo 'export ANTHROPIC_VERTEX_PROJECT_ID="the-ux-chats"' >> ~/.zshrc
+echo 'export CLOUD_ML_REGION="us-central1"' >> ~/.zshrc
+
+# 4. Load the provider switcher
+source ./providers.sh
+```
+
+### Switching providers
+
+```bash
+source ./providers.sh          # load commands (do once per shell session)
+
+use-vertex                     # Google Vertex AI — UX Chats GCP project (default)
+use-deepseek                   # DeepSeek via Anthropic-compatible endpoint
+use-anthropic                  # Your personal Anthropic account (unsets Vertex)
+which-provider                 # Show active provider + auth state
+```
+
+### Image generation (ux-chats-image-generator skill)
+
+When generating event images, use the `ux-chats-image-generator` skill. Three paths are available: Path 1 (OpenAI curl — uses `OPENAI_API_KEY` from `.env.local`), Path 2 (Vertex AI via `npx tsx scripts/gemini-image-gen.ts` — uses gcloud ADC, no API key needed, billed to UX Chats GCP), and Path 3 (code-based image generator skills — compute only). See `research_image_gen/image-generation-setup.md` for full details. `.env.local` is gitignored and never committed.
+
+`.env.local` also contains `DEEPSEEK_API_KEY` for the UX Chats DeepSeek account. With it, `use-deepseek` works as a third provider option for Claude Code.
+
+---
+
 This repo is the **UX Chats** community landing page — a React app built with **Vite + Tailwind CSS v4** at `ux-chats-app/`. It is a **playful "sticker zine" design** — NOT a
 corporate or SaaS look. When editing or adding sections, match the system below exactly so
 the page stays on-brand.
 
+> **Design systems — which file to reference:**
+> 
+> | When working on... | PRODUCT.md | DESIGN.md |
+> |---|---|--|
+> | The website (pages, components, styles) | `./PRODUCT.md` (repo root) | `./DESIGN.md` (repo root) |
+> | Event posters / social graphics / image generation | `ux-chats-app/imagery-system/PRODUCT.md` | `ux-chats-app/imagery-system/DESIGN.md` |
+> 
+> The imagery system **extends** the root DESIGN.md — it inherits all base tokens (colors, type, shadows) and adds poster-scale components and composition rules. When building imagery, read both: root DESIGN.md for tokens, imagery DESIGN.md for poster components and canvas specs.
+> 
 > **Architecture:** No vanilla HTML/CSS — everything runs through the React app.
 >
 > - Pages: `ux-chats-app/src/App.tsx` (route `/`) and `BecomeAGuest.tsx` (route `/become-a-guest`)
