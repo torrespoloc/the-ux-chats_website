@@ -1,0 +1,84 @@
+# Product
+
+<!-- impeccable:product-schema 1 -->
+<!-- parentSystem: ../../PRODUCT.md -->
+
+> **Parent system:** This imagery toolkit extends the UX Chats website (see `../../PRODUCT.md` and `../../DESIGN.md` at the repo root). All base tokens, brand commitments, and product principles flow down from the parent. This file defines what's *additional* or *different* for the poster-generation context.
+
+## Platform
+
+web (HTML/CSS → rasterized image). The output is a static PNG or JPEG file, but the authoring medium is code — HTML and CSS rendered to a canvas or screenshot. Think of it as a poster generator with a code interface.
+
+## Users
+
+The UX Chats crew — Jacki, Romit, and any future design contributor — who need to produce event graphics for every Community Night, Special Guest Night, workshop, and partnership announcement. These users are designers comfortable with code, not graphic designers reaching for Figma every time.
+
+## Product Purpose
+
+The **Imagery System** is a design toolkit for creating event posters and social graphics programmatically. It exists because:
+
+1. **Consistency at scale.** Every event needs a graphic. Without a system, each one gets designed from scratch, the visual language drifts, and the brand weakens.
+2. **Code-to-image is hard.** Rendering HTML/CSS to a PNG that looks like a poster — not a screenshot of a webpage — takes deliberate token choices, typography at poster scale, and a clear understanding of what makes something feel printed vs. rendered.
+3. **Speed.** When an event is announced, the graphic should be a config change, not a design project.
+
+Success means **every event graphic feels like it belongs to the same zine**, regardless of who created it or which template they used.
+
+## Positioning
+
+This is not a generic social-media template kit. It is the poster-making arm of the UX Chats sticker-zine brand — same thick ink outlines, same hard shadows, same chunky display type, same cream paper, but composed for a fixed canvas instead of a scrolling viewport. If the main website is the corkboard, the imagery system is the flyers pinned to it.
+
+## Operating Context
+
+- **Input:** A configuration object (event type, title, date, speaker name, photo path, description, registration URL, accent color preference).
+- **Output:** A PNG or JPEG file at a target resolution (default 2000×2000px square for social, with rectangular variants for stories/banners).
+- **Pipeline:** HTML/CSS template → browser render → screenshot/export. No Figma, no canvas API hand-coding, no Photoshop.
+- **The main brand DESIGN.md is the parent system.** The imagery system inherits all base tokens (colors, fonts, shadows) and adds poster-specific components and composition rules. It must not contradict the parent system.
+
+## Capabilities and Constraints
+
+**Capabilities:**
+- Two poster modes: Light (cream paper) and Dark (ink background)
+- Event type templates: Community Night, Special Guest Night, Workshop, Partnership, Generic
+- Configurable title, date, speaker info, description, CTA, and accent color
+- Sticker and badge accents with automatic rotation
+- Photo integration (polaroid frames, circular cutouts)
+- Thick border frames, hard shadows, the full sticker-zine visual vocabulary
+
+**Constraints:**
+- Must render from HTML/CSS — no canvas imperative drawing, no WebGL, no SVG-only approach
+- Must not rely on browser viewport quirks (fixed canvas dimensions, no scrolling)
+- Typography must work with Google Fonts (Bricolage Grotesque + Hanken Grotesk) loaded in the render environment
+- Output must look like a poster, not a screenshot of a div — this means deliberate composition, not document flow
+- No AI-generated imagery in the output (photos are real event photos; decorative elements are CSS-drawn)
+- No gradients, no blur, no glassmorphism — consistent with the parent brand
+
+**Terminology:** "poster" (not "image" or "graphic"), "canvas" (not "viewport"), "composition" (not "layout").
+
+## Brand Commitments
+
+- **Parent brand:** This system extends UX Chats' sticker-zine identity. All parent brand commitments apply.
+- **Voice:** Same casual, warm, cheeky tone. Poster copy should sound like a friend telling you about a cool thing, not a marketing department.
+- **Visual identity:** Thick black outlines (3px minimum, 5-6px for poster edges), hard offset shadows (zero blur), rotated stickers (±2–6°), chunky Bricolage Grotesque display type, warm cream paper texture. The anti-SaaS.
+- **The printed feel:** Posters must look like something you could hold. This is the distinguishing quality that separates a code-generated image from a screenshot. Hard shadows, rotation, dot texture, slightly irregular placement — all in service of the physical illusion.
+
+## Evidence on Hand
+
+- **Reference images:** 10 existing event graphics in `public/imagery/` spanning all four event categories. The Figma MCP image (1000×1000px, lavender/purple-dominant light mode) is the strongest example of the desired quality level.
+- **Parent design system:** Full DESIGN.md with 8 color tokens, 2 type roles, 5 radius steps, 13 components, 6 named rules.
+- **Live gallery:** `/imagery` route in the main app shows all existing images organized by category.
+- **Absences:** No automation pipeline exists yet. Images are currently created ad-hoc. No templates, no config-based generation.
+
+## Product Principles
+
+1. **It must feel printed.** Every poster should look like it could be pulled off a coffeeshop corkboard. Thick borders, hard shadows, slight rotations, paper texture — the physical illusion is the whole point.
+2. **Typography is the hero.** Posters are read, not scanned. The headline carries the composition. Body copy is short and punchy. Bricolage Grotesque at 80–200px is the dominant visual element.
+3. **One template, many events.** Configuring an event (title, date, speaker) should produce the poster. The system provides the composition; the content provides the variation.
+4. **Brand consistency is automatic.** Color, type, border, shadow — all tokens come from the parent system. A poster should never be off-brand because it can't be.
+5. **Code-first, not design-tool-first.** The authoring environment is a text editor. The design system must be expressed in tokens and components that map cleanly to HTML/CSS, not in Figma frame presets.
+
+## Accessibility & Inclusion
+
+The output is a raster image, so WCAG conformance does not directly apply. However:
+- Text contrast in both light and dark modes must meet WCAG AA thresholds (4.5:1 for body, 3:1 for large text) so the posters are readable on screen.
+- Alt text must accompany every generated image when published on the web.
+- Event details (date, time, price) must be text-forward, never conveyed by color alone.
