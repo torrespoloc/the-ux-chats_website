@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-06T00:00:00Z",
+  "title": "Design System: UX Chats",
+  "extensions": {
+    "colorMeta": {
+      "cream": {
+        "role": "neutral",
+        "displayName": "Cream",
+        "canonical": "#FBF3DD",
+        "tonalRamp": ["#FBF3DD", "#F9EFD3", "#F6E9C4", "#F2E0B0", "#EDD69A", "#E7CC84", "#E0C16E", "#D9B658"]
+      },
+      "cream-2": {
+        "role": "neutral",
+        "displayName": "Cream-2",
+        "canonical": "#F6E9C4",
+        "tonalRamp": ["#F6E9C4", "#F3E3B6", "#F0DDA8", "#ECD69A", "#E8CF8C", "#E3C87E", "#DEC170", "#D9B962"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1C1430",
+        "tonalRamp": ["#1C1430", "#2A2042", "#382C54", "#463866", "#544478", "#62508A", "#705C9C", "#7E68AE"]
+      },
+      "purple": {
+        "role": "primary",
+        "displayName": "Purple",
+        "canonical": "#6D28D9",
+        "tonalRamp": ["#3C1078", "#4C1D95", "#5D24B2", "#6D28D9", "#8040E0", "#9358E7", "#A670EE", "#B988F5"]
+      },
+      "purple-deep": {
+        "role": "primary",
+        "displayName": "Purple Deep",
+        "canonical": "#4C1D95",
+        "tonalRamp": ["#2E1060", "#3A1678", "#4C1D95", "#5E24B2", "#702BCF", "#8242DC", "#9459E3", "#A670EA"]
+      },
+      "yellow": {
+        "role": "primary",
+        "displayName": "Yellow",
+        "canonical": "#FFCB33",
+        "tonalRamp": ["#8B6A00", "#A88000", "#C59800", "#E2B000", "#FFCB33", "#FFD65C", "#FFE085", "#FFEBAD"]
+      },
+      "pink": {
+        "role": "secondary",
+        "displayName": "Pink",
+        "canonical": "#FF6FA5",
+        "tonalRamp": ["#8B2048", "#A82E5A", "#C53C6C", "#E24A7E", "#FF6FA5", "#FF8DB8", "#FFAACB", "#FFC7DE"]
+      },
+      "sky": {
+        "role": "secondary",
+        "displayName": "Sky",
+        "canonical": "#8ECBFF",
+        "tonalRamp": ["#1A5A8B", "#2E72A8", "#428AC5", "#56A2E2", "#8ECBFF", "#A8D7FF", "#C2E3FF", "#DCEFFF"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "All headings (h1, h2, h3), logo wordmark, card titles, sticker text, date blocks. Bricolage Grotesque at weight 800 only."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text, UI labels, form fields, meta text. Hanken Grotesk at weights 400–800, defaulting to 500."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-default",
+        "value": "6px 6px 0 var(--ink)",
+        "purpose": "Default structural shadow on cards, buttons, stickers, tags, polaroids, and game cards."
+      },
+      {
+        "name": "shadow-large",
+        "value": "10px 10px 0 var(--ink)",
+        "purpose": "Large shadow on hero cards (call window, event card), testimonial cards, CTA band elements."
+      },
+      {
+        "name": "shadow-hover",
+        "value": "8px 8px 0 var(--ink)",
+        "purpose": "Button hover state — shadow expands as the element lifts."
+      },
+      {
+        "name": "shadow-active",
+        "value": "2px 2px 0 var(--ink)",
+        "purpose": "Button active/press state — shadow compresses as the element is pressed flat."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-button",
+        "value": "cubic-bezier(0, 0, 1, 1) / 120ms",
+        "purpose": "Button hover/active transitions (transform, box-shadow). Fast and snappy."
+      },
+      {
+        "name": "ease-reveal",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1) / 600ms",
+        "purpose": "Scroll-triggered reveal animation for section content."
+      },
+      {
+        "name": "ease-menu",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1) / 350ms",
+        "purpose": "Mobile menu slide-down and opacity transition."
+      },
+      {
+        "name": "float-slow",
+        "value": "6–7s ease-in-out infinite",
+        "purpose": "Gentle floating animation on hero stickers. TranslateY ±10–12px."
+      },
+      {
+        "name": "scroll-marquee",
+        "value": "22s linear infinite",
+        "purpose": "Horizontal marquee scroll. Paused when prefers-reduced-motion is active."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "760px" },
+      { "name": "nav", "value": "860px" },
+      { "name": "lg", "value": "900px" },
+      { "name": "xl", "value": "960px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default purple button. Used for the nav Events CTA and general primary actions.",
+      "html": "<button class=\"ds-btn-primary\">EVENTS →</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 800; font-size: 18px; color: #ffffff; background: #6D28D9; border: 3px solid #1C1430; border-radius: 999px; padding: 12px 22px; box-shadow: 6px 6px 0 #1C1430; cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease; } .ds-btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #1C1430; } .ds-btn-primary:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #1C1430; }"
+    },
+    {
+      "name": "Yellow CTA Button",
+      "kind": "button",
+      "refersTo": "button-yellow",
+      "description": "Highest-attention yellow CTA. Used for the hero's main action and event RSVP buttons.",
+      "html": "<button class=\"ds-btn-yellow\">RSVP — FREE →</button>",
+      "css": ".ds-btn-yellow { display: inline-flex; align-items: center; gap: 8px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 800; font-size: 18px; color: #1C1430; background: #FFCB33; border: 3px solid #1C1430; border-radius: 999px; padding: 12px 22px; box-shadow: 6px 6px 0 #1C1430; cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease; } .ds-btn-yellow:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #1C1430; } .ds-btn-yellow:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #1C1430; }"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "White secondary button. Used alongside primary actions for lower-priority CTAs.",
+      "html": "<button class=\"ds-btn-line\">SEE ALL EVENTS</button>",
+      "css": ".ds-btn-line { display: inline-flex; align-items: center; gap: 8px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 800; font-size: 18px; color: #1C1430; background: #ffffff; border: 3px solid #1C1430; border-radius: 999px; padding: 12px 22px; box-shadow: 6px 6px 0 #1C1430; cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease; } .ds-btn-line:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #1C1430; } .ds-btn-line:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #1C1430; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag-default",
+      "description": "Square tag with colored border and hard shadow. Each tag has a slight random rotation.",
+      "html": "<span class=\"ds-tag\">#Students breaking in</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 800; font-size: 16px; line-height: 1; color: #1C1430; background: #ffffff; border: 3px solid #6D28D9; border-radius: 12px; padding: 8px; box-shadow: 6px 6px 0 #6D28D9; transform: rotate(-0.5deg); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Standard white card with thick border, large shadow, and hover lift. The default content container.",
+      "html": "<div class=\"ds-card\"><span class=\"ds-card-icon\">🎮</span><h3 class=\"ds-card-title\">Community Nights</h3><p class=\"ds-card-text\">Interactive UX games and challenges that spark creativity — and a lot of laughter. Always free — just show up.</p></div>",
+      "css": ".ds-card { position: relative; background: #ffffff; border: 3px solid #1C1430; border-radius: 22px; padding: 32px; box-shadow: 10px 10px 0 #1C1430; transition: transform 0.15s ease; } .ds-card:hover { transform: translateY(-4px); } .ds-card-icon { width: 56px; height: 56px; border: 3px solid #1C1430; border-radius: 14px; display: grid; place-items: center; font-size: 26px; background: #FFCB33; box-shadow: 4px 4px 0 #1C1430; margin-bottom: 22px; } .ds-card-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.01em; margin: 0 0 10px; color: #1C1430; } .ds-card-text { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 16px; font-weight: 500; line-height: 1.55; opacity: 0.92; margin: 0; color: #1C1430; }"
+    },
+    {
+      "name": "Purple Card",
+      "kind": "card",
+      "refersTo": "card-purple",
+      "description": "Purple variant card. Used sparingly — at most one per visible screen. Inverts text to cream.",
+      "html": "<div class=\"ds-card-purple\"><span class=\"ds-card-icon\">✦</span><h3 class=\"ds-card-title\">Special Guest Nights</h3><p class=\"ds-card-text\">UX mentors, psychologists, and creative minds share what you won't find on ChatGPT.</p></div>",
+      "css": ".ds-card-purple { position: relative; background: #6D28D9; border: 3px solid #1C1430; border-radius: 22px; padding: 32px; box-shadow: 10px 10px 0 #1C1430; transition: transform 0.15s ease; color: #FBF3DD; } .ds-card-purple:hover { transform: translateY(-4px); } .ds-card-purple .ds-card-icon { width: 56px; height: 56px; border: 3px solid #1C1430; border-radius: 14px; display: grid; place-items: center; font-size: 26px; background: #FFCB33; box-shadow: 4px 4px 0 #1C1430; margin-bottom: 22px; color: #1C1430; } .ds-card-purple .ds-card-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.01em; margin: 0 0 10px; color: #FBF3DD; } .ds-card-purple .ds-card-text { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 16px; font-weight: 500; line-height: 1.55; opacity: 0.92; margin: 0; color: #FBF3DD; }"
+    },
+    {
+      "name": "Event Date Block",
+      "kind": "custom",
+      "refersTo": "event-date-block",
+      "description": "Purple date display block on the left side of event cards. Shows month, day, and time stacked.",
+      "html": "<div class=\"ds-date-block\"><span class=\"ds-date-month\">AUG</span><span class=\"ds-date-day\">13</span><span class=\"ds-date-time\">6:00 PM PST</span></div>",
+      "css": ".ds-date-block { background: #6D28D9; border-radius: 18px 0 0 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 36px 20px; color: #ffffff; min-width: 180px; } .ds-date-month { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; } .ds-date-day { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 80px; line-height: 0.9; letter-spacing: -0.03em; } .ds-date-time { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 700; font-size: 13px; opacity: 0.8; margin-top: 6px; letter-spacing: 0.04em; }"
+    },
+    {
+      "name": "Testimonial Card",
+      "kind": "card",
+      "refersTo": "testimonial-card",
+      "description": "Rotated quote card with large opening quote mark, member text, and author avatar row.",
+      "html": "<div class=\"ds-testimonial\"><span class=\"ds-testimonial-quote\">\"</span><p class=\"ds-testimonial-text\">UX Chats is exactly what I needed — a place where I can actually be myself and talk shop with people who get it.</p><div class=\"ds-testimonial-author\"><div class=\"ds-testimonial-avatar\">JD</div><div><span class=\"ds-testimonial-name\">Jane D.</span><span class=\"ds-testimonial-role\">Product Designer</span></div></div></div>",
+      "css": ".ds-testimonial { position: relative; background: #ffffff; border: 3px solid #1C1430; border-radius: 22px; padding: 30px 32px; box-shadow: 10px 10px 0 #1C1430; display: flex; flex-direction: column; gap: 10px; transform: rotate(-1deg); transition: transform 0.15s ease; } .ds-testimonial:hover { transform: rotate(0deg) translateY(-5px); } .ds-testimonial-quote { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 54px; line-height: 0.6; color: #6D28D9; opacity: 0.2; user-select: none; margin-bottom: -8px; } .ds-testimonial-text { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 17px; font-weight: 500; line-height: 1.5; color: #1C1430; flex: 1; margin: 0; } .ds-testimonial-author { border-top: 2px solid #F6E9C4; padding-top: 16px; margin-top: auto; display: flex; align-items: center; gap: 14px; } .ds-testimonial-avatar { width: 44px; height: 44px; border: 3px solid #1C1430; border-radius: 50%; display: grid; place-items: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 16px; box-shadow: 4px 4px 0 #1C1430; background: #FFCB33; color: #1C1430; flex-shrink: 0; } .ds-testimonial-name { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px; display: block; line-height: 1.2; color: #1C1430; } .ds-testimonial-role { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6D28D9; font-weight: 700; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Form text input with thick border, rounded corners, and a focus state that lifts off the page.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" />",
+      "css": ".ds-input { width: 100%; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 500; font-size: 16px; padding: 12px 16px; border: 3px solid #1C1430; border-radius: 12px; background: #ffffff; color: #1C1430; outline: none; transition: box-shadow 0.12s ease, transform 0.12s ease; box-sizing: border-box; } .ds-input:focus { box-shadow: 6px 6px 0 #1C1430; transform: translate(-1px, -1px); } .ds-input::placeholder { color: #1C1430; opacity: 0.4; }"
+    },
+    {
+      "name": "Sticker Badge",
+      "kind": "custom",
+      "refersTo": "sticker-badge",
+      "description": "Small rotated pill badge that sits at the corner of cards. The system's most recognizable accent element.",
+      "html": "<span class=\"ds-sticker-badge\">NEXT UP →</span>",
+      "css": ".ds-sticker-badge { display: inline-block; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 15px; background: #FF6FA5; color: #ffffff; border: 3px solid #1C1430; border-radius: 999px; padding: 10px 20px; box-shadow: 6px 6px 0 #1C1430; transform: rotate(2deg); white-space: nowrap; }"
+    },
+    {
+      "name": "Badge",
+      "kind": "custom",
+      "refersTo": "badge",
+      "description": "Inline status/eyebrow pill with green dot. Used for live indicators and section labels.",
+      "html": "<span class=\"ds-badge\"><span class=\"ds-badge-dot\"></span>LIVE NOW</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 8px; background: #ffffff; border: 3px solid #1C1430; border-radius: 999px; padding: 8px 16px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; box-shadow: 4px 4px 0 #1C1430; transform: rotate(-2deg); color: #1C1430; } .ds-badge-dot { width: 9px; height: 9px; border-radius: 50%; background: #FF6FA5; border: 2px solid #1C1430; flex-shrink: 0; }"
+    },
+    {
+      "name": "Polaroid",
+      "kind": "custom",
+      "refersTo": "polaroid",
+      "description": "White-framed photo with caption, rotated a few degrees. Used for host photos and event snapshots.",
+      "html": "<div class=\"ds-polaroid\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect fill='%238ECBFF' width='120' height='120'/%3E%3Ctext x='60' y='68' text-anchor='middle' font-size='40'%3E📷%3C/text%3E%3C/svg%3E\" alt=\"Demo\" /><div class=\"ds-polaroid-cap\">the crew</div></div>",
+      "css": ".ds-polaroid { background: #ffffff; border: 3px solid #1C1430; box-shadow: 10px 10px 0 #1C1430; padding: 10px 10px 0; display: flex; flex-direction: column; transform: rotate(-3deg); max-width: 200px; } .ds-polaroid img { display: block; width: 100%; flex: 1 1 auto; min-height: 0; object-fit: cover; border-radius: 2px; } .ds-polaroid-cap { flex: none; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 14px; text-align: center; padding: 8px 4px 10px; color: #1C1430; }"
+    },
+    {
+      "name": "Imagery Tile",
+      "kind": "custom",
+      "refersTo": "imagery-item",
+      "description": "Square image tile in the event imagery gallery. Used on the /imagery page for browsing event graphics.",
+      "html": "<a class=\"ds-imagery-tile\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23F6E9C4' width='200' height='200'/%3E%3Ctext x='100' y='108' text-anchor='middle' font-size='50'%3E🖼%3C/text%3E%3C/svg%3E\" alt=\"Event graphic\" /><span class=\"ds-imagery-subcat\">Game Nights</span></a>",
+      "css": ".ds-imagery-tile { display: block; aspect-ratio: 1 / 1; border: 3px solid #1C1430; border-radius: 8px; overflow: hidden; box-shadow: 6px 6px 0 #1C1430; transition: transform 0.15s ease, box-shadow 0.15s ease; text-decoration: none; position: relative; } .ds-imagery-tile:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0 #1C1430; } .ds-imagery-tile img { width: 100%; height: 100%; object-fit: cover; display: block; } .ds-imagery-subcat { position: absolute; bottom: 8px; left: 8px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; background: #FFCB33; border: 2px solid #1C1430; border-radius: 999px; padding: 2px 10px; color: #1C1430; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Sticker Zine",
+    "overview": "UX Chats looks like something you'd find on a coffeeshop corkboard — a hand-assembled zine photocopied and stickered and passed around. It rejects both the glossy-dark startup aesthetic (glassmorphism, Inter, gradient everything) and sterile corporate minimalism (hairline borders, muted palettes, 'professional' restraint). This is a third thing: raw, tactile, made-by-someone.\n\nEvery surface feels like paper. Thick black outlines (3px, always) give every element the weight of a physical cutout. Hard offset shadows — zero blur radius, always — stack elements like layers of a collage, not like objects floating in digital space. Stickers rotate a few degrees and gently bob. The cream background has a faint dot texture, like newsprint held up to the light. Nothing feels rendered by a machine.\n\nThe system is deliberately coarse-grained. There are no 1px borders, no subtle drop-shadows, no 4px border-radius tokens. The smallest radius is 6px. The thinnest border is 2px (used sparingly). This is a design system that knows exactly what it rejects and leans all the way into its own language.",
+    "keyCharacteristics": [
+      "Thick 3px black outlines on every container, button, and card",
+      "Hard offset shadows with zero blur — 6px/6px default, 10px/10px large",
+      "Chunky Bricolage Grotesque display type at 800 weight with tight line-height (0.92)",
+      "Warm cream paper background (#FBF3DD) with subtle dot texture",
+      "Rotated elements (stickers, polaroids, testimonial cards) at 1–10° tilts",
+      "Pill-shaped buttons with press-translate interaction (2px lift on hover, 2px depress on active)",
+      "Alternating section backgrounds (cream → cream-2 → cream) for rhythm",
+      "Dark surfaces (ink background) invert stroke to cream for visibility"
+    ],
+    "rules": [
+      {
+        "name": "The One Stroke Rule",
+        "body": "Every border on the page is 3px solid. The only exception is the 2px variant on interior dividers (testimonial author separators, dot borders). Never 1px, never hairline.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark Surface Inversion Rule",
+        "body": "When a section background is ink (#1C1430), all strokes and shadows switch from ink to cream so outlines remain visible. This is handled by the [data-surface=\"dark\"] attribute.",
+        "section": "colors"
+      },
+      {
+        "name": "The Chunky Headline Rule",
+        "body": "Every heading uses Bricolage Grotesque at weight 800. No light weights, no regular weights, no mixing display families. Hanken Grotesk never headlines.",
+        "section": "typography"
+      },
+      {
+        "name": "The Zero-Blur Rule",
+        "body": "No shadow in this system ever has a blur radius. 0 is the only valid third parameter. Soft shadows are the visual language of SaaS; this is a zine.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Shadows appear on every card and container as a static collage property, not as a hover-only reveal. Movement (hover lift, press depress) changes the shadow offset, not its existence.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use 3px solid borders on every container, card, and button. The --line token exists so you never have to think about this.",
+      "Do use hard offset shadows (zero blur) for all depth. Default to --shadow (6px 6px), use --shadow-lg (10px 10px) for hero cards.",
+      "Do alternate section backgrounds between cream and cream-2 for visual rhythm.",
+      "Do use Bricolage Grotesque at weight 800 for all headings. Never lighter, never a different display face.",
+      "Do rotate stickers, polaroids, and testimonial cards by 1–10° to maintain the hand-assembled feel.",
+      "Do wrap new sections' content in .reveal for scroll-triggered entrance animation.",
+      "Do respect prefers-reduced-motion — disable float animations and reveals when the user requests reduced motion.",
+      "Do use the pill shape (999px radius) for buttons, badges, and accent labels. It's the system's most distinctive silhouette."
+    ],
+    "donts": [
+      "Don't use 1px borders, hairline rules, or borderless containers. If it's a container, it has a 3px outline.",
+      "Don't use soft/blurred shadows (box-shadow with a blur radius > 0). The zero-blur shadow is the system's single most defining rule.",
+      "Don't use gradient backgrounds, glassmorphism, or translucent overlays. The material is paper, not glass.",
+      "Don't use Inter, Roboto, Arial, or any neutralist sans-serif for display text. Bricolage Grotesque is the only display face.",
+      "Don't set body text below 14px or above 19px. The readable range is intentionally tight.",
+      "Don't add a dark mode. The cream paper background is the brand. This system doesn't invert.",
+      "Don't use the purple card variant on more than one card per visible screen. Its weight depends on scarcity."
+    ]
+  }
+}
