@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import "./index.css";
 import App from "./App.tsx";
 import BecomeAGuest from "./BecomeAGuest.tsx";
-import DesignSystem from "./DesignSystem.tsx";
+import Imagery from "./Imagery.tsx";
 
 // Reset scroll to the top on every route change so navigating between pages
 // lands at the top. Skipped when the URL has a hash (those scroll to a section).
@@ -24,7 +24,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/become-a-guest" element={<BecomeAGuest />} />
-        <Route path="/design-system" element={<DesignSystem />} />
+        <Route path="/library" element={<Imagery />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

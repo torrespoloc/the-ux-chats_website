@@ -1,4 +1,280 @@
-/* ── DS PAGE LAYOUT ── */
+/* ── TOP-LEVEL TABS ── */
+.top-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 24px 0;
+  margin: 0 auto;
+  max-width: 1120px;
+}
+
+.top-tab {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 2.4vw, 26px);
+  padding: 14px 36px;
+  border: var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+.top-tab:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.top-tab.active {
+  background: var(--purple);
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+}
+
+.top-tab.active:hover {
+  box-shadow: 12px 12px 0 var(--ink);
+}
+
+/* ── SUB-TABS ── */
+.sub-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 32px 24px 0;
+  margin: 0 auto;
+  max-width: 1120px;
+  border-bottom: var(--line);
+}
+
+.sub-tab {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 24px 14px;
+  background: none;
+  border: none;
+  color: var(--ink);
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  position: relative;
+}
+
+.sub-tab::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: var(--ink);
+  border-radius: 3px 3px 0 0;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.sub-tab:hover {
+  opacity: 0.8;
+}
+
+.sub-tab.active {
+  opacity: 1;
+}
+
+.sub-tab.active::after {
+  opacity: 1;
+}
+
+/* ── TAB CONTENT ── */
+.tab-content {
+  border-bottom: var(--line);
+}
+
+/* ── IMAGERY DESIGN SYSTEM SECTIONS ── */
+.ds-principle {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.ds-principle-num {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 0.92;
+  color: var(--purple);
+  flex-shrink: 0;
+  min-width: 48px;
+}
+
+.ds-principle p {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0;
+  padding-top: 4px;
+}
+
+.ds-prose {
+  max-width: 680px;
+}
+
+.ds-prose p {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.ds-prose p + p {
+  margin-top: 12px;
+}
+
+/* ── TABLE (design system data) ── */
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.ds-table thead {
+  border-bottom: var(--line);
+}
+
+.ds-table th {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--purple);
+  text-align: left;
+  padding: 10px 14px;
+}
+
+.ds-table td {
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--cream-2);
+  vertical-align: top;
+}
+
+.ds-table tbody tr:hover {
+  background: var(--cream-2);
+}
+
+.ds-table code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--cream-2);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ── COMPOSITION DIAGRAM ── */
+.ds-diagram {
+  background: #fff;
+  border: var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: pre;
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+/* ── DO / DON'T GRID ── */
+.ds-dodont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.ds-do,
+.ds-dont {
+  border: var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.ds-do {
+  background: #fff;
+}
+
+.ds-dont {
+  background: var(--cream-2);
+  opacity: 0.85;
+}
+
+.ds-do h4,
+.ds-dont h4 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+.ds-do ul,
+.ds-dont ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ds-do li,
+.ds-dont li {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding-left: 20px;
+  position: relative;
+}
+
+.ds-do li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+  color: var(--purple);
+}
+
+.ds-dont li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+  color: var(--pink);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .ds-swatches { grid-template-columns: 1fr 1fr; }
+  .ds-demos { grid-template-columns: 1fr; }
+  .type-specimen { flex-direction: column; gap: 4px; }
+  .type-specimen .meta { text-align: left; }
+  .top-tabs { gap: 10px; padding: 28px 16px 0; }
+  .top-tab { padding: 12px 24px; }
+  .sub-tabs { gap: 0; padding: 24px 16px 0; }
+  .sub-tab { font-size: 13px; padding: 8px 16px 12px; }
+  .ds-dodont { grid-template-columns: 1fr; }
+  .ds-principle { gap: 12px; }
+  .ds-principle-num { min-width: 36px; font-size: 24px; }
+  .ds-table { font-size: 13px; }
+  .ds-table th, .ds-table td { padding: 8px 10px; }
+}
 .ds-hero { padding: 80px 0 50px; text-align: center; border-bottom: var(--line); }
 .ds-hero .kicker { margin-bottom: 16px; }
 .ds-hero p { font-size: 17px; font-weight: 500; max-width: 560px; margin: 18px auto 0; opacity: .85; }
@@ -72,10 +348,326 @@
 .ds-organism > h3 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 17px; margin-bottom: 14px; }
 .ds-organism .ds-meta { margin-top: 12px; }
 
+/* ── IMAGERY GALLERY ── */
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  background: #fff;
+  border: var(--line);
+  border-radius: 999px;
+  padding: 9px 18px;
+  cursor: pointer;
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.filter-chip:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.filter-chip:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.filter-chip.active {
+  background: var(--purple);
+  color: #fff;
+}
+
+.filter-chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 0 6px;
+}
+
+.filter-chip.active .filter-chip-count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Category accordion */
+.imagery-category {
+  margin-bottom: 36px;
+}
+
+.imagery-category-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: #fff;
+  border: var(--line);
+  border-radius: 18px;
+  padding: 18px 24px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  font-family: inherit;
+  text-align: left;
+}
+
+.imagery-category-header:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.imagery-category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  background: var(--purple);
+  color: #fff;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  border-radius: 999px;
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+
+.imagery-category-chevron {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--ink);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.imagery-category-chevron.open {
+  transform: rotate(180deg);
+}
+
+.imagery-category-body {
+  padding: 20px 0 10px;
+}
+
+/* Subcategory legend chips */
+.imagery-subcategory-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.imagery-subcategory-chip {
+  display: inline-block;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--sky);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 4px 12px;
+  color: var(--ink);
+}
+
+/* Grid — fixed column width so every card is the same size regardless of count */
+.imagery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 280px));
+  gap: 24px;
+}
+
+/* Item wrapper (image + meta) */
+.imagery-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.imagery-item {
+  display: block;
+  aspect-ratio: 1 / 1;
+  border: var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+}
+
+.imagery-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+
+.imagery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* File name + subcategory under each image */
+.imagery-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 2px;
+}
+
+.imagery-item-subcat {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 2px 10px;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.imagery-item-filename {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── IMAGERY KIT COMPONENTS ── */
+
+/* TiltedTitle */
+.tilted-title {
+  display: inline-block;
+}
+
+.tilted-word {
+  text-wrap: balance;
+}
+
+/* TiltedBadge — floating poster sticker */
+.tilted-badge-float {
+  animation: badge-bob 5s ease-in-out infinite;
+}
+
+@keyframes badge-bob {
+  0%, 100% { transform: rotate(var(--rot, -4deg)) translateY(0); }
+  50% { transform: rotate(var(--rot, -4deg)) translateY(-6px); }
+}
+
+/* CurvedDivider */
+.curved-divider {
+  opacity: 0.85;
+}
+
+/* Squiggle underline */
+.squiggle-underline {
+  text-decoration: underline wavy var(--purple) 3px;
+  text-underline-offset: 6px;
+}
+
+/* DotCluster */
+.dot-cluster {
+  user-select: none;
+}
+
+/* Star accent */
+.star-accent {
+  user-select: none;
+}
+
+/* Partnership lockup */
+.partnership-lockup {
+  user-select: none;
+}
+
+/* ── IMAGERY DEMO CARDS ── */
+.imagery-demo-card {
+  background: #fff;
+  border: var(--line);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.imagery-demo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.imagery-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagery-poster-preview {
+  position: relative;
+  background: var(--cream);
+  border: 5px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--ink);
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagery-poster-preview.dark {
+  background: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.3);
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
   .ds-swatches { grid-template-columns: 1fr 1fr; }
   .ds-demos { grid-template-columns: 1fr; }
   .type-specimen { flex-direction: column; gap: 4px; }
   .type-specimen .meta { text-align: left; }
+  .top-tabs { gap: 10px; padding: 28px 16px 0; }
+  .top-tab { padding: 12px 24px; }
+  .sub-tabs { gap: 0; padding: 24px 16px 0; }
+  .sub-tab { font-size: 13px; padding: 8px 16px 12px; }
+  .ds-dodont { grid-template-columns: 1fr; }
+  .ds-principle { gap: 12px; }
+  .ds-principle-num { min-width: 36px; font-size: 24px; }
+  .ds-table { font-size: 13px; }
+  .ds-table th, .ds-table td { padding: 8px 10px; }
+  .imagery-poster-preview { max-width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilted-badge-float { animation: none !important; }
 }

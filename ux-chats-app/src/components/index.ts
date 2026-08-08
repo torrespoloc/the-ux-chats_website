@@ -34,3 +34,19 @@ export { Hero } from './Hero';
 export type { HeroProps } from './Hero';
 export { CTABand } from './CTABand';
 export type { CTABandProps } from './CTABand';
+
+/* imagery kit */
+export { TiltedTitle, SimpleTiltedTitle } from './TiltedTitle';
+export type { TiltedTitleProps, TiltedStrip, TiltedWord } from './TiltedTitle';
+export { TiltedBadge } from './TiltedBadge';
+export type { TiltedBadgeProps, TiltedBadgeColor, TiltedBadgeSize, TiltedBadgeShadow } from './TiltedBadge';
+export { CurvedDivider, SquiggleUnderline } from './CurvedDivider';
+export type { CurvedDividerProps, SquiggleUnderlineProps } from './CurvedDivider';
+export { DotCluster, Star } from './DotCluster';
+export type { DotClusterProps, StarProps } from './DotCluster';
+export { PartnershipLockup } from './PartnershipLockup';
+export type { PartnershipLockupProps } from './PartnershipLockup';
+export { HostPill } from './HostPill';
+export type { HostPillProps } from './HostPill';
+export { BackgroundBlob, Sparkle } from './BackgroundBlob';
+export type { BackgroundBlobProps, BlobVariant, SparkleProps } from './BackgroundBlob';
