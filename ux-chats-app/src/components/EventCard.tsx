@@ -23,7 +23,6 @@ interface EventCardData {
   imageHasDate?: boolean;
   tag: string;
   tagVariant?: "yellow" | "sky" | "pink" | "default";
-  entryTag?: string;
   title: string;
   description: ReactNode;
   meta?: MetaItem[];
@@ -46,7 +45,9 @@ export function EventCard({
   const sticker = isPast ? (
     <span className="next-up-sticker past">Past event</span>
   ) : (
-    <span className="next-up-sticker">Next up →</span>
+    <span className="next-up-sticker">
+      Next up · {data.month} {data.day} →
+    </span>
   );
 
   const dateBlock = (
@@ -72,12 +73,6 @@ export function EventCard({
       <div className={`next-up-card${isPast ? " past" : ""}`}>
         {dateBlock}
         <div className="next-up-body">
-          {data.entryTag && (
-            <span className="entry-tag">{data.entryTag}</span>
-          )}
-          <span className="date-tag">
-            {data.month} {data.day} · {data.time}
-          </span>
           <Tag
             variant={data.tagVariant ?? "yellow"}
             size="sm"

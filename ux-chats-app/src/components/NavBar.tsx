@@ -69,8 +69,7 @@ export function NavBar({ discordHref = "https://discord.com/invite/RamJrPZpYd" }
       <header className="nav">
         <div className="wrap nav-inner">
           <Link className="logo" to="/" onClick={handleTopNav("/")}>
-            <span className="mark"><img src="/img/logo.png" alt="UX Chats logo" /></span>
-            The UX Chats
+            <img className="mark" src="/img/ux-chats-horizontal-logo.svg" alt="UX Chats" />
           </Link>
           <nav className="nav-links">
             <button className="lk" style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", color: "inherit" }} onClick={() => handleHashNav("#host")}>Your Hosts</button>

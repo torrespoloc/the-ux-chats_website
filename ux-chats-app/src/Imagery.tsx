@@ -438,7 +438,6 @@ function WebsiteDesignSystem() {
             data={{
               month: "Jun", day: "17", time: "5:00 PM PST",
               tag: "Community Night · Online", tagVariant: "sky" as const,
-              entryTag: "premium event",
               title: "The UX Chats",
               description: "Games, conversations, and great company — our regular community night open to all.",
               meta: [
@@ -459,11 +458,11 @@ function WebsiteDesignSystem() {
             data={{
               month: "Jun", day: "03", time: "5:00 PM PST",
               tag: "Special Guest Night · Online",
-              entryTag: "free entry",
               title: "How to Use Claude Code to Design Multiple Products",
               description: "Hands-on look at designing with AI tools — ~40-min talk + open Q&A.",
               meta: [
                 { icon: "🕐", text: "5:00 PM PST" },
+                { icon: "🎟", text: "Free" },
                 { icon: "👥", text: "29 attended" },
               ],
               buttons: [{ label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const }],

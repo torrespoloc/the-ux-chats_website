@@ -105,8 +105,6 @@
 .next-up-tag { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 16px; box-shadow: none; }
 .entry-tag { position: absolute; top: 28px; right: 28px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; border: var(--line); border-radius: 999px; padding: 5px 14px; background: var(--ink); color: #fff; z-index: 2; }
 @media (max-width: 640px) { .entry-tag { top: 20px; right: 20px; font-size: 10px; padding: 4px 12px; } }
-.date-tag { position: absolute; bottom: 28px; right: 28px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .1em; border: var(--line); border-radius: 999px; padding: 6px 16px; background: var(--purple); color: #fff; z-index: 2; }
-@media (max-width: 640px) { .date-tag { position: static; display: inline-block; margin-top: 14px; bottom: auto; right: auto; font-size: 12px; padding: 5px 14px; } }
 .next-up-body h3 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(22px, 2.8vw, 34px); letter-spacing: -0.02em; line-height: 1.05; margin: 14px 0 12px; }
 .next-up-body .desc { font-size: 16px; font-weight: 500; line-height: 1.55; opacity: .88; max-width: 600px; }
 .next-up-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 14px; font-weight: 700; opacity: .75; }
