@@ -274,8 +274,8 @@ function App() {
       <section className="host" id="host">
         <div className="wrap">
           <div className="host-head reveal">
-            <span className="kicker">Meet your hosts</span>
-            <h2 className="display sec">Two humans who<br />hate stiff intros.</h2>
+            <span className="kicker">Meet your host</span>
+            <h2 className="display sec">One human who<br />hates stiff intros.</h2>
           </div>
           <div className="founders">
 
@@ -303,27 +303,6 @@ function App() {
                     <img src="/img/mentor-logo.png" alt="ADPList" className="mentor-logo" />
                     Schedule ADPList session
                   </Button>
-                </div>
-              </div>
-            </div>
-
-            <div className="founder rev reveal">
-              <div className="host-photo">
-                <img src="/img/host-romit.jpg" alt="Romit, co-founder of UX Chats" />
-                <div className="cap">Romit<small>Co-founder</small></div>
-              </div>
-              <div className="host-body">
-                <h3 className="display" style={{ fontSize: "clamp(30px,4vw,46px)" }}>Hey, I'm Romit 👋</h3>
-                <p>I've been in UX for a decade. Started as a founding designer, built products at healthcare SaaS companies, published research, and somewhere along the way realized the design community was full of brilliant people who rarely got to just… talk.</p>
-                <p>Jacki was already creating that space. I joined her to help it grow.</p>
-                <div className="host-quote"><div className="big">UX Chats is what I wish had existed when I started.</div></div>
-                <p>No panels. No personal-brand pitching. Just designers at every stage of their journey getting together every two weeks to share where they are, laugh a little, and actually connect.</p>
-                <div className="host-tags">
-                  <Tag variant="sky">CS background</Tag>
-                  <Tag variant="pink">Healthcare SaaS</Tag>
-                  <Tag variant="yellow">Published at ACM &amp; IEEE</Tag>
-                  <Tag variant="sky">Founding designer energy</Tag>
-                  <Tag variant="pink">Based in NJ</Tag>
                 </div>
               </div>
             </div>
