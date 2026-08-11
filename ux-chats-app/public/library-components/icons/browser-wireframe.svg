@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Browser chrome with wireframe content (image placeholder + text lines) and a cursor -->
+  <g fill="none" stroke="var(--icon-color, #1C1430)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="10" width="84" height="70" rx="6" />
+    <line x1="8" y1="26" x2="92" y2="26" />
+    <circle cx="18" cy="18" r="2.2" fill="var(--icon-color, #1C1430)" stroke="none" />
+    <circle cx="26" cy="18" r="2.2" fill="var(--icon-color, #1C1430)" stroke="none" />
+    <circle cx="34" cy="18" r="2.2" fill="var(--icon-color, #1C1430)" stroke="none" />
+    <rect x="16" y="34" width="34" height="30" rx="2" />
+    <line x1="16" y1="34" x2="50" y2="64" />
+    <line x1="50" y1="34" x2="16" y2="64" />
+    <line x1="58" y1="38" x2="86" y2="38" />
+    <line x1="58" y1="46" x2="86" y2="46" />
+    <line x1="58" y1="54" x2="78" y2="54" />
+    <rect x="58" y="60" width="20" height="8" rx="2" fill="var(--accent-color, #FF5A1F)" stroke="none" />
+  </g>
+  <path d="M60 72 L78 88 L71 90 L75 96 L70 98 L66 92 L61 96 Z" fill="var(--icon-color, #1C1430)" stroke="var(--icon-color, #1C1430)" stroke-width="1.5" stroke-linejoin="round" />
+</svg>

@@ -3,3 +3,4 @@
 .env*.local
 outputs/
 _media/
+.venv-imagery/

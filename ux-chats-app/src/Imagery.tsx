@@ -50,9 +50,10 @@ const CATEGORIES: Category[] = [
       { src: "/library/sg--carl.png", alt: "Special guest Carl", subcategory: "Talks" },
       { src: "/library/sg--what-recruiters-really-think.png", alt: "What Recruiters Really Think with Carl Wheatley", subcategory: "Talks" },
       { src: "/library/x--team-uxchats.png", alt: "Team TUXChats event poster", subcategory: "Talks" },
-      { src: "/library/sg--john-designer-to-ai-builder-light.png", alt: "John Rodrigues — From Designer to AI Builder (light)", subcategory: "Talks" },
-      { src: "/library/sg--john-designer-to-ai-builder-dark.png", alt: "John Rodrigues — From Designer to AI Builder (dark)", subcategory: "Talks" },
       { src: "/library/sg--john-sp.png", alt: "John Rodrigues — Special Guest Night poster", subcategory: "Talks" },
+      { src: "/library/sg--earl-case-study-light.png", alt: "Earl Friedberg — The Perfect Case Study (light)", subcategory: "Talks" },
+      { src: "/library/sg--earl-case-study-dark.png", alt: "Earl Friedberg — The Perfect Case Study (dark)", subcategory: "Talks" },
+      { src: "/library/sg--mrinali-kamath.png", alt: "Mrinali Kamath — Design Engineering: the new role to hire for?", subcategory: "Talks" },
     ],
   },
   {
@@ -60,6 +61,8 @@ const CATEGORIES: Category[] = [
     label: "Headshots",
     images: [
       { src: "/library/headshot_john-rodrigues.jpeg", alt: "John Rodrigues headshot" },
+      { src: "/library/headshot_earl-friedberg.png", alt: "Earl Friedberg headshot" },
+      { src: "/library/headshot_mrinali-kamath.png", alt: "Mrinali Kamath headshot" },
     ],
   },
   {
@@ -109,7 +112,7 @@ const IMAGERY_COLORS = [
   { token: "--cream", hex: "#FBF3DD", role: "Light-mode canvas background" },
   { token: "--cream-2", hex: "#F6E9C4", role: "Light-mode secondary fields, sticker fills" },
   { token: "--ink", hex: "#1C1430", role: "All text on light, dark-mode canvas, all borders" },
-  { token: "--purple", hex: "#6D28D9", role: "Date badges, title accents, dark-mode fields" },
+  { token: "--purple", hex: "#6D28D9", role: "Title accents, dark-mode light-source fields" },
   { token: "--purple-deep", hex: "#4C1D95", role: "Dark-mode background fields, shadow on purple" },
   { token: "--yellow", hex: "#FFCB33", role: "Primary CTA fill, accent stickers, dark-mode highlights" },
   { token: "--pink", hex: "#FF6FA5", role: "Sticker accent, speaker name highlights" },
@@ -151,6 +154,56 @@ const IMAGERY_SPACING = [
   { token: "--ps-gap-sm", value: "20px", usage: "Gap within a zone (e.g., date and time)" },
   { token: "--ps-gap-lg", value: "80px", usage: "Large breathing room (between title and details)" },
   { token: "--ps-sticker-offset", value: "-12px", usage: "How far a sticker overhangs its anchor element" },
+];
+
+// Mirrors imagery-system/library/manifest.json — keep both in sync when adding
+// or editing a component. Duplicated here (rather than imported) to match this
+// file's existing pattern of hardcoded design-system data arrays.
+const LIBRARY_COMPONENTS = [
+  {
+    name: "pen-nib",
+    file: "/library-components/icons/pen-nib.svg",
+    description: "Vector pen-tool nib with anchor points and bezier handles — a design-tool motif.",
+    tags: ["design-tool", "case-study", "ux-process"],
+    size: "180–260px on a 2000px poster canvas",
+  },
+  {
+    name: "browser-wireframe",
+    file: "/library-components/icons/browser-wireframe.svg",
+    description: "Browser chrome with wireframe content (image placeholder, text lines, a CTA bar) and a cursor.",
+    tags: ["design-tool", "case-study", "ux-process", "product"],
+    size: "220–320px on a 2000px poster canvas",
+  },
+  {
+    name: "ai-chip",
+    file: "/library-components/icons/ai-chip.svg",
+    description: "Rounded chip with circuit-leg pins and a baked-in 'AI' label.",
+    tags: ["ai", "tech", "future-of-design"],
+    size: "140–200px on a 2000px poster canvas",
+  },
+  {
+    name: "calendar",
+    file: "/library-components/icons/calendar.svg",
+    description: "Simple grid calendar with binding rings.",
+    tags: ["date", "logistics"],
+    size: "100–160px",
+    deprecated: "Never add date/time badges to poster images (date/time go in social copy instead) — confirm before using this for anything beyond a non-literal 'scheduling' motif.",
+  },
+  {
+    name: "star-burst",
+    file: "/library-components/icons/star-burst.svg",
+    description: "Two-point sparkle/star cluster (one large, one small).",
+    tags: ["special-guest-night", "sparkle"],
+    size: "40–100px, scattered 2–3x per poster in empty corners",
+    restriction: "Special Guest Night posters with a real speaker headshot only. The parent 'no stars' rule still governs every other poster type.",
+  },
+  {
+    name: "curved-arrow",
+    file: "/library-components/icons/curved-arrow.svg",
+    description: "Hand-drawn curved annotation arrow, pointing from a label toward the element it references.",
+    tags: ["annotation", "general"],
+    size: "120–260px depending on the distance it needs to span",
+  },
 ];
 
 const IMAGERY_PRINCIPLES = [
@@ -385,7 +438,7 @@ function WebsiteDesignSystem() {
             data={{
               month: "Jun", day: "17", time: "5:00 PM PST",
               tag: "Community Night · Online", tagVariant: "sky" as const,
-              entryTag: "paid event",
+              entryTag: "premium event",
               title: "The UX Chats",
               description: "Games, conversations, and great company — our regular community night open to all.",
               meta: [
@@ -406,7 +459,7 @@ function WebsiteDesignSystem() {
             data={{
               month: "Jun", day: "03", time: "5:00 PM PST",
               tag: "Special Guest Night · Online",
-              entryTag: "free event",
+              entryTag: "free entry",
               title: "How to Use Claude Code to Design Multiple Products",
               description: "Hands-on look at designing with AI tools — ~40-min talk + open Q&A.",
               meta: [
@@ -812,15 +865,14 @@ function ImageryDesignSystem() {
           {/* Poster Canvas */}
           <div className="ds-recipe">
             <h3 className="display">Poster Canvas</h3>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center" }}>
-              <div style={{ width: 120, height: 120, background: "var(--cream)", border: "5px solid var(--ink)", boxShadow: "8px 8px 0 var(--ink)", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ fontFamily: '"Bricolage Grotesque"', fontWeight: 800, fontSize: 10, opacity: 0.5 }}>Light</span>
-              </div>
-              <div style={{ width: 120, height: 120, background: "var(--ink)", border: "5px solid var(--ink)", boxShadow: "8px 8px 0 rgba(0,0,0,0.3)", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ fontFamily: '"Bricolage Grotesque"', fontWeight: 800, fontSize: 10, color: "var(--cream)", opacity: 0.6 }}>Dark</span>
-              </div>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+              {["1:1", "4:5", "9:16", "6:1"].map((ratio) => (
+                <div key={ratio} style={{ width: 64, height: 64, border: "3px dashed var(--ink)", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.6 }}>
+                  <span style={{ fontFamily: '"Hanken Grotesk"', fontWeight: 700, fontSize: 11 }}>{ratio}</span>
+                </div>
+              ))}
             </div>
-            <p className="ds-meta">Light: cream + 5px ink border + 14px shadow · Dark: ink + 5px border + rgba shadow · 64px inner padding</p>
+            <p className="ds-meta">Canvas = the raster output's dimensions/aspect ratio only, per the platform table (Instagram, LinkedIn, story, banner). Background color and mode are chosen per-poster, not fixed to cream/ink — pastels and saturated colors are allowed as long as one accent stays intentional. There's no separate outer frame/shadow wrapped around the whole canvas the way earlier drafts of this doc implied; the generated image itself is the poster.</p>
           </div>
 
           {/* Title Block */}
@@ -834,22 +886,6 @@ function ImageryDesignSystem() {
               ]}
             />
             <p className="ds-meta">Each word on its own colored strip · independently rotated · negative-margin overlap · Bricolage 800 · matches Figma reference design</p>
-          </div>
-
-          {/* Date Badge */}
-          <div className="ds-recipe">
-            <h3 className="display">Date Badge</h3>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
-              <div style={{ background: "var(--purple)", color: "#fff", borderRadius: 16, padding: "14px 24px", boxShadow: "6px 6px 0 var(--ink)", fontFamily: '"Bricolage Grotesque"', fontWeight: 800, fontSize: 28, lineHeight: 0.92, textAlign: "center" }}>
-                AUG 13
-                <div style={{ fontFamily: '"Hanken Grotesk"', fontWeight: 700, fontSize: 14, opacity: 0.85, marginTop: 2 }}>5:00 PM PST</div>
-              </div>
-              <div style={{ background: "var(--yellow)", color: "var(--ink)", borderRadius: 16, padding: "14px 24px", boxShadow: "6px 6px 0 var(--ink)", fontFamily: '"Bricolage Grotesque"', fontWeight: 800, fontSize: 28, lineHeight: 0.92, textAlign: "center" }}>
-                AUG 13
-                <div style={{ fontFamily: '"Hanken Grotesk"', fontWeight: 700, fontSize: 14, opacity: 0.7, marginTop: 2 }}>5:00 PM PST</div>
-              </div>
-            </div>
-            <p className="ds-meta">Purple (light mode) or yellow (dark mode) · 16px radius · hard shadow · Bricolage day + Hanken time</p>
           </div>
 
           {/* Speaker Block */}
@@ -930,6 +966,36 @@ function ImageryDesignSystem() {
         </div>
       </Section>
 
+      {/* Component Library */}
+      <Section>
+        <h2 className="display sec">Component Library</h2>
+        <p className="lead" style={{ maxWidth: 640, marginBottom: 28 }}>
+          Reusable, hand-authored SVG illustrations — never AI-generated — cataloged so posters can composite
+          them in by name instead of a model redrawing them slightly differently every time. Full catalog:{" "}
+          <code>imagery-system/library/manifest.json</code>. See{" "}
+          <code>imagery-system/library/README.md</code> for how to add a new one or rasterize an existing one
+          for Path 2b compositing.
+        </p>
+        <div className="ds-recipes">
+          {LIBRARY_COMPONENTS.map((c) => (
+            <div className="ds-recipe" key={c.name}>
+              <h3 className="display">{c.name}</h3>
+              <div style={{ display: "flex", justifyContent: "center", padding: "8px 0" }}>
+                <img src={c.file} alt={c.name} width={72} height={72} style={{ display: "block" }} />
+              </div>
+              <p className="ds-meta">{c.description}</p>
+              <p className="ds-meta" style={{ opacity: 0.6 }}>{c.tags.join(" · ")} · {c.size}</p>
+              {c.restriction && (
+                <p className="ds-meta" style={{ color: "var(--purple)" }}>⚠ {c.restriction}</p>
+              )}
+              {c.deprecated && (
+                <p className="ds-meta" style={{ color: "var(--purple)" }}>⚠ Deprecated: {c.deprecated}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </Section>
+
       {/* Live Poster Previews */}
       <Section>
         <h2 className="display sec">Live Previews</h2>
@@ -1004,8 +1070,7 @@ function ImageryDesignSystem() {
             />
 
             <div className="imagery-demo-row" style={{ marginTop: 14 }}>
-              <TiltedBadge color="yellow" rotation={-3} size="sm">Aug 13</TiltedBadge>
-              <TiltedBadge color="sky" rotation={2} size="sm">5PM PST</TiltedBadge>
+              <TiltedBadge color="sky" rotation={2} size="sm">Bring snacks</TiltedBadge>
               <DotCluster colors={["var(--pink)", "var(--yellow)"]} count={3} size={10} />
             </div>
             <div style={{ marginTop: 14 }}>
@@ -1079,7 +1144,7 @@ function ImageryDesignSystem() {
 │  TITLE          │          │       │
 │  TITLE          │  SPEAKER │       │
 │                 │  PHOTO   │       │
-│  [Date Badge]   │          │       │
+│                 │          │       │
 │                 └──────────┘       │
 │  Description text here.           │
 │                                    │
@@ -1087,7 +1152,7 @@ function ImageryDesignSystem() {
 └────────────────────────────────────┘`}</div>
 
         <h3 className="display" style={{ fontSize: "clamp(16px,2vw,20px)", marginBottom: 12 }}>Pattern B: Event-Feature (Light Mode)</h3>
-        <p className="ds-meta" style={{ marginBottom: 12 }}>For Community Nights and free events where the activity is the draw.</p>
+        <p className="ds-meta" style={{ marginBottom: 12 }}>For Community Nights and free entrys where the activity is the draw.</p>
         <div className="ds-diagram">{`┌────────────────────────────────────┐
 │  [Sticker: Free]  [Sticker: Aug 13]│
 │                                    │
@@ -1099,7 +1164,7 @@ function ImageryDesignSystem() {
 │  │  1   │  │  2   │  │  3   │     │
 │  └──────┘  └──────┘  └──────┘     │
 │                                    │
-│  [Date]  [Time]  [Free]            │
+│  [Sticker: Free]                   │
 │                                    │
 │           [Grab a Spot →]          │
 └────────────────────────────────────┘`}</div>

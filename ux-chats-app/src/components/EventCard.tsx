@@ -18,6 +18,9 @@ interface EventCardData {
   month: string;
   day: string;
   time: string;
+  image?: string;
+  /** Set when the image artwork already bakes in its own date/time badge. */
+  imageHasDate?: boolean;
   tag: string;
   tagVariant?: "yellow" | "sky" | "pink" | "default";
   entryTag?: string;
@@ -47,10 +50,19 @@ export function EventCard({
   );
 
   const dateBlock = (
-    <div className={`next-up-date${isPast ? " past" : ""}`}>
-      <span className="month">{data.month}</span>
-      <span className="day">{data.day}</span>
-      <span className="time">{data.time}</span>
+    <div
+      className={`next-up-date${isPast ? " past" : ""}${data.image ? " has-image" : ""}`}
+    >
+      {data.image && (
+        <img className="next-up-date-img" src={data.image} alt="" />
+      )}
+      {!(data.image && data.imageHasDate) && (
+        <div className="next-up-date-stamp">
+          <span className="month">{data.month}</span>
+          <span className="day">{data.day}</span>
+          <span className="time">{data.time}</span>
+        </div>
+      )}
     </div>
   );
 
@@ -63,6 +75,9 @@ export function EventCard({
           {data.entryTag && (
             <span className="entry-tag">{data.entryTag}</span>
           )}
+          <span className="date-tag">
+            {data.month} {data.day} · {data.time}
+          </span>
           <Tag
             variant={data.tagVariant ?? "yellow"}
             size="sm"

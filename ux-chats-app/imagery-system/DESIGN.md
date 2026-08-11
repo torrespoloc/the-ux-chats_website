@@ -11,6 +11,7 @@ colors:
   yellow: "#FFCB33"
   pink: "#FF6FA5"
   sky: "#8ECBFF"
+  accent-orange: "#FF5A1F"
 typography:
   display:
     fontFamily: "Bricolage Grotesque, sans-serif"
@@ -56,15 +57,20 @@ components:
     fontSize: "100px–180px"
     lineHeight: 0.88
     letterSpacing: "-0.03em"
-  poster-date-badge:
-    backgroundColor: "{colors.purple}"
-    textColor: "#ffffff"
-    rounded: "{rounded.md}"
-    padding: "20px 32px"
   poster-speaker-photo:
     border: "4px solid {colors.ink}"
     rounded: "{rounded.md}"
     boxShadow: "10px 10px 0 {colors.ink}"
+    sizing: "large — a lead visual element (600-900px on a 2000px canvas), not a small inset"
+    source: "existing approved headshot only — search public/library/ before ever generating one"
+    aspectRatio: "preserve source exactly — never stretch or squash"
+  poster-logo:
+    asset: "ux-chats-app/public/img/logo.png"
+    rule: "composite the exact asset — never redrawn, restyled, or recolored by an image model"
+    position: "top-left by default; move only for a format's safe-margin needs"
+    border: "optional white outline"
+    boxShadow: "6px 6px 0 {colors.ink} (subtle)"
+    rotation: "none"
   poster-sticker:
     border: "3px solid {colors.ink}"
     rounded: "{rounded.sm}"
@@ -120,11 +126,14 @@ The imagery system uses the identical 8-color palette from the parent brand. Pos
 | `--cream` | `#FBF3DD` | Light-mode canvas background |
 | `--cream-2` | `#F6E9C4` | Light-mode secondary fields, sticker fills |
 | `--ink` | `#1C1430` | All text on light backgrounds, dark-mode canvas background, all borders |
-| `--purple` | `#6D28D9` | Date badges, title accents, dark-mode light-source fields |
+| `--purple` | `#6D28D9` | Title accents, dark-mode light-source fields |
 | `--purple-deep` | `#4C1D95` | Dark-mode background fields, shadow on purple elements |
-| `--yellow` | `#FFCB33` | Primary CTA fill, accent stickers, dark-mode text highlights |
-| `--pink` | `#FF6FA5` | Sticker accent, speaker name highlights, decorative dots |
-| `--sky` | `#8ECBFF` | Sticker accent, secondary info badges, dark-mode link color |
+| `--yellow` | `#FFCB33` | Alternate single accent (CTA fill, one headline word, one sticker) |
+| `--accent-orange` | `#FF5A1F` | **Preferred single accent** — CTA fill, one headline word, one sticker |
+| `--pink` | `#FF6FA5` | Rare exception accent only — not a default |
+| `--sky` | `#8ECBFF` | Rare exception accent only — not a default |
+
+**v2 rule:** pick exactly one accent per poster — orange preferred, yellow as the alternate. Never combine yellow + pink + sky as equal accents on the same canvas.
 
 ### Light Mode vs. Dark Mode
 
@@ -132,7 +141,9 @@ Two poster modes, determined by the canvas background:
 
 **Light Mode** (cream/cream-2 background): Used for Community Nights, partnerships, general announcements. Feels warm, open, daytime. Ink text on cream. Purple and yellow are the primary accents. Photos use polaroid-style white frames.
 
-**Dark Mode** (ink background): Used for Special Guest Nights, workshops, game nights. Feels dramatic, evening, premium. Cream/white text on ink. Yellow, pink, and sky accents pop vividly against the dark background — use them as glowing sticker elements. Photos can use no frame or a thin cream border.
+**Dark Mode** (ink background): Used for Game Nights, headshot-free Workshops, general premium/evening-feel announcements. Feels dramatic, evening, premium. Cream/white text on ink. Yellow, pink, and sky accents pop vividly against the dark background — use them as glowing sticker elements. Photos can use no frame or a thin cream border.
+
+**Guest Collage** (see "Special Guest Night Visual Identity" below): the default for Special Guest Nights and any Workshop with a real speaker headshot — a third mode, not a Dark Mode variant.
 
 Never mix modes within a single poster. The canvas color sets the mode; all elements adapt.
 
@@ -206,7 +217,7 @@ A poster canvas divides into zones. Not every zone is used in every poster, but 
 │  │                        │  │
 │  │  TITLE ZONE            │  │  ← hero headline, 2-3 lines
 │  │                        │  │
-│  │  DETAILS ZONE          │  │  ← date, time, speaker, price
+│  │  DETAILS ZONE          │  │  ← speaker, price (never date/time — see Do/Don't)
 │  │                        │  │
 │  │  IMAGE ZONE            │  │  ← speaker photo, event photo
 │  │                        │  │
@@ -246,11 +257,12 @@ Elements with shadows should never overlap another element's shadow in a way tha
 
 ### Poster Canvas
 
-The outermost container. Two variants:
+**Adjusted — this no longer describes a fixed, code-rendered container.** Posters are generated (Vertex AI / OpenAI / Path 2b composite), not rendered from an HTML/CSS template with a literal outer frame — so "Poster Canvas" now means the output's *dimensions and aspect ratio*, not a bordered div.
 
-**Light Canvas:** `background: #FBF3DD`, `border: 5px solid #1C1430`, `box-shadow: 14px 14px 0 #1C1430`. Background has a subtle 1px dot texture (same as the website's `.dots` pattern, scaled for poster resolution). Inner padding: 64px.
-
-**Dark Canvas:** `background: #1C1430`, `border: 5px solid #1C1430` (border still visible against the page background the poster sits on), `box-shadow: 14px 14px 0 rgba(0,0,0,0.3)` — shadow softens slightly on dark mode since ink-on-ink shadow is invisible. Inner padding: 64px. No dot texture on dark canvases (it doesn't read).
+- **Size/aspect ratio:** picked from the platform table (Instagram square, story, LinkedIn, banner, etc. — see Layout & Spacing below), not a fixed 2000×2000 default.
+- **Background color and mode:** chosen per-poster, not locked to `--cream`/`--ink`. Pastels and saturated colors beyond the base 8-token palette are allowed — pick what fits the sub-identity (e.g. the blue-primary Special Guest Night direction) as long as the poster still reads as one deliberate, non-rainbow composition.
+- **No separate outer frame.** There is no independently-drawn 5px border + 14px shadow wrapped around the whole canvas — the generated image *is* the poster. If a specific poster's visual language calls for an edge treatment (a border, a corner texture), it's part of that poster's own composition, not a global canvas component applied on top.
+- **The logo still anchors every poster.** `poster-logo` (the official asset at `ux-chats-app/public/img/logo.png`) is composited top-left by default regardless of canvas size or color — see the Logo component below.
 
 ### Title Block
 
@@ -259,7 +271,7 @@ The event title set in Bricolage Grotesque 800. This is the most important eleme
 - **Size:** 100–180px depending on title length. Short titles (2–4 words) go larger. Long titles (5–8 words) go smaller and may split across more lines.
 - **Color:** Ink on light mode; cream on dark mode.
 - **Alignment:** Left-aligned by default. Centered for single-line short titles. Never right-aligned.
-- **Accent:** A single word or phrase can be colored (purple on light, yellow on dark) for emphasis. Never color more than 30% of the title.
+- **Accent:** A single word or phrase can be colored in the poster's one chosen accent (orange preferred, yellow as the alternate) for emphasis. Never color more than 30% of the title, and never use more than one accent color on a single poster.
 - **Line breaks:** Manual `<br>` at semantic breaks. Use a `<span>` with `display: block` and a smaller font-size for subtitle lines.
 
 Markup pattern:
@@ -271,25 +283,18 @@ Markup pattern:
 </h1>
 ```
 
-### Date Badge
-
-A purple block (or dark-mode variant) displaying the event date and time prominently.
-
-- **Light mode:** `background: #6D28D9`, `color: white`, `border-radius: 16px`, `padding: 20px 32px`, `box-shadow: 8px 8px 0 #1C1430`.
-- **Dark mode:** `background: #FFCB33`, `color: #1C1430`, same dimensions.
-- **Content:** Day + date on one line (Bricolage 800, 48px), time + timezone below (Hanken Grotesk 700, 22px).
-- **Position:** Typically top-right or integrated into the title zone.
-
 ### Speaker Block
 
 Displays the guest speaker's photo and name. Two layout variants:
 
-**Horizontal:** Photo on the left (polaroid frame), name + role on the right. Used when the speaker is the primary draw (Special Guest Nights).
+**Horizontal:** Photo on the left (cutout, no frame or polaroid), name + role on the right. Used when the speaker is the primary draw (Special Guest Nights).
 
 **Stacked:** Photo above, name below, centered. Used for host photos or secondary speakers.
 
-- Photo frame: 4px solid ink border, 16px border-radius, 10px hard shadow. Optional 2–4° rotation.
-- Photo dimensions: 300–500px square (adjustable).
+- **Before rendering this block, search `public/library/` for `headshot_<first>-<last>.*`.** Use the existing approved photo if one exists — never generate a synthetic face for a named speaker. If none exists, flag it explicitly rather than silently substituting a generated portrait.
+- Photo frame: 4px solid ink (or white on dark canvas) border, 16px border-radius, 10px hard shadow. Optional 2–4° rotation.
+- Photo dimensions: **600–900px** on a 2000px canvas — large and prominent, a lead visual element, not a small inset. Scale proportionally for smaller canvas sizes.
+- Aspect ratio: always match the source photo exactly. Never stretch or squash.
 - Speaker name: Hanken Grotesk 700, 36–52px.
 - Speaker role/title: Hanken Grotesk 500, 20–24px, in a muted tone (purple on light, sky on dark).
 
@@ -301,7 +306,7 @@ Rotated accent badges that add the "zine" feel. Stickers contain short text (1�
 - **Fill options:** Yellow (`#FFCB33`), Pink (`#FF6FA5`), Sky (`#8ECBFF`), Cream (`#FBF3DD`), or White for light mode; Yellow, Pink, Sky, or Purple for dark mode.
 - **Text:** Bricolage Grotesque 800, 16–22px, tightly tracked. Always short: "Free," "Aug 13," "New," "Game Night."
 - **Rotation:** Random ±2° to ±6°. Determined by a seed derived from the sticker text so the same sticker always lands at the same angle.
-- **Position:** Stickers can be placed anywhere in the composition. Common placements: top-left corner (overhanging the border frame), attached to the date badge, next to the speaker photo. At least one sticker should overhang the outer frame or another element — this is key to the "physical collage" illusion.
+- **Position:** Stickers can be placed anywhere in the composition. Common placements: top-left corner, next to the speaker photo, near the title block. At least one sticker should overhang another element — this is key to the "physical collage" illusion.
 - **Never:** rotate a sticker past 8° or it looks broken. Never place a sticker fully inside the margins — at least one edge should touch or cross a border.
 
 ### Photo / Polaroid
@@ -314,6 +319,15 @@ A photo element with the signature polaroid treatment.
 - **Rotation:** ±2° to ±4°.
 - **Dark mode variant:** Reduce the white frame to 4px (it can look harsh against ink). Alternatively, use no frame and just the image with a 3px ink border.
 
+### Logo
+
+The official UX Chats mark, composited exactly as provided — never redrawn, restyled, or recolored by an image model.
+
+- **Asset:** `ux-chats-app/public/img/logo.png` (200×200px source).
+- **Position:** Top-left corner of the header zone by default. Only nudge for a format's safe-margin needs (e.g. a 6:1 LinkedIn banner) — note the reason when you do.
+- **Treatment:** Optional white outline, subtle `6px 6px 0 {ink}` shadow, no rotation.
+- This replaces the old bottom-right text wordmark as the primary brand mark on every poster; a small "UX Chats" text lockup may still appear in the footer if useful, but the logo asset top-left is the required brand anchor.
+
 ### Event Tag
 
 A small pill that labels the event type. Always placed in the header zone.
@@ -321,7 +335,7 @@ A small pill that labels the event type. Always placed in the header zone.
 - **Style:** Identical to the main site's Tag component: pill shape (`border-radius: 999px`), 3px ink border, white/cream fill, Hanken Grotesk 800 at 16–18px with uppercase letter-spacing.
 - **Content:** "Community Night," "Special Guest Night," "Workshop," "Free," or "Ticketed."
 - **Dark mode variant:** Yellow fill with ink text for maximum contrast.
-- **Prefix:** Always prepend a hash or icon: `# Community Night` or `✦ Special Guest`.
+- **Prefix:** Prepend a `#` for category tags (`# Community Night`). No star/sparkle prefixes — those are retired.
 
 ### CTA Block
 
@@ -332,46 +346,141 @@ The call-to-action at the bottom of the poster.
 - **Dark mode:** Same yellow button — it pops dramatically against ink.
 - **Position:** Bottom-right or centered in the footer zone. Always the last element in the reading order.
 
-### Decorative Elements
+### Component Library
 
-Small CSS-drawn shapes that add texture and playfulness:
+Recurring illustrations (icons, textures, decorative shapes) live in `imagery-system/library/` as hand-authored SVGs, cataloged by name in `library/manifest.json` — not regenerated from a prompt each time a poster needs one. This exists for the same reason the logo is composited instead of redrawn: ask a model to draw "a pen tool icon" twice and you get two different pens, which breaks the "same family" requirement below. See `library/README.md` for the full rationale and how to add new components.
 
-- **Stars** (✦): A yellow or purple 5-pointed shape. Used as list bullets, section dividers, or standalone accents in sticker clusters.
-- **Squiggles:** A hand-drawn underline effect via `text-decoration-style: wavy` or an SVG path. Use sparingly under single words in titles.
+When a poster needs a topic-specific decorative element (Rule: "Topic-specific objects" below), check the library first. If a matching component exists, reuse it by name instead of generating a new one. If it doesn't exist yet, author it as a new SVG component rather than a one-off AI-generated element — future posters on the same topic should get the same asset.
+
+### Decorative Elements (v2 — no stars, with one named exception)
+
+Small CSS-drawn shapes that add texture and playfulness. **The star/sparkle motif (✦/★) is retired from the poster vocabulary** — replace it with one of these instead. Budget: 2–4 supporting decorative elements total per poster, beyond the headline + speaker + logo anchors.
+
+**Scoped exception:** the `star-burst` component in the component library is permitted on Special Guest Night posters that feature a real speaker headshot — this is a deliberate sub-identity choice, not a reversal of the rule below. It stays retired everywhere else (Community Night, Game Night, Workshop, Partnership). See `library/manifest.json` for the exact restriction as written.
+
+- **Arrows:** Hand-drawn curved arrows pointing from a label toward the element it annotates. Ink color, 3–5px stroke.
+- **Scribbles / squiggles:** A hand-drawn underline effect via `text-decoration-style: wavy` or an SVG path. Use sparingly under single words in titles.
 - **Dot clusters:** Groups of 3–5 small filled circles in brand colors. Used as lightweight decoration in empty corners. CSS `border-radius: 50%` divs, 8–16px diameter.
+- **Checkmarks:** Simple hand-drawn check marks, useful for case-study/checklist-themed talks.
+- **Paper shapes:** Torn-edge rectangles or simple geometric cutouts, echoing the torn-paper headline treatment.
+- **Topic-specific objects:** UI fragments (browser chrome, checklist cards) in moderation when the event topic calls for it — e.g. a case-study talk. Don't default to these for every poster.
 - **Green dot:** The `.badge-dot` from the parent system (6px green circle). Use next to "Live" or "Free" indicators.
+
+## Special Guest Night Visual Identity ("Guest Collage")
+
+**A third canvas mode, alongside Light and Dark — used whenever a poster features a real speaker headshot.** This is not a one-off exception; it's the standing default for Special Guest Nights and any Workshop with a named speaker photo. Confirmed 2026-08-10, reverse-engineered from `sg--earl-case-study-light.png` (see `imagery-system/library/` for the component assets this sub-identity draws from).
+
+### Why a third mode, not a Light/Dark variant
+
+Guest Collage doesn't fit the cream-paper/ink-canvas binary — it runs on a fully saturated, per-poster canvas color that neither existing mode describes. Rather than force it into "Dark Mode" (as the original Pattern A did), it's its own documented mode. Community Nights, Game Nights, Partnerships, and headshot-free Workshops still choose Light or Dark as before — Guest Collage only activates when a real human photo is the lead visual element.
+
+### Palette — color is free, per poster
+
+**There is no fixed Guest Collage color.** The mechanics below (sticker collage, ransom-note headline, script name, expanded decoration) are the constant; the canvas color is chosen fresh for each poster, the same way the existing gallery already varies it: `sg--john-sp.png` runs orange, `sg--carl.png` runs a pastel purple/lavender, and `sg--earl-case-study-*.png` runs a saturated blue — all three are correct Guest Collage posters, not variations on one "true" color.
+
+When picking a poster's palette, choose:
+- **One canvas base color** — saturated or pastel, whatever fits the speaker/topic. Reference points already in the gallery: saturated blue (Earl), saturated orange (John), pastel purple (Carl).
+- **One warm or contrasting accent** against that base, used sparingly (a CTA-adjacent chip, an arrow, a small blob) — not spread evenly across the canvas.
+- **White or cream** for sticker/card fills and outlines — this stays constant regardless of the base color.
+- **Black/ink** (or white, on a dark-enough base) for headline text — pick whichever gives the strongest contrast against the chosen base.
+
+Earl's poster measured out to `#2462EE` (base), `#153FE4` (darker title-slab shade), `#0D28CC` (shadow), `#FDA91A` (accent) — useful as a worked example of how one base color splits into a slightly darker shade for the title slab and a deeper shade for shadows, not as the palette to reuse by default.
+
+### Headline: the "ransom-note stack"
+
+A new title pattern, distinct from the single continuous `poster-title-hero` used elsewhere. Each line of the headline is its own independently-colored, independently-rotated sticker card, stacked with slight overlap:
+
+- 3–4 lines, each its own rectangular chip (solid color or white/cream paper texture)
+- Each chip rotated independently, roughly ±2–4°, not uniform
+- Text: Bricolage Grotesque 800 (same brand headline font — no new typeface needed here)
+- The chips overlap slightly top-to-bottom rather than stacking with even gaps, echoing torn/pasted paper
+- Reserve one chip (typically the last line) for the strongest color emphasis — the poster's accent fill with contrasting text reads as the "punchline" of the headline
+
+### Speaker name: plain pill, not script
+
+**Reversed 2026-08-10 — the script-font treatment below is retired, do not use it again.** The `with [Speaker Name]` tag uses the same plain-pill component as `sg--what-recruiters-really-think.png`: a white pill, thin ink outline, "with" in regular weight + the name in bold weight, both in plain dark ink text (Hanken Grotesk, or Bricolage Grotesque Regular/Bold if compositing with PIL). No script face, no color fill on the pill itself. This is now the one standard name-tag component for every poster — Guest Collage included, no exception.
+
+### Headshot — supporting element, not half the canvas
+
+Same non-negotiable rule as the base system, restated because it matters most here: **the headshot is a real photo, pixel-exact, never AI-regenerated or filtered.** Thick white cutout outline, hard shadow. Upright or very slightly tilted depending on the composition — not a dramatic rotation. See `scripts/composite_poster.py` (Path 2b) for how this gets composited deterministically rather than left to a generation model.
+
+**Size, confirmed 2026-08-10 after the Mrinali poster ran too large:** the headshot should read as one of four equal-weight anchors (headshot, logo, headline, texture/color), not the dominant element. Target roughly **30–35% of canvas width**, not ~50%. If the photo is crowding the headline or touching more than a third of the canvas, shrink it.
+
+### Logo — always present, top-left, always tilted right, white sticker border
+
+Confirmed 2026-08-10: the UX Chats sticker logo is **never optional** on a Guest Collage poster and its position is fixed — top-left corner, same as every other mode. The one Guest-Collage-specific difference from the base system's logo rule: give it a small rotation, the same loose "stickered on" tilt as the ransom-note headline chips, rather than sitting perfectly square.
+
+- **Rotation direction is fixed: always tilt right (positive rotation), never left.** Roughly 5–10°.
+- **Source asset:** use the real vector, `ux-chats-app/public/library-components/logos/ux-chats-logo_SVG.svg` — not a flattened PNG. Its white backing plate (first `<path>`, `fill="#FEFEFE"`) is a **built-in sticker-style white border**, already extending beyond the orange card on every side — don't draw a separate border, correctly rasterizing this asset produces it automatically.
+- **Rasterizing this SVG:** strip every `style="..."` attribute via regex (`re.sub(r'\s*style="[^"]*"', '', svg)`) before running it through `cairosvg.svg2png()`. The exported `style` attributes embed a `color(display-p3 ...)` fill that cairosvg can't parse and silently renders as solid black — stripping `style` lets the plain XML `fill="#HEX"` attributes take over and produces a correct full-color render. This is a general fix for any Figma-exported SVG hitting the same black-silhouette failure, not a one-off.
+- Never redrawn, never recolored by a generation model — always composited from the real asset.
+
+### Decorative elements — expanded budget for this mode only
+
+The base system's 2–4 element cap is **not** the limit here — Guest Collage posters can run denser, pulling named assets from the component library (`imagery-system/library/manifest.json`) instead of inventing new ones each time:
+
+- `star-burst` — permitted on Guest Collage posters specifically (see the library's `restriction` note); use 2–3 scattered in empty corners
+- Topic-relevant library icons (`pen-nib`, `browser-wireframe`, `ai-chip`) — pick 1–2 that match the talk's subject, not all three by default
+- Hand-drawn arrows/motion lines annotating the headline or headshot
+- Budget: roughly 4–7 total supporting elements (stars + icons + arrows combined), versus the base system's 2–4 — still curated, not "everything at once." If you're reaching for an 8th, cut one.
+- **Illustrations carry color, confirmed 2026-08-10:** icons/arrows/stars should not default to flat black or white line art across the board. Give at least half of them a fill or stroke in the poster's accent color (and a touch of the secondary/tertiary accent — e.g. a dash of yellow alongside an orange-led palette) so the decoration reinforces the palette instead of sitting outside it. Black and white remain fine for some elements — the point is variety, not banning ink.
+
+### Background texture — subtle, not flat-dead
+
+Confirmed 2026-08-10, reverse-engineered from `sg--carl.png`: a pure flat-color canvas reads cheap at this scale. Add **minimal, low-contrast texture** confined to corners/edges, never behind the headline or face:
+- Soft organic blob shapes, one shade darker or lighter than the base color (Carl's poster uses this in the top-right and bottom-left corners)
+- Small polka-dot clusters in a similarly low-contrast tone, tucked into an otherwise-empty corner
+- Keep contrast subtle enough that it reads as texture, not a second competing shape — the canvas should still feel "mostly flat and solid" at a glance, just less sterile.
+
+### Tags and CTA — no "Special Guest" tag, ever; CTA smaller and fixed bottom-left
+
+**Reversed 2026-08-10 — do not add a "Special Guest" tag to any poster, standing rule, no exception.** Earlier guidance treated it as the one tag that "earns its place by default"; that's retired. Drop it along with "Live" and "Q&A" unless the user explicitly asks for a tag back.
+
+**Register CTA badge, confirmed 2026-08-10:**
+- Size: **30% smaller** than the earlier draft scale (which was already "roughly half the scale of earlier drafts" — this compounds on top of that, so the badge reads as a small supporting element, not a button).
+- Position: **always the bottom-left corner** of the canvas. Not footer-centered, not right-aligned — bottom-left, every poster, no exception.
+
+### The four-anchor formula
+
+For every Guest Collage poster: **headshot + logo + two colors (base + accent) + white.** That's the whole palette and the whole anchor set — headline, tags, and decoration all draw from those same two colors plus white/black, never introducing a third saturated hue.
+
+### What still applies unchanged
+
+- **Never redraw the logo** — composite the exact `public/img/logo.png` asset, same as every other poster.
+- **Never add a date/time badge** — the global rule applies here too, including to future regenerations of the reference poster itself.
+- **Real photos only, pixel-exact** — no exception, no softening for this mode.
+- **One accent color as the "lead" emphasis** — even though the base color is chosen per poster, don't spread three saturated accents evenly; let one accent carry the emphasis role the base system's orange/yellow rule describes.
 
 ## Composition Patterns
 
-### Pattern A: Speaker-Feature (Dark Mode)
+### Pattern A: Speaker-Feature (Guest Collage)
 
-For Special Guest Nights where the speaker is the draw.
+For Special Guest Nights and speaker-driven Workshops — see "Special Guest Night Visual Identity" above for the full color/typography/decoration spec this pattern uses by default. (Older dark-mode Special Guest posters used this same zone layout under a plain ink canvas; that variant is still valid for events without a photo-driven speaker, but Guest Collage is the default whenever a real headshot anchors the poster.)
 
 ```
 ┌────────────────────────────────────┐
-│  [Event Tag: Special Guest Night]  │
+│  [Logo]  [Event Tag: Special Guest]│
 │                                    │
 │  TITLE          ┌──────────┐       │
 │  TITLE          │          │       │
 │  TITLE          │  SPEAKER │       │
 │                 │  PHOTO   │       │
-│  [Date Badge]   │          │       │
+│                 │ (large)  │       │
 │                 └──────────┘       │
-│  Description text here.           │
-│  Short and punchy.                │
+│  with [Speaker Name] (script)     │
 │                                    │
 │              [Register on Luma →]  │
-│  [★ sticker]                 [✦]  │
+│  [4-7 library/decorative elements] │
 └────────────────────────────────────┘
 ```
 
 ### Pattern B: Event-Feature (Light Mode)
 
-For Community Nights and free events where the activity is the draw.
+For Community Nights and free entrys where the activity is the draw.
 
 ```
 ┌────────────────────────────────────┐
-│  [Sticker: Free]  [Sticker: Aug 13]│
+│  [Logo]        [Sticker: Aug 13]  │
 │                                    │
 │         GAME NIGHT                 │
 │         ─────────                  │
@@ -380,8 +489,6 @@ For Community Nights and free events where the activity is the draw.
 │  │ GAME │  │ GAME │  │ GAME │     │
 │  │  1   │  │  2   │  │  3   │     │
 │  └──────┘  └──────┘  └──────┘     │
-│                                    │
-│  [Date]  [Time]  [Free]            │
 │                                    │
 │           [Grab a Spot →]          │
 └────────────────────────────────────┘
@@ -433,7 +540,7 @@ Posters are fixed-canvas, not responsive. There is no "mobile poster." Instead, 
 | Instagram feed | 2000×2000px (1:1) | Default square poster |
 | Instagram story | 1080×1920px (9:16) | Recomposed, not just cropped — title stacks vertically, photo moves below |
 | Luma event cover | 2400×1256px | Wider composition, title + photo side by side |
-| Email/social preview | 1200×630px | Simplified: title + date + CTA only, no photos |
+| Email/social preview | 1200×630px | Simplified: title + CTA only, no photos, no date/time |
 
 Each canvas size is its own composition template, not a CSS media query. The same config object produces different posters for different sizes by rearranging elements, not shrinking them.
 
@@ -443,10 +550,14 @@ Each canvas size is its own composition template, not a CSS media query. The sam
 - 5px ink outer frame with 14px hard shadow on every poster
 - Bricolage Grotesque 800 at 100px+ for titles
 - Hard shadows with zero blur, always right + down
-- At least one sticker that overhangs a border or frame
+- Search `public/library/` for an existing speaker headshot before ever generating one
+- Composite the official logo asset (`public/img/logo.png`) top-left, exactly as provided
+- A large, prominent speaker photo — a lead element, not an inset
+- Exactly one contrasting accent color (orange preferred, yellow alternate) against the purple/lavender base
+- 2–4 supporting decorative elements total, each with a clear purpose
 - Short punchy body copy (2–3 lines max)
 - Deliberate element placement (absolute positioning, not flow)
-- Yellow CTA button as the last visual element
+- Accent-color CTA button as the last visual element
 - Real event photos only
 
 **Don't:**
@@ -455,7 +566,12 @@ Each canvas size is its own composition template, not a CSS media query. The sam
 - Gradient backgrounds or gradient overlays on photos
 - Glassmorphism, backdrop-filter, or any translucent-blur effect
 - Body text longer than 3 lines
-- More than 3 stickers on one poster
+- Stars or sparkles (✦/★) anywhere — retired from the poster vocabulary
+- More than 4 decorative elements on one poster
+- More than one accent color used as a "lead" color (never yellow + pink + sky as equals)
+- A redrawn or restyled logo — always the exact asset
+- A generated/synthetic face standing in for a real, named speaker
+- **Date or time badges on the image, ever.** Rule as of 2026-08-10: dates and times go in the social copy/caption, never on the poster itself — a date on the image goes stale the moment the event is rescheduled and forces a full regeneration. The `Date Badge` component and its icon are retired from the poster vocabulary.
 - Rotation beyond ±8°
 - AI-generated imagery or stock photos
 - Inter, Roboto, Arial, or any typeface not in the brand system

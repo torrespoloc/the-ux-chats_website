@@ -48,20 +48,65 @@
 
 /* ── EVENTS ── */
 .events-section { background: var(--cream); border-bottom: var(--line); }
-.next-up-wrap { position: relative; margin-top: 46px; margin-bottom: 54px; }
+
+.events-scroll { position: relative; }
+.events-scroll-track {
+  max-height: var(--events-track-h, clamp(370px, 47vh, 640px));
+  overflow-y: auto;
+  overflow-x: visible;
+  overflow-anchor: none;
+  padding-top: 46px;
+  padding-right: 10px;
+  padding-bottom: 40px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink) transparent;
+}
+.events-scroll-track::-webkit-scrollbar { width: 10px; }
+.events-scroll-track::-webkit-scrollbar-track { background: transparent; }
+.events-scroll-track::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 999px; border: 2px solid var(--cream); }
+.events-scroll-fade {
+  position: absolute;
+  left: 0; right: 10px; bottom: 0;
+  height: 130px;
+  background: linear-gradient(to bottom, rgba(251, 243, 221, 0) 0%, var(--cream) 78%);
+  pointer-events: none;
+  z-index: 5;
+}
+.next-up-wrap { position: relative; margin-bottom: 100px; }
 .next-up-sticker { position: absolute; top: -18px; right: -10px; z-index: 3; background: var(--pink); color: #fff; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 15px; border: var(--line); border-radius: 999px; padding: 10px 20px; box-shadow: var(--shadow); transform: rotate(2deg); white-space: nowrap; }
-.next-up-card { display: grid; grid-template-columns: 180px 1fr; border: var(--line); border-radius: 22px; overflow: visible; box-shadow: var(--shadow-lg); background: #fff; }
+.next-up-card { display: grid; grid-template-columns: minmax(200px, 40%) 1fr; border: var(--line); border-radius: 22px; overflow: visible; box-shadow: var(--shadow-lg); background: #fff; }
 @media (max-width: 640px) { .next-up-card { grid-template-columns: 1fr; } }
-.next-up-date { background: var(--purple); border-radius: 18px 0 0 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 36px 20px; color: #fff; }
-@media (max-width: 640px) { .next-up-date { border-radius: 18px 18px 0 0; padding: 24px; flex-direction: row; gap: 16px; } }
+.next-up-date { position: relative; background: var(--purple); border-radius: 18px 0 0 18px; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #fff; }
+@media (max-width: 640px) { .next-up-date { border-radius: 18px 18px 0 0; min-height: 190px; } }
+
+/* no-image variant: original centered date block */
+.next-up-date:not(.has-image) { padding: 36px 20px; }
+@media (max-width: 640px) { .next-up-date:not(.has-image) { padding: 24px; } }
+.next-up-date:not(.has-image) .next-up-date-stamp { flex-direction: column; gap: 2px; }
+@media (max-width: 640px) { .next-up-date:not(.has-image) .next-up-date-stamp { flex-direction: row; gap: 16px; } }
+
+/* image variant: full-bleed poster with a rotated date stamp */
+.next-up-date-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.next-up-date.has-image { min-height: 220px; }
+.next-up-date.has-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,20,48,.55) 0%, rgba(28,20,48,0) 55%); pointer-events: none; }
+.next-up-date.has-image .next-up-date-stamp {
+  position: relative; z-index: 2; flex-direction: column; align-items: center; gap: 3px;
+  background: var(--purple); border: var(--line); border-radius: 12px;
+  padding: 10px 16px 12px; box-shadow: var(--shadow); transform: rotate(-3deg);
+  margin: 16px;
+}
 .next-up-date .month { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
 .next-up-date .day { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 80px; line-height: .9; letter-spacing: -0.03em; }
+.next-up-date.has-image .day { font-size: 40px; }
 .next-up-date .time { font-family: "Hanken Grotesk"; font-weight: 700; font-size: 13px; opacity: .8; margin-top: 6px; letter-spacing: .04em; }
+.next-up-date.has-image .time { margin-top: 2px; white-space: nowrap; }
 .next-up-body { position: relative; padding: 32px 36px; border-left: var(--line); }
 @media (max-width: 640px) { .next-up-body { border-left: none; border-top: var(--line); padding: 24px; } }
 .next-up-tag { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 16px; box-shadow: none; }
 .entry-tag { position: absolute; top: 28px; right: 28px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; border: var(--line); border-radius: 999px; padding: 5px 14px; background: var(--ink); color: #fff; z-index: 2; }
 @media (max-width: 640px) { .entry-tag { top: 20px; right: 20px; font-size: 10px; padding: 4px 12px; } }
+.date-tag { position: absolute; bottom: 28px; right: 28px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .1em; border: var(--line); border-radius: 999px; padding: 6px 16px; background: var(--purple); color: #fff; z-index: 2; }
+@media (max-width: 640px) { .date-tag { position: static; display: inline-block; margin-top: 14px; bottom: auto; right: auto; font-size: 12px; padding: 5px 14px; } }
 .next-up-body h3 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(22px, 2.8vw, 34px); letter-spacing: -0.02em; line-height: 1.05; margin: 14px 0 12px; }
 .next-up-body .desc { font-size: 16px; font-weight: 500; line-height: 1.55; opacity: .88; max-width: 600px; }
 .next-up-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 14px; font-weight: 700; opacity: .75; }
@@ -71,7 +116,8 @@
 /* past event variant */
 .next-up-wrap.past { opacity: .75; }
 .next-up-wrap.past .next-up-sticker { background: var(--purple-deep); color: var(--cream-2); opacity: .75; }
-.next-up-wrap.past .next-up-date { background: #A09AB5; color: var(--cream); }
+.next-up-wrap.past .next-up-date:not(.has-image) { background: #A09AB5; color: var(--cream); }
+.next-up-wrap.past .next-up-date.has-image { filter: saturate(.4); }
 .next-up-wrap.past .next-up-date .day,
 .next-up-wrap.past .next-up-date .time { opacity: .7; }
 .next-up-card.past { filter: saturate(.35); }

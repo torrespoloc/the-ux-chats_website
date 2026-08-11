@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 4-point sparkle burst, Special Guest Night sub-identity only -->
+  <path d="M50 6 C52 34 56 42 64 44 C56 46 52 54 50 82 C48 54 44 46 36 44 C44 42 48 34 50 6 Z"
+        fill="var(--icon-color, #FFFFFF)" />
+  <path d="M84 40 C85 48 87 51 92 52 C87 53 85 56 84 64 C83 56 81 53 76 52 C81 51 83 48 84 40 Z"
+        fill="var(--icon-color, #FFFFFF)" />
+</svg>

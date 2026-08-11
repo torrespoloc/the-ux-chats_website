@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   Button, Tag, Footer, EventCard, TestimonialCard, TestimonialForm,
   NavBar, Marquee, Hero,
@@ -13,6 +13,8 @@ const MARQUEE_ITEMS = [
 ];
 
 function App() {
+  const eventsScrollRef = useRef<HTMLDivElement>(null);
+
   // Scroll to hash section after mount (cross-page navigation)
   useEffect(() => {
     const hash = window.location.hash;
@@ -20,6 +22,36 @@ function App() {
       const el = document.querySelector(hash);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     }
+  }, []);
+
+  // Ensure the events scroll track always starts at the top, regardless of
+  // scroll-snap/scroll-anchoring shifting it after content reflows.
+  useEffect(() => {
+    if (eventsScrollRef.current) eventsScrollRef.current.scrollTop = 0;
+  }, []);
+
+  // Size the events scroll track so ~1.5 event cards are visible before
+  // scrolling, giving a visual peek that more events are below.
+  useEffect(() => {
+    const track = eventsScrollRef.current;
+    if (!track) return;
+
+    const sizeTrack = () => {
+      const firstCard = track.querySelector<HTMLElement>(".next-up-wrap");
+      if (!firstCard) return;
+      const marginBottom = parseFloat(getComputedStyle(firstCard).marginBottom) || 0;
+      const cardHeight = firstCard.offsetHeight + marginBottom;
+      track.style.setProperty("--events-track-h", `${cardHeight * 1.5}px`);
+    };
+
+    sizeTrack();
+    const firstCard = track.querySelector<HTMLElement>(".next-up-wrap");
+    const ro = new ResizeObserver(sizeTrack);
+    // Observe the card itself, not the track — the track's own box height
+    // is capped by max-height/overflow, so it never fires when the poster
+    // image inside the card finishes loading and grows the card taller.
+    if (firstCard) ro.observe(firstCard);
+    return () => ro.disconnect();
   }, []);
 
   // IntersectionObserver for reveal animations
@@ -60,15 +92,19 @@ function App() {
             <h2 className="display sec">Events</h2>
           </div>
 
+          <div className="events-scroll">
+          <div className="events-scroll-track" ref={eventsScrollRef}>
           <EventCard
             variant="upcoming"
             data={{
               month: "Aug",
               day: "13",
               time: "6:00 PM PST",
+              image: "/library/cm--aug-13.png",
+              imageHasDate: true,
               tag: "Community Night · Online",
               tagVariant: "sky",
-              entryTag: "free event",
+              entryTag: "free entry",
               title: "UX Chats Community Night",
               description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
               meta: [
@@ -77,7 +113,7 @@ function App() {
                 { icon: "⏱", text: "1 hour" },
               ],
               buttons: [
-                { label: "RSVP — Free →", href: "https://luma.com/w7eq6g30", variant: "yellow" as const },
+                { label: "RSVP", href: "https://luma.com/w7eq6g30", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
@@ -89,9 +125,10 @@ function App() {
               month: "Aug",
               day: "27",
               time: "6:00 PM PST",
+              image: "/library/sg--john-sp.png",
+              imageHasDate: true,
               tag: "Special Guest Night · Online",
               tagVariant: "yellow",
-              entryTag: "paid event",
               title: "How to Level Up from Designer to AI Builder",
               description: <>A fireside chat + live 0-to-1 build with John Rodrigues (Design Engineer, Founder of Human AI Studio) on going from designer to AI builder.</>,
               meta: [
@@ -101,7 +138,7 @@ function App() {
                 { icon: "💵", text: "$25" },
               ],
               buttons: [
-                { label: "RSVP — $25 →", href: "https://luma.com/s7ad35po", variant: "yellow" as const },
+                { label: "RSVP", href: "https://luma.com/s7ad35po", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
@@ -113,9 +150,11 @@ function App() {
               month: "Sep",
               day: "10",
               time: "6:00 PM PST",
+              image: "/library/cm--aug-13.png",
+              imageHasDate: true,
               tag: "Community Night · Online",
               tagVariant: "sky",
-              entryTag: "free event",
+              entryTag: "free entry",
               title: "UX Chats Community Night",
               description: <>Pull up in your comfiest hoodie and overshare with strangers who actually get it. Games, banter, and zero small talk about the weather.</>,
               meta: [
@@ -124,7 +163,7 @@ function App() {
                 { icon: "⏱", text: "1 hour" },
               ],
               buttons: [
-                { label: "RSVP — Free →", href: "https://luma.com/crtz2cku", variant: "yellow" as const },
+                { label: "RSVP", href: "https://luma.com/crtz2cku", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
@@ -136,9 +175,11 @@ function App() {
               month: "Oct",
               day: "8",
               time: "6:00 PM PST",
+              image: "/library/cm--aug-13.png",
+              imageHasDate: true,
               tag: "Community Night · Online",
               tagVariant: "sky",
-              entryTag: "free event",
+              entryTag: "free entry",
               title: "UX Chats Community Night",
               description: <>No decks, no dress code, no agenda. Just the UX Chats crew, a few ridiculous games, and an hour of actually being yourselves.</>,
               meta: [
@@ -147,7 +188,7 @@ function App() {
                 { icon: "⏱", text: "1 hour" },
               ],
               buttons: [
-                { label: "RSVP — Free →", href: "https://luma.com/p1dwy5lx", variant: "yellow" as const },
+                { label: "RSVP", href: "https://luma.com/p1dwy5lx", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
@@ -159,9 +200,11 @@ function App() {
               month: "Nov",
               day: "5",
               time: "6:00 PM PST",
+              image: "/library/cm--aug-13.png",
+              imageHasDate: true,
               tag: "Community Night · Online",
               tagVariant: "sky",
-              entryTag: "free event",
+              entryTag: "free entry",
               title: "UX Chats Community Night",
               description: <>Bring snacks, bring chaos energy, leave the LinkedIn voice at the door. An hour of games and genuinely good conversation with your favorite internet designers.</>,
               meta: [
@@ -170,7 +213,7 @@ function App() {
                 { icon: "⏱", text: "1 hour" },
               ],
               buttons: [
-                { label: "RSVP — Free →", href: "https://luma.com/q33m6njl", variant: "yellow" as const },
+                { label: "RSVP", href: "https://luma.com/q33m6njl", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
@@ -182,9 +225,11 @@ function App() {
               month: "Dec",
               day: "3",
               time: "6:00 PM PST",
+              image: "/library/cm--aug-13.png",
+              imageHasDate: true,
               tag: "Community Night · Online",
               tagVariant: "sky",
-              entryTag: "free event",
+              entryTag: "free entry",
               title: "UX Chats Community Night",
               description: <>Cozy season, cozier vibes. Games, real talk, and a room full of designers who'd rather laugh than network — no agenda required.</>,
               meta: [
@@ -193,11 +238,14 @@ function App() {
                 { icon: "⏱", text: "1 hour" },
               ],
               buttons: [
-                { label: "RSVP — Free →", href: "https://luma.com/wti76sty", variant: "yellow" as const },
+                { label: "RSVP", href: "https://luma.com/wti76sty", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
           />
+          </div>
+          <div className="events-scroll-fade" aria-hidden="true" />
+          </div>
 
         </div>
       </section>
@@ -240,7 +288,7 @@ function App() {
           <div className="cards reveal">
             <div className="card p">
               <div className="icon">✦</div>
-              <span className="entry-tag">paid event</span>
+              <span className="entry-tag">premium event</span>
               <h3>Special Guest Nights</h3>
               <p>UX mentors, psychologists, and creative minds share what you won't find on ChatGPT. Real insight, real talk, zero fluff. <strong>Ticketed events</strong> — a small fee helps us bring in great guests.</p>
               <div className="tags">
@@ -251,7 +299,7 @@ function App() {
             </div>
             <div className="card">
               <div className="icon">🎮</div>
-              <span className="entry-tag">free event</span>
+              <span className="entry-tag">free entry</span>
               <h3>Community Nights</h3>
               <p>Game Night, Convo Night, Craft Night and more. Interactive UX games and challenges that spark creativity — and a lot of laughter. <strong>Always free</strong> — just show up.</p>
               <div className="tags">

@@ -1,0 +1,87 @@
+{
+  "$schema": "Component library catalog for the UX Chats imagery system. Each entry is a reusable, hand-authored SVG (never AI-generated) that posters composite in by name instead of re-generating from a prompt every time.",
+  "components": [
+    {
+      "name": "pen-nib",
+      "file": "/library-components/icons/pen-nib.svg",
+      "type": "icon",
+      "description": "Vector pen-tool nib with anchor points and bezier handles — a design-tool motif.",
+      "tags": ["design-tool", "case-study", "ux-process"],
+      "recommendedSize": "180-260px on a 2000px poster canvas",
+      "colorVars": {
+        "--icon-color": "line art and fill color — defaults to ink (#1C1430)"
+      },
+      "source": "hand-authored, reverse-engineered from sg--earl-case-study poster",
+      "firstUsedIn": "sg--earl-case-study-light.png / sg--earl-case-study-dark.png"
+    },
+    {
+      "name": "browser-wireframe",
+      "file": "/library-components/icons/browser-wireframe.svg",
+      "type": "icon",
+      "description": "Browser chrome with wireframe content (image placeholder, text lines, a CTA bar) and a cursor arrow.",
+      "tags": ["design-tool", "case-study", "ux-process", "product"],
+      "recommendedSize": "220-320px on a 2000px poster canvas",
+      "colorVars": {
+        "--icon-color": "line art color — defaults to ink (#1C1430)",
+        "--accent-color": "CTA bar fill — defaults to accent-orange (#FF5A1F)"
+      },
+      "source": "hand-authored, reverse-engineered from sg--earl-case-study poster",
+      "firstUsedIn": "sg--earl-case-study-light.png / sg--earl-case-study-dark.png"
+    },
+    {
+      "name": "ai-chip",
+      "file": "/library-components/icons/ai-chip.svg",
+      "type": "icon",
+      "description": "Rounded chip with circuit-leg pins and a baked-in 'AI' label.",
+      "tags": ["ai", "tech", "future-of-design"],
+      "recommendedSize": "140-200px on a 2000px poster canvas",
+      "colorVars": {
+        "--icon-color": "line art, pins, and label color — defaults to ink (#1C1430)"
+      },
+      "source": "hand-authored, reverse-engineered from sg--earl-case-study poster",
+      "firstUsedIn": "sg--earl-case-study-light.png / sg--earl-case-study-dark.png"
+    },
+    {
+      "name": "calendar",
+      "file": "/library-components/icons/calendar.svg",
+      "type": "icon",
+      "description": "Simple grid calendar with binding rings.",
+      "tags": ["date", "logistics", "event-details"],
+      "recommendedSize": "100-160px",
+      "colorVars": {
+        "--icon-color": "line art and grid dot color — defaults to ink (#1C1430)",
+        "--accent-color": "one highlighted grid dot — defaults to accent-orange (#FF5A1F)"
+      },
+      "deprecated": "Its original purpose was labeling a date/time card. Rule as of 2026-08-10: never add date/time badges to poster images (date/time go in social copy, not the image). Do not use this icon to display a date or time on a poster. Kept only in case a non-date scheduling context comes up (e.g. a generic 'save the date' motif with no literal date text) — confirm before using.",
+      "source": "hand-authored, reverse-engineered from sg--earl-case-study poster",
+      "firstUsedIn": "sg--earl-case-study-light.png / sg--earl-case-study-dark.png"
+    },
+    {
+      "name": "star-burst",
+      "type": "icon",
+      "file": "/library-components/icons/star-burst.svg",
+      "description": "Two-point sparkle/star cluster (one large, one small). Scoped to the Special Guest Night sub-identity only — the star ban in DESIGN.md still applies everywhere else.",
+      "tags": ["special-guest-night", "sparkle"],
+      "recommendedSize": "40-100px, scattered 2-3x per poster in empty corners",
+      "colorVars": {
+        "--icon-color": "fill color — defaults to white, use accent-orange on light backgrounds"
+      },
+      "restriction": "Special Guest Night posters (with a real speaker headshot) only. Do not use on Community Night, Game Night, Workshop, or Partnership posters — the parent DESIGN.md 'no stars' rule still governs those.",
+      "source": "hand-authored, reverse-engineered from sg--earl-case-study poster",
+      "firstUsedIn": "sg--earl-case-study-light.png / sg--earl-case-study-dark.png"
+    },
+    {
+      "name": "curved-arrow",
+      "file": "/library-components/icons/curved-arrow.svg",
+      "type": "icon",
+      "description": "Hand-drawn curved annotation arrow, pointing from a label toward the element it references.",
+      "tags": ["annotation", "general"],
+      "recommendedSize": "120-260px depending on the distance it needs to span",
+      "colorVars": {
+        "--icon-color": "stroke color — defaults to ink (#1C1430), use white on dark canvases"
+      },
+      "source": "hand-authored, reverse-engineered from sg--earl-case-study poster",
+      "firstUsedIn": "sg--earl-case-study-light.png / sg--earl-case-study-dark.png"
+    }
+  ]
+}

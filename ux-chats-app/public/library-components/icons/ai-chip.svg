@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Chip with circuit-leg pins and an "AI" label -->
+  <g fill="none" stroke="var(--icon-color, #1C1430)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="26" y="26" width="48" height="48" rx="8" />
+    <line x1="38" y1="10" x2="38" y2="26" />
+    <line x1="62" y1="10" x2="62" y2="26" />
+    <line x1="38" y1="74" x2="38" y2="90" />
+    <line x1="62" y1="74" x2="62" y2="90" />
+    <line x1="10" y1="38" x2="26" y2="38" />
+    <line x1="10" y1="62" x2="26" y2="62" />
+    <line x1="74" y1="38" x2="90" y2="38" />
+    <line x1="74" y1="62" x2="90" y2="62" />
+  </g>
+  <text x="50" y="57" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="24" text-anchor="middle" fill="var(--icon-color, #1C1430)">AI</text>
+</svg>

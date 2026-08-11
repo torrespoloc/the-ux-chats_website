@@ -128,6 +128,58 @@ Then reload: `source ~/.zshrc`
 
 ---
 
+## Vertex AI model availability (the-ux-chats), checked 2026-08-08
+
+Status of the Model Garden enablement effort, verified by direct API tests.
+
+### Working now (9 models, no extra setup)
+
+| Model | Type | Endpoint |
+|-------|------|----------|
+| Gemini 3.1 Pro | Text | `global` |
+| Gemini 3.6 Flash | Text | `global` |
+| Llama 4 (API service) | Text | pay-per-token listing |
+| gemini-3.5-flash | Text | `global` only |
+| gemini-2.5-flash-lite | Text (cheap) | `global` only |
+| gemini-3.1-flash-lite | Text (cheap) | `global` only |
+| gemini-3.5-flash-lite | Text (cheap) | `global` only |
+| gemini-2.5-flash-tts | Text-to-speech | `global` (replaces ElevenLabs) |
+| gemini-3.1-flash-image | Image generation | `global` (replaces Imagen 4) |
+
+The newer Gemini models only serve from the `global` endpoint. Regional
+endpoints like `us-central1` return 404 for them.
+
+### Blocked: all Claude models (quota, not enablement)
+
+Claude Fable 5, Opus 4.8, Sonnet 4.6, Sonnet 5, and Opus 4.1 are fully
+purchased and enabled. The old 403 "data sharing" error was fixed
+permanently on 2026-08-08 via the `setPublisherModelConfig` API
+(`dataSharingEnabledProvider: ANTHROPIC`). Do not re-fix this.
+
+What still blocks them: the $300 free-trial billing account gets zero
+usable quota for Claude models. Every request returns 429 regardless of
+region. The single fix is upgrading the trial to a full paid billing
+account (credits carry over). Quota increase requests will likely be
+denied until then.
+
+Consequence: `claude-google-ux-chats` cannot run any Claude model until
+the billing upgrade. Use `claude-ds-ux-chats` for UX Chats-billed
+sessions in the meantime. After the upgrade, also change
+`CLOUD_ML_REGION` from `us-central1` to `global` in `~/.zshrc`, since
+Claude models on this project serve from `global`/`us-east5`.
+
+### Not available on this project
+
+- **ElevenLabs TTS v2.5**: private offer only, cannot be enabled from
+  the console. Substitute: gemini-2.5-flash-tts (tested, works).
+- **Imagen 4 and Veo 3**: not in the project's model catalog at all
+  (free-trial restriction). This is why the Veo playground shows
+  "Failed to submit generate video request". Substitute for images:
+  gemini-3.1-flash-image (tested, works). No video model is available
+  until the billing upgrade.
+
+---
+
 ## Verify it's working
 
 There are two separate tools for checking your setup. They do similar things in different places.
