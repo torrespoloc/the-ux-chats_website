@@ -122,8 +122,8 @@ function App() {
           <EventCard
             variant="upcoming"
             data={{
-              month: "Aug",
-              day: "27",
+              month: "Sep",
+              day: "17",
               time: "6:00 PM PST",
               image: "/library/sg--john-sp.png",
               imageHasDate: true,
