@@ -97,15 +97,15 @@ function App() {
           <EventCard
             variant="upcoming"
             data={{
-              month: "Aug",
-              day: "13",
+              month: "Sep",
+              day: "3",
               time: "6:00 PM PST",
               image: "/library/cm--aug-13.png",
               imageHasDate: true,
               tag: "Community Night · Online",
               tagVariant: "sky",
               title: "UX Chats Community Night",
-              description: <>Games, real conversation, and zero formal attire with the UX Chats crew — no talks, no agenda, just the people already in your DMs, finally getting a proper hang.</>,
+              description: <>Pull up in your comfiest hoodie and overshare with strangers who actually get it. Games, banter, and zero small talk about the weather.</>,
               meta: [
                 { icon: "🕐", text: "6:00 PM PST" },
                 { icon: "🎟", text: "Free" },
@@ -113,7 +113,7 @@ function App() {
                 { icon: "⏱", text: "1 hour" },
               ],
               buttons: [
-                { label: "RSVP", href: "https://luma.com/w7eq6g30", variant: "yellow" as const },
+                { label: "RSVP", href: "https://luma.com/crtz2cku", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
@@ -139,31 +139,6 @@ function App() {
               ],
               buttons: [
                 { label: "RSVP", href: "https://luma.com/s7ad35po", variant: "yellow" as const },
-                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
-              ],
-            }}
-          />
-
-          <EventCard
-            variant="upcoming"
-            data={{
-              month: "Sep",
-              day: "10",
-              time: "6:00 PM PST",
-              image: "/library/cm--aug-13.png",
-              imageHasDate: true,
-              tag: "Community Night · Online",
-              tagVariant: "sky",
-              title: "UX Chats Community Night",
-              description: <>Pull up in your comfiest hoodie and overshare with strangers who actually get it. Games, banter, and zero small talk about the weather.</>,
-              meta: [
-                { icon: "🕐", text: "6:00 PM PST" },
-                { icon: "🎟", text: "Free" },
-                { icon: "🎥", text: "On Zoom" },
-                { icon: "⏱", text: "1 hour" },
-              ],
-              buttons: [
-                { label: "RSVP", href: "https://luma.com/crtz2cku", variant: "yellow" as const },
                 { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
               ],
             }}
