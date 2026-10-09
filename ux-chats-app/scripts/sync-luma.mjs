@@ -1,7 +1,7 @@
 // Pulls the public Luma calendar (iCal feed) and writes src/data/events.json.
 // Free, no API key. Run by `npm run build` and by the scheduled GitHub Action.
 // If Luma is unreachable, the previous events.json is kept so the build never breaks.
-import { mkdirSync, writeFileSync, existsSync } from "node:fs";
+import { mkdirSync, writeFileSync, existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -64,6 +64,25 @@ function parse(ics) {
   return events;
 }
 
+// The iCal feed has no cover art, so read it from each event page.
+async function fetchCover(url) {
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; UXChatsSync/1.0)" },
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!res.ok) return null;
+    const html = await res.text();
+    // cover_url is the raw uploaded artwork; og:image is Luma's branded share card, so avoid it.
+    const m = html.match(/"cover_url":"https:\/\/images\.lumacdn\.com\/([^"]+)"/);
+    if (!m) return null;
+    // Resize through Luma's CDN, keeping the artwork's own aspect ratio.
+    return `https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=scale-down,quality=85,width=1000/${m[1]}`;
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
   try {
     const res = await fetch(ICS_URL, { signal: AbortSignal.timeout(20_000) });
@@ -76,6 +95,15 @@ async function main() {
     const upcoming = parse(text)
       .filter((e) => new Date(e.end).getTime() >= now)
       .sort((a, b) => a.start.localeCompare(b.start));
+
+    // Reuse a previously found cover if the page fetch fails this run.
+    let prev = [];
+    try { prev = JSON.parse(readFileSync(OUT, "utf8")).events || []; } catch {}
+    await Promise.all(
+      upcoming.map(async (e) => {
+        e.image = (await fetchCover(e.url)) || prev.find((p) => p.id === e.id)?.image || null;
+      }),
+    );
 
     mkdirSync(dirname(OUT), { recursive: true });
     writeFileSync(OUT, JSON.stringify({ syncedAt: new Date().toISOString(), events: upcoming }, null, 2) + "\n");

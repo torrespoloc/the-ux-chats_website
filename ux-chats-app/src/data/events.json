@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-09T00:27:43.685Z",
+  "syncedAt": "2026-10-09T00:40:17.200Z",
   "events": [
     {
       "id": "evt-RfGRCyqxsZXD5Mg",
@@ -11,7 +11,8 @@
       "time": "6:00 PM PT",
       "url": "https://luma.com/p1dwy5lx",
       "kind": "community",
-      "free": true
+      "free": true,
+      "image": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=scale-down,quality=85,width=1000/uploads/rw/1ed0f6b8-dcaf-4d58-ba83-d208a6870cb4.png"
     },
     {
       "id": "evt-cCs5KrinWmzRo1N",
@@ -23,7 +24,8 @@
       "time": "6:00 PM PT",
       "url": "https://luma.com/q33m6njl",
       "kind": "community",
-      "free": true
+      "free": true,
+      "image": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=scale-down,quality=85,width=1000/uploads/y2/3f260c0e-3f2b-499d-a66a-79bf376e3911.png"
     },
     {
       "id": "evt-ys96Pry3Z9Ogba3",
@@ -35,7 +37,8 @@
       "time": "6:00 PM PT",
       "url": "https://luma.com/wti76sty",
       "kind": "community",
-      "free": true
+      "free": true,
+      "image": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=scale-down,quality=85,width=1000/uploads/y2/3f260c0e-3f2b-499d-a66a-79bf376e3911.png"
     }
   ]
 }

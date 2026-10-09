@@ -17,7 +17,7 @@ const MARQUEE_ITEMS = [
 // Never hardcode events here. Add or edit them on Luma and they appear on the next sync.
 const EVENTS = EVENTS_DATA.events as {
   id: string; title: string; month: string; day: string; time: string;
-  url: string; kind: "community" | "guest"; free: boolean;
+  url: string; kind: "community" | "guest"; free: boolean; image?: string | null;
 }[];
 
 const EVENT_COPY = {
@@ -139,7 +139,7 @@ function App() {
                   month: e.month,
                   day: e.day,
                   time: e.time,
-                  image: copy.image,
+                  image: e.image ?? copy.image,
                   tag: copy.tag,
                   tagVariant: copy.tagVariant,
                   title: e.title,
