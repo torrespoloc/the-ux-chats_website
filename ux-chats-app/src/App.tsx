@@ -6,6 +6,7 @@ import {
 import type { TestimonialCardData } from "./components";
 import TESTIMONIALS_DATA from "../metadata/testimonials.json";
 import EVENTS_DATA from "./data/events.json";
+import { useSiteMotion } from "./motion";
 import "./App.css";
 
 const MARQUEE_ITEMS = [
@@ -77,22 +78,8 @@ function App() {
     return () => ro.disconnect();
   }, []);
 
-  // IntersectionObserver for reveal animations
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("in");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+  // Entrances, scroll reveals, parallax and card hovers (see motion.ts).
+  useSiteMotion();
 
   return (
     <>
@@ -116,7 +103,7 @@ function App() {
           </div>
 
           <div className="events-scroll">
-          <div className="events-scroll-track" ref={eventsScrollRef}>
+          <div className="events-scroll-track" ref={eventsScrollRef} data-lenis-prevent>
           {EVENTS.length === 0 && (
             <EventCard
               variant="upcoming"

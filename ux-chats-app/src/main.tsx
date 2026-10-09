@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.tsx";
 import BecomeAGuest from "./BecomeAGuest.tsx";
 import Imagery from "./Imagery.tsx";
+import { useSmoothScroll } from "./motion";
 
 // Reset scroll to the top on every route change so navigating between pages
 // lands at the top. Skipped when the URL has a hash (those scroll to a section).
@@ -17,10 +18,16 @@ function ScrollToTop() {
   return null;
 }
 
+function SmoothScroll() {
+  useSmoothScroll();
+  return null;
+}
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <ScrollToTop />
+      <SmoothScroll />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/become-a-guest" element={<BecomeAGuest />} />

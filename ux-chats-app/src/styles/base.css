@@ -18,6 +18,7 @@ h2.sec { font-size: clamp(48px, 5.5vw, 76px); margin: 14px 0 0; }
 section { position: relative; z-index: 1; padding: 84px 0; }
 
 /* reveal on scroll */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
-.reveal.in { opacity: 1; transform: none; }
+/* motion.ts animates opacity + translate in, then adds .in */
+.reveal { opacity: 0; }
+.reveal.in { opacity: 1; }
 @media (prefers-reduced-motion: reduce){ .reveal { opacity: 1; transform: none; transition: none; } }
