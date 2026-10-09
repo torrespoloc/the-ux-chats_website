@@ -5,12 +5,35 @@ import {
 } from "./components";
 import type { TestimonialCardData } from "./components";
 import TESTIMONIALS_DATA from "../metadata/testimonials.json";
+import EVENTS_DATA from "./data/events.json";
 import "./App.css";
 
 const MARQUEE_ITEMS = [
   "real talk", "game night", "no gatekeeping", "craft night",
   "vent & celebrate", "mentors",
 ];
+
+// Events are synced from the public Luma calendar by scripts/sync-luma.mjs (see src/data/events.json).
+// Never hardcode events here. Add or edit them on Luma and they appear on the next sync.
+const EVENTS = EVENTS_DATA.events as {
+  id: string; title: string; month: string; day: string; time: string;
+  url: string; kind: "community" | "guest"; free: boolean;
+}[];
+
+const EVENT_COPY = {
+  community: {
+    image: "/library/cm--aug-13.png",
+    tag: "Community Night · Online",
+    tagVariant: "sky" as const,
+    description: <>No decks, no dress code, no agenda. Just the UX Chats crew, a few ridiculous games, and an hour of actually being yourselves.</>,
+  },
+  guest: {
+    image: undefined,
+    tag: "Special Guest Night · Online",
+    tagVariant: "yellow" as const,
+    description: <>A live conversation with a special guest from the design world. Real insight, real talk, zero fluff. Full details and your seat on Luma.</>,
+  },
+};
 
 function App() {
   const eventsScrollRef = useRef<HTMLDivElement>(null);
@@ -94,130 +117,46 @@ function App() {
 
           <div className="events-scroll">
           <div className="events-scroll-track" ref={eventsScrollRef}>
-          <EventCard
-            variant="upcoming"
-            data={{
-              month: "Sep",
-              day: "3",
-              time: "6:00 PM PST",
-              image: "/library/cm--aug-13.png",
-              imageHasDate: true,
-              tag: "Community Night · Online",
-              tagVariant: "sky",
-              title: "UX Chats Community Night",
-              description: <>Pull up in your comfiest hoodie and overshare with strangers who actually get it. Games, banter, and zero small talk about the weather.</>,
-              meta: [
-                { icon: "🕐", text: "6:00 PM PST" },
-                { icon: "🎟", text: "Free" },
-                { icon: "🎥", text: "On Zoom" },
-                { icon: "⏱", text: "1 hour" },
-              ],
-              buttons: [
-                { label: "RSVP", href: "https://luma.com/crtz2cku", variant: "yellow" as const },
-                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
-              ],
-            }}
-          />
-
-          <EventCard
-            variant="upcoming"
-            data={{
-              month: "Sep",
-              day: "17",
-              time: "6:00 PM PST",
-              image: "/library/sg--john-sp.png",
-              imageHasDate: true,
-              tag: "Special Guest Night · Online",
-              tagVariant: "yellow",
-              title: "How to Level Up from Designer to AI Builder",
-              description: <>A fireside chat + live 0-to-1 build with John Rodrigues (Design Engineer, Founder of Human AI Studio) on going from designer to AI builder.</>,
-              meta: [
-                { icon: "🕐", text: "6:00 PM PST" },
-                { icon: "🎥", text: "On Zoom" },
-                { icon: "⏱", text: "90 min" },
-                { icon: "💵", text: "$25" },
-              ],
-              buttons: [
-                { label: "RSVP", href: "https://luma.com/s7ad35po", variant: "yellow" as const },
-                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
-              ],
-            }}
-          />
-
-          <EventCard
-            variant="upcoming"
-            data={{
-              month: "Oct",
-              day: "8",
-              time: "6:00 PM PST",
-              image: "/library/cm--aug-13.png",
-              imageHasDate: true,
-              tag: "Community Night · Online",
-              tagVariant: "sky",
-              title: "UX Chats Community Night",
-              description: <>No decks, no dress code, no agenda. Just the UX Chats crew, a few ridiculous games, and an hour of actually being yourselves.</>,
-              meta: [
-                { icon: "🕐", text: "6:00 PM PST" },
-                { icon: "🎟", text: "Free" },
-                { icon: "🎥", text: "On Zoom" },
-                { icon: "⏱", text: "1 hour" },
-              ],
-              buttons: [
-                { label: "RSVP", href: "https://luma.com/p1dwy5lx", variant: "yellow" as const },
-                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
-              ],
-            }}
-          />
-
-          <EventCard
-            variant="upcoming"
-            data={{
-              month: "Nov",
-              day: "5",
-              time: "6:00 PM PST",
-              image: "/library/cm--aug-13.png",
-              imageHasDate: true,
-              tag: "Community Night · Online",
-              tagVariant: "sky",
-              title: "UX Chats Community Night",
-              description: <>Bring snacks, bring chaos energy, leave the LinkedIn voice at the door. An hour of games and genuinely good conversation with your favorite internet designers.</>,
-              meta: [
-                { icon: "🕐", text: "6:00 PM PST" },
-                { icon: "🎟", text: "Free" },
-                { icon: "🎥", text: "On Zoom" },
-                { icon: "⏱", text: "1 hour" },
-              ],
-              buttons: [
-                { label: "RSVP", href: "https://luma.com/q33m6njl", variant: "yellow" as const },
-                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
-              ],
-            }}
-          />
-
-          <EventCard
-            variant="upcoming"
-            data={{
-              month: "Dec",
-              day: "3",
-              time: "6:00 PM PST",
-              image: "/library/cm--aug-13.png",
-              imageHasDate: true,
-              tag: "Community Night · Online",
-              tagVariant: "sky",
-              title: "UX Chats Community Night",
-              description: <>Cozy season, cozier vibes. Games, real talk, and a room full of designers who'd rather laugh than network — no agenda required.</>,
-              meta: [
-                { icon: "🕐", text: "6:00 PM PST" },
-                { icon: "🎟", text: "Free" },
-                { icon: "🎥", text: "On Zoom" },
-                { icon: "⏱", text: "1 hour" },
-              ],
-              buttons: [
-                { label: "RSVP", href: "https://luma.com/wti76sty", variant: "yellow" as const },
-                { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
-              ],
-            }}
-          />
+          {EVENTS.length === 0 && (
+            <EventCard
+              variant="upcoming"
+              data={{
+                month: "Soon", day: "✦", time: "TBA",
+                tag: "More on the way", tagVariant: "pink",
+                title: "New nights are being scheduled",
+                description: <>Nothing on the calendar right this second. Follow the calendar on Luma and you'll get pinged the moment the next one drops.</>,
+                buttons: [{ label: "See all events", href: "https://luma.com/TheUXChats", variant: "yellow" as const }],
+              }}
+            />
+          )}
+          {EVENTS.map((e) => {
+            const copy = EVENT_COPY[e.kind];
+            return (
+              <EventCard
+                key={e.id}
+                variant="upcoming"
+                data={{
+                  month: e.month,
+                  day: e.day,
+                  time: e.time,
+                  image: copy.image,
+                  tag: copy.tag,
+                  tagVariant: copy.tagVariant,
+                  title: e.title,
+                  description: copy.description,
+                  meta: [
+                    { icon: "🕐", text: e.time },
+                    { icon: e.free ? "🎟" : "💵", text: e.free ? "Free" : "Ticketed" },
+                    { icon: "🎥", text: "On Zoom" },
+                  ],
+                  buttons: [
+                    { label: "RSVP", href: e.url, variant: "yellow" as const },
+                    { label: "See all events", href: "https://luma.com/TheUXChats", variant: "line" as const },
+                  ],
+                }}
+              />
+            );
+          })}
           </div>
           <div className="events-scroll-fade" aria-hidden="true" />
           </div>

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "sync:events": "node scripts/sync-luma.mjs",
+    "build": "node scripts/sync-luma.mjs && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "gen-image": "npx tsx scripts/gemini-image-gen.ts"
