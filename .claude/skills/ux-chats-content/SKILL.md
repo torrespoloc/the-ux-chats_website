@@ -33,6 +33,8 @@ If the user gave enough in their prompt, extract and confirm rather than re-aski
 
 ## Phase 1: Load Voice + Format
 
+For UX Chats visuals accompanying content, first read the repo-root `BRAND-GUIDELINES.md`. Use the real logo asset and a legible headline; keep the composition restrained. For the current LinkedIn campaign, follow the user's Discord CTA and posting instructions over generic link-placement advice below.
+
 1. Read `references/voice-and-tone.md` — brand voice, writing rules, banned phrases, canonical links. This governs every format equally.
 2. Read `references/templates.md` — find the structure for the requested format.
 3. Read `references/examples.md` — find the strong/weak pair for the requested format, and calibrate to the strong one before writing.

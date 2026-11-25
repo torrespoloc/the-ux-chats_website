@@ -8,3 +8,6 @@ Shared brand-voice and copywriting reference for anyone writing content for The 
 - **`source-material/`** — the real LinkedIn posts, Luma events, and site copy that `examples.md` pulls from and lightly adapts. Check here before drafting something new if you want to stay grounded in real voice rather than guessing.
 
 If you're writing with Claude Code in this repo, the matching skill at `.claude/skills/ux-chats-content/` loads this same content automatically — just ask it to draft the content you need (e.g. "write an event announcement for Thursday's Hot Take night"). These files are the source of truth either way; the skill is just an automated way to apply them.
+# Visual brand direction
+
+For event and social visuals, read the repository's [brand guidelines](../BRAND-GUIDELINES.md) alongside these writing references. Use the real logo, a clear headline, and a restrained composition.

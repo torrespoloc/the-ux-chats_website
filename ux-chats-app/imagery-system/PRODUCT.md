@@ -1,5 +1,7 @@
 # Product
 
+**Current brand direction:** Read [`../../BRAND-GUIDELINES.md`](../../BRAND-GUIDELINES.md) before producing event or social visuals. Use the official logo and a readable heading, with a simpler, less busy composition than some historical examples. Where older poster guidance conflicts with that current direction, the brand guide takes precedence.
+
 <!-- impeccable:product-schema 1 -->
 <!-- parentSystem: ../../PRODUCT.md -->
 
